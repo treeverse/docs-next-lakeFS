@@ -4782,7 +4782,7 @@ For high availability, we'll deploy 2 pods with 1 CPU core and 1 GiB of RAM each
 (at 500k, expected dataset size is <code>150MiB (for 100k records) * 5 = 750MiB</code>). 
 To ensure we have enough RAM to hold this, we'll need 3 GiB of RAM, so, a very moderate Aurora instance <code>db.t3.large</code> (2 vCPUs, 8 GB RAM) will be more than enough.
 An equivalent database instance on GCP or Azure should give similar results.</p>
-<p><img src="/assets/img/reference_arch1.png" alt="ML and Research lakeFS reference architecture"/></p>
+<p><img src="assets/img/reference_arch1.png" alt="ML and Research lakeFS reference architecture"/></p>
 <h3 id="reference-architecture-automated-production-pipelines">Reference Architecture: Automated Production Pipelines<a class="headerlink" href="#reference-architecture-automated-production-pipelines" title="Permanent link">&para;</a></h3>
 <p><strong>Use case:</strong> Manage multiple concurrent data pipelines using Apache Spark and Airflow. 
 Airflow DAGs start by creating a branch for isolation and for CI/CD. 

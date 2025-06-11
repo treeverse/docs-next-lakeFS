@@ -3913,7 +3913,7 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>lakectl<span class="w"> </span>merge<span class="w"> </span>lakefs://quickstart/denmark-lakes<span class="w"> </span>lakefs://quickstart/main
 </span></code></pre></div>
 <p>We can confirm that this has worked by returning to the same object view of <code>lakes.parquet</code> as before and clicking on <strong>Execute</strong> to rerun the same query. You'll see that the country row counts have changed, and only Denmark is left in the data: </p>
-<p><img src="/assets/img/quickstart/duckdb-main-03.png" alt="The lakeFS object browser with a DuckDB query on lakes.parquet showing that there is only data for Denmark." class="quickstart"/></p>
+<p><img src="assets/img/quickstart/duckdb-main-03.png" alt="The lakeFS object browser with a DuckDB query on lakes.parquet showing that there is only data for Denmark." class="quickstart"/></p>
 <p><strong>But…oh no!</strong> A slow chill creeps down your spine, and the bottom drops out of your stomach. What have you done! 😱 <em>You were supposed to create </em><em>a separate file</em><em> of Denmark's lakes - not replace the original one</em></p>
 <p>Is all lost? Will our hero overcome the obstacles? No, and yes respectively!</p>
 <p>Have no fear; lakeFS can revert changes. Tune in for the final part of the quickstart to see how. </p>
