@@ -4130,11 +4130,11 @@
    A webhook that reads new Parquet and ORC files to ensure they don't contain a block list of column names (or name prefixes).
    This is useful for avoiding accidental PII exposure.</li>
 <li>Integration with external systems:
-   Post-merge and post-commit hooks could be used to export metadata about the change to another system. A common example is exporting <code>symlink.txt</code> files that allow e.g. <a href="/integrations/athena/">AWS Athena</a> to read data from lakeFS.</li>
+   Post-merge and post-commit hooks could be used to export metadata about the change to another system. A common example is exporting <code>symlink.txt</code> files that allow e.g. <a href="../../integrations/athena/">AWS Athena</a> to read data from lakeFS.</li>
 <li>Notifying downstream consumers:
    Running a post-merge hook to trigger an Airflow DAG or to send a Webhook to an API, notifying it of the change that happened</li>
 </ol>
-<p>For step-by-step examples of hooks in action check out the <a href="/quickstart/actions-and-hooks/">lakeFS Quickstart</a> and the <a href="https://github.com/treeverse/lakeFS-samples/">lakeFS samples repository</a>.</p>
+<p>For step-by-step examples of hooks in action check out the <a href="../../quickstart/actions-and-hooks/">lakeFS Quickstart</a> and the <a href="https://github.com/treeverse/lakeFS-samples/">lakeFS samples repository</a>.</p>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/Joare70FlIA"></iframe>
 
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
@@ -4372,7 +4372,7 @@ This allows configuration-as-code inside lakeFS, where Action files are declarat
 For example, if your repository contains a pre-commit hook, every commit would generate a Run for that specific commit.</p>
 <p>lakeFS will fetch, parse and filter the repository Action files and start to execute the Hooks under each Action.
 All executed Hooks (each with <code>hook_run_id</code>) exist in the context of that Run (<code>run_id</code>).</p>
-<p>The <a href="/reference/api/">lakeFS API</a> and <a href="/reference/cli/#lakectl-actions">lakectl</a> expose the results of executions per repository, branch, commit, and specific Action.
+<p>The <a href="../../reference/api/">lakeFS API</a> and <a href="../../reference/cli/#lakectl-actions">lakectl</a> expose the results of executions per repository, branch, commit, and specific Action.
 The endpoint also allows to download the execution log of any executed Hook under each Run for observability.</p>
 <h2 id="result-files">Result Files<a class="headerlink" href="#result-files" title="Permanent link">&para;</a></h2>
 <p>The metadata section of lakeFS repository with each Run contains two types of files:</p>

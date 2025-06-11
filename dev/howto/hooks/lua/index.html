@@ -6144,7 +6144,7 @@ Returns the table's creation status.</p>
 </span></code></pre></div>
 </div>
 <ul>
-<li>For the Databricks permissions needed to run this method, check out the <a href="/integrations/unity-catalog/">Unity Catalog Exporter</a> docs.</li>
+<li>For the Databricks permissions needed to run this method, check out the <a href="../../../integrations/unity-catalog/">Unity Catalog Exporter</a> docs.</li>
 </ul>
 <h3 id="encodingbase64encodedata"><code>encoding/base64/encode(data)</code><a class="headerlink" href="#encodingbase64encodedata" title="Permanent link">&para;</a></h3>
 <p>Encodes the given data to a base64 string</p>
@@ -6595,7 +6595,7 @@ used to convert the paths scheme to <code>abfss</code>. The built-in <code>azure
 </span></code></pre></div></p>
 </div>
 <p>For detailed step-by-step guide on how to use <code>unity_exporter.register_tables</code> as a part of a lakeFS action refer to
-the <a href="/integrations/unity-catalog/">Unity Catalog docs</a>.</p>
+the <a href="../../../integrations/unity-catalog/">Unity Catalog docs</a>.</p>
 <h3 id="pathparsepath_string"><code>path/parse(path_string)</code><a class="headerlink" href="#pathparsepath_string" title="Permanent link">&para;</a></h3>
 <p>Returns a table for the given path string with the following structure:</p>
 <div class="admonition example">
@@ -6714,7 +6714,7 @@ The <code>value</code> string should be in <a href="https://en.wikipedia.org/wik
 </div>
 <h3 id="nethttp-optional"><code>net/http</code> (optional)<a class="headerlink" href="#nethttp-optional" title="Permanent link">&para;</a></h3>
 <p>Provides a <code>request</code> function that performs an HTTP request.
-For security reasons, this package is not available by default as it enables http requests to be sent out from the lakeFS instance network. The feature should be enabled under <code>actions.lua.net_http_enabled</code> <a href="/reference/configuration/">configuration</a>.
+For security reasons, this package is not available by default as it enables http requests to be sent out from the lakeFS instance network. The feature should be enabled under <code>actions.lua.net_http_enabled</code> <a href="../../../reference/configuration/">configuration</a>.
 Request will time out after 30 seconds.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>

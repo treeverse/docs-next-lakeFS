@@ -4009,7 +4009,7 @@
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Available in <strong>lakeFS Cloud</strong> and <strong>lakeFS Enterprise</strong><br/>
-If you're using the open-source version of lakeFS you can read more about the <a href="/security/authentication/">authentication options available</a>. </p>
+If you're using the open-source version of lakeFS you can read more about the <a href="../authentication/">authentication options available</a>. </p>
 </div>
 <h2 id="sso-for-lakefs-cloud">SSO for lakeFS Cloud<a class="headerlink" href="#sso-for-lakefs-cloud" title="Permanent link">&para;</a></h2>
 <p>lakeFS Cloud uses Auth0 for authentication and thus support the same identity providers as Auth0 including Active Directory/LDAP, ADFS, Azure Active Directory Native, Google Workspace, OpenID Connect, Okta, PingFederate, SAML, and Azure Active Directory.</p>
@@ -4206,7 +4206,7 @@ A redirect URI is the location where the Microsoft identity platform redirects a
 <p>In order for Fluffy to work, the following values must be configured. Update (or override) the following attributes in the chart's <code>values.yaml</code> file.</p>
 <ol>
 <li>Replace <code>lakefsConfig.friendly_name_claim_name</code> with the right claim name.</li>
-<li>Replace <code>lakefsConfig.default_initial_groups</code> with desired claim name (See <a href="/security/rbac/#preconfigured-groups">pre-configured</a> groups for enterprise)</li>
+<li>Replace <code>lakefsConfig.default_initial_groups</code> with desired claim name (See <a href="../rbac/#preconfigured-groups">pre-configured</a> groups for enterprise)</li>
 <li>Replace <code>fluffyConfig.auth.logout_redirect_url</code> with your full OIDC logout URL (e.g <code>https://oidc-provider-url.com/logout/path</code>)</li>
 <li>Replace <code>fluffyConfig.auth.oidc.url</code> with your OIDC provider URL (e.g <code>https://oidc-provider-url.com</code>)</li>
 <li>Replace <code>fluffyConfig.auth.oidc.logout_endpoint_query_parameters</code> with parameters you'd like to pass to the OIDC provider for logout.</li>
@@ -4268,7 +4268,7 @@ The authentication works by querying the LDAP server for user information and au
 <li>Replace <code>auth.remote_authenticator.endpoint</code> with the fluffy authentication server URL combined with the <code>api/v1/ldap/login</code> suffix (e.g <code>http://lakefs.company.com/api/v1/ldap/login</code>)</li>
 </ol>
 <p><strong>fluffy Configuration:</strong></p>
-<p>See <a href="/enterprise/configuration/#fluffy-server-configuration">Fluffy configuration</a> reference.</p>
+<p>See <a href="../../enterprise/configuration/#fluffy-server-configuration">Fluffy configuration</a> reference.</p>
 <ol>
 <li>Replace <code>auth.ldap.remote_authenticator.server_endpoint</code> with your LDAP server endpoint  (e.g <code>ldaps://ldap.ldap-address.com:636</code>)</li>
 <li>Replace <code>auth.ldap.remote_authenticator.bind_dn</code> with the LDAP bind user/permissions to query your LDAP server.</li>

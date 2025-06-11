@@ -4148,7 +4148,7 @@
 <p>Because lakeFS is format-agnostic, you can save data in Delta format within a lakeFS repository and benefit from the advantages of both technologies. Specifically:</p>
 <ol>
 <li>ACID operations can span across multiple Delta tables.</li>
-<li><a href="/understand/use_cases/cicd_for_data/#using-hooks-as-data-quality-gates">CI/CD hooks</a> can validate Delta table contents, schema, or even referential integrity.</li>
+<li><a href="../../understand/use_cases/cicd_for_data/#using-hooks-as-data-quality-gates">CI/CD hooks</a> can validate Delta table contents, schema, or even referential integrity.</li>
 <li>lakeFS supports zero-copy branching for quick experimentation with full isolation.</li>
 </ol>
 <h2 id="delta-lake-tables-from-the-lakefs-perspective">Delta Lake Tables from the lakeFS Perspective<a class="headerlink" href="#delta-lake-tables-from-the-lakefs-perspective" title="Permanent link">&para;</a></h2>
@@ -4179,7 +4179,7 @@ indicating the schema change.
 </div>
 <p>To see the integration in action see <a href="https://github.com/treeverse/lakeFS-samples/blob/main/00_notebooks/delta-lake.ipynb">this notebook</a> in the <a href="https://github.com/treeverse/lakeFS-samples/">lakeFS Samples Repository</a>.</p>
 <h2 id="using-delta-lake-with-lakefs-from-python">Using Delta Lake with lakeFS from Python<a class="headerlink" href="#using-delta-lake-with-lakefs-from-python" title="Permanent link">&para;</a></h2>
-<p>The <a href="https://github.com/delta-io/delta-rs">delta-rs</a> library provides bindings for Python. This means that you can use Delta Lake and lakeFS directly from Python without needing Spark. Integration is done through the <a href="/understand/architecture/#s3-gateway">lakeFS S3 Gateway</a></p>
+<p>The <a href="https://github.com/delta-io/delta-rs">delta-rs</a> library provides bindings for Python. This means that you can use Delta Lake and lakeFS directly from Python without needing Spark. Integration is done through the <a href="../../understand/architecture/#s3-gateway">lakeFS S3 Gateway</a></p>
 <p>The documentation for the <code>deltalake</code> Python module details how to <a href="https://delta-io.github.io/delta-rs/python/usage.html#loading-a-delta-table">read</a>, <a href="https://delta-io.github.io/delta-rs/python/usage.html#writing-delta-tables">write</a>, and <a href="https://delta-io.github.io/delta-rs/python/usage.html#querying-delta-tables">query</a> Delta Lake tables. To use it with lakeFS use an <code>s3a</code> path for the table based on your repository and branch (for example, <code>s3a://delta-lake-demo/main/my_table/</code>) and specify the following <code>storage_options</code>:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">storage_options</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="s2">&quot;AWS_ENDPOINT&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">your</span> <span class="n">lakeFS</span> <span class="n">endpoint</span><span class="o">&gt;</span><span class="p">,</span>

@@ -3961,7 +3961,7 @@ You can read more about it <a href="https://github.com/treeverse/lakeFS/issues/6
 <hr />
 <p>Amazon Athena works directly above S3 and can't access lakeFS. Tables created using Athena aren't readable by lakeFS.
 However, tables stored in lakeFS (that were created with <a href="../glue_hive_metastore/">glue/hive</a>) can be queried by Athena.</p>
-<p>To support querying data from lakeFS with Amazon Athena, we will use <code>create-symlink</code>, one of the <a href="../glue_hive_metastore/">metastore commands</a> in <a href="/reference/cli/">lakectl</a>.
+<p>To support querying data from lakeFS with Amazon Athena, we will use <code>create-symlink</code>, one of the <a href="../glue_hive_metastore/">metastore commands</a> in <a href="../../reference/cli/">lakectl</a>.
 <code>create-symlink</code> receives a source table, destination table, and the table location. It performs two actions:</p>
 <ol>
 <li>It creates partitioned directories with symlink files in the underlying S3 bucket.</li>
@@ -3986,7 +3986,7 @@ the copy. If the table changed in lakeFS, you need to run <code>create-symlink</
 </span></code></pre></div>
 <p>The repository <code>example</code> has the S3 storage space <code>s3://my-bucket/my-repo-prefix/</code>. 
 After inserting some data into it, the object structure under <code>lakefs://example/main/my_table</code> looks as follows:</p>
-<p><img alt="lakefs_table.png" src="/assets/img/lakefs_table.png" /></p>
+<p><img alt="lakefs_table.png" src="../../assets/img/lakefs_table.png" /></p>
 <p>To query that table with Athena, you need to use the <code>create-symlink</code> command as follows:</p>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>lakectl<span class="w"> </span>metastore<span class="w"> </span>create-symlink<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--repo<span class="w"> </span>example<span class="w"> </span><span class="se">\</span>

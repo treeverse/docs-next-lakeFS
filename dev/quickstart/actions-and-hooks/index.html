@@ -3970,7 +3970,7 @@
 
 
 <h1 id="actions-and-hooks-in-lakefs">Actions and Hooks in lakeFS<a class="headerlink" href="#actions-and-hooks-in-lakefs" title="Permanent link">&para;</a></h1>
-<p>When we interact with lakeFS it can be useful to have certain checks performed at stages along the way. Let's see how <a href="/howto/hooks/index/">actions in lakeFS</a> can be of benefit here. </p>
+<p>When we interact with lakeFS it can be useful to have certain checks performed at stages along the way. Let's see how <a href="../../howto/hooks/">actions in lakeFS</a> can be of benefit here. </p>
 <p>We're going to enforce a rule that when a commit is made to any branch that begins with <code>etl</code>: </p>
 <ul>
 <li>the commit message must not be blank</li>
@@ -3978,7 +3978,7 @@
 <li>the <code>version</code> must be numeric</li>
 </ul>
 <p>To do this we'll create an <em>action</em>. In lakeFS, an action specifies one or more events that will trigger it, and references one or more <em>hooks</em> to run when triggered. Actions are YAML files written to lakeFS under the <code>_lakefs_actions/</code> folder of the lakeFS repository.</p>
-<p><em>Hooks</em> can be either a <a href="/howto/hooks/lua/">Lua</a> script that lakeFS will execute itself, an external <a href="/howto/hooks/webhooks/">web hook</a>, or an <a href="/howto/hooks/airflow/">Airflow DAG</a>. In this example, we're using a Lua hook.</p>
+<p><em>Hooks</em> can be either a <a href="../../howto/hooks/lua/">Lua</a> script that lakeFS will execute itself, an external <a href="../../howto/hooks/webhooks/">web hook</a>, or an <a href="../../howto/hooks/airflow/">Airflow DAG</a>. In this example, we're using a Lua hook.</p>
 <h2 id="configuring-the-action">Configuring the Action<a class="headerlink" href="#configuring-the-action" title="Permanent link">&para;</a></h2>
 <ol>
 <li>In lakeFS create a new branch called <code>add_action</code>. You can do this through the UI or with <code>lakectl</code>: 

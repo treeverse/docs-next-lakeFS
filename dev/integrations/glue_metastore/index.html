@@ -4109,7 +4109,7 @@
 
 <h1 id="using-lakefs-with-the-glue-catalog">Using lakeFS with the Glue Catalog<a class="headerlink" href="#using-lakefs-with-the-glue-catalog" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The integration between Glue and lakeFS is based on <a href="/howto/catalog_exports/">Data Catalog Exports</a>.</p>
+<p>The integration between Glue and lakeFS is based on <a href="../../howto/catalog_exports/">Data Catalog Exports</a>.</p>
 <p>This guide describes how to use lakeFS with the Glue Data Catalog.
 You'll be able to query your lakeFS data by specifying the repository, branch and commit in your SQL query.
 Currently, only read operations are supported on the tables.
@@ -4119,7 +4119,7 @@ You will set up the automation required to work with lakeFS on top of the Glue D
 <li>Write an exporter script that will:</li>
 <li>Mirror your branch's state into <a href="https://svn.apache.org/repos/infra/websites/production/hive/content/javadocs/r2.1.1/api/org/apache/hadoop/hive/ql/io/SymlinkTextInputFormat.html">Hive Symlink</a> files readable by Athena.</li>
 <li>Export the table descriptors from your branch to the Glue Catalog.</li>
-<li>Set up lakeFS <a href="/howto/catalog_exports/#running-an-exporter">hooks</a> to trigger the above script when specific events occur.</li>
+<li>Set up lakeFS <a href="../../howto/catalog_exports/#running-an-exporter">hooks</a> to trigger the above script when specific events occur.</li>
 </ol>
 <h2 id="example-using-athena-to-query-lakefs-data">Example: Using Athena to query lakeFS data<a class="headerlink" href="#example-using-athena-to-query-lakefs-data" title="Permanent link">&para;</a></h2>
 <h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
@@ -4158,14 +4158,14 @@ Save the YAML below as <code>animals.yaml</code> and upload it to lakeFS. </p>
 </span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">      </span><span class="nt">metadata</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </span></code></pre></div>
 <h3 id="write-some-table-data">Write some table data<a class="headerlink" href="#write-some-table-data" title="Permanent link">&para;</a></h3>
-<p>Insert data into the table path, using your preferred method (e.g. <a href="/integrations/spark/">Spark</a>), and commit upon completion.
+<p>Insert data into the table path, using your preferred method (e.g. <a href="../spark/">Spark</a>), and commit upon completion.
 This example uses CSV files, and the files added to lakeFS should look like this:</p>
-<p><img alt="lakeFS Uploaded CSV Files" src="/assets/img/csv_export_hooks_data.png" /></p>
+<p><img alt="lakeFS Uploaded CSV Files" src="../../assets/img/csv_export_hooks_data.png" /></p>
 <h3 id="the-exporter-script">The exporter script<a class="headerlink" href="#the-exporter-script" title="Permanent link">&para;</a></h3>
 <p>Upload the following script to your main branch under <code>scripts/animals_exporter.lua</code> (or a path of your choice).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For code references check <a href="/howto/hooks/lua/#lakefscatalogexportsymlink_exporter">symlink_exporter</a> and <a href="/howto/hooks/lua/#lakefscatalogexportglue_exporter">glue_exporter</a> docs.</p>
+<p>For code references check <a href="../../howto/hooks/lua/#lakefscatalogexportsymlink_exporter">symlink_exporter</a> and <a href="../../howto/hooks/lua/#lakefscatalogexportglue_exporter">glue_exporter</a> docs.</p>
 </div>
 <div class="language-lua highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;aws&quot;</span><span class="p">)</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">symlink_exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;lakefs/catalogexport/symlink_exporter&quot;</span><span class="p">)</span>
@@ -4186,11 +4186,11 @@ This example uses CSV files, and the files added to lakeFS should look like this
 </span></code></pre></div>
 <h3 id="configure-action-hooks">Configure Action Hooks<a class="headerlink" href="#configure-action-hooks" title="Permanent link">&para;</a></h3>
 <p>Hooks serve as the mechanism that triggers the execution of the exporter.
-For more detailed information on how to configure exporter hooks, you can refer to <a href="/howto/catalog_exports/#running-an-exporter">Running an Exporter</a>.</p>
+For more detailed information on how to configure exporter hooks, you can refer to <a href="../../howto/catalog_exports/#running-an-exporter">Running an Exporter</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The <code>args.catalog.table_input</code> argument in the Lua script is assumed to be passed from the action arguments, that way the same script can be reused for different tables. </p>
-<p>heck the <a href="/howto/hooks/lua/#lakefscatalogexportglue_exporterexport_glueglue-db-table_src_path-create_table_input-action_info-options">example</a> to construct the table input in the lua code.</p>
+<p>heck the <a href="../../howto/hooks/lua/#lakefscatalogexportglue_exporterexport_glueglue-db-table_src_path-create_table_input-action_info-options">example</a> to construct the table input in the lua code.</p>
 </div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="hook-csv-glue-table" name="__tabbed_1" type="radio" /><input id="hook-parquet-glue-table" name="__tabbed_1" type="radio" /><input id="multiple-hooks--inline-script" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="hook-csv-glue-table">Hook CSV Glue Table</label><label for="hook-parquet-glue-table">Hook Parquet Glue Table</label><label for="multiple-hooks--inline-script">Multiple Hooks / Inline script</label></div>
 <div class="tabbed-content">
@@ -4307,7 +4307,7 @@ It also shows how to run the lua script inline instead of a file, depending on u
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>lakectl<span class="w"> </span>commit<span class="w"> </span>lakefs://catalogs/main<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;trigger first export hook&quot;</span>
 </span></code></pre></div>
 <p>Once the action has completed its execution, you can review the results in the action logs.</p>
-<p><img alt="Hooks log result in lakeFS UI" src="/assets/img/glue_export_hook_result_log.png" /></p>
+<p><img alt="Hooks log result in lakeFS UI" src="../../assets/img/glue_export_hook_result_log.png" /></p>
 <h3 id="use-athena">Use Athena<a class="headerlink" href="#use-athena" title="Permanent link">&para;</a></h3>
 <p>We can use the exported Glue table with any tool that supports Glue Catalog (or Hive compatible) such as Athena, Trino, Spark and others.
 To use Athena we can simply run <code>MSCK REPAIR TABLE</code> and then query the tables.</p>
@@ -4315,7 +4315,7 @@ To use Athena we can simply run <code>MSCK REPAIR TABLE</code> and then query th
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">MSCK</span><span class="w"> </span><span class="n">REPAIR</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">`</span><span class="n">animals_catalogs_main_9255e5</span><span class="o">`</span><span class="p">;</span><span class="w"> </span><span class="c1">-- load partitions for the first time </span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">animals_catalogs_main_9255e5</span><span class="o">`</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
 </span></code></pre></div>
-<p><img alt="Athena SQL Result" src="/assets/img/catalog_export_athena_aws_ui_sql.png" /></p>
+<p><img alt="Athena SQL Result" src="../../assets/img/catalog_export_athena_aws_ui_sql.png" /></p>
 <h3 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h3>
 <p>Users can use additional hooks / actions to implement a custom cleanup logic to delete the symlink in S3 and Glue Tables. </p>
 <div class="language-lua highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">glue</span><span class="p">.</span><span class="nf">delete_table</span><span class="p">(</span><span class="nv">db</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&lt;glue table name&gt;&#39;</span><span class="p">)</span>

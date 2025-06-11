@@ -3984,12 +3984,12 @@
 <h1 id="configuring-lakefs-to-use-presigned-urls">Configuring lakeFS to use presigned URLs<a class="headerlink" href="#configuring-lakefs-to-use-presigned-urls" title="Permanent link">&para;</a></h1>
 <p>With lakeFS, you can access data directly from the storage and not through lakeFS using a presigned URL.
 Based on the user's access to an object in the object store, the presigned URL will get read or write access.</p>
-<p>The presign support is enabled for block adapter that supports it (AWS, GCP, Azure), and can be disabled by the <a href="/reference/configuration/">configuration</a> (<code>blockstore.&lt;blockstore_type&gt;.disable_pre_signed</code>). Note that the UI support is disabled by default.</p>
-<p>It is possible to override the default pre-signed URL endpoint in <strong>AWS</strong> by setting the <a href="/reference/configuration/">configuration</a> (<code>blockstore.s3.pre_signed_endpoint</code>).
+<p>The presign support is enabled for block adapter that supports it (AWS, GCP, Azure), and can be disabled by the <a href="../../reference/configuration/">configuration</a> (<code>blockstore.&lt;blockstore_type&gt;.disable_pre_signed</code>). Note that the UI support is disabled by default.</p>
+<p>It is possible to override the default pre-signed URL endpoint in <strong>AWS</strong> by setting the <a href="../../reference/configuration/">configuration</a> (<code>blockstore.s3.pre_signed_endpoint</code>).
 This is useful, for example, when you wish to define a <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/privatelink-interface-endpoints.html#accessing-s3-interface-endpoints">VPC endpoint</a> access for the pre-signed URL.</p>
 <h2 id="using-presigned-urls-in-the-ui">Using presigned URLs in the UI<a class="headerlink" href="#using-presigned-urls-in-the-ui" title="Permanent link">&para;</a></h2>
 <p>For using presigned URLs in the UI:
-1. Enable the presigned URL support UI in the lakeFS <a href="/reference/configuration/">configuration</a> (<code>blockstore.&lt;blockstore_type&gt;.disable_pre_signed_ui</code>   ).
+1. Enable the presigned URL support UI in the lakeFS <a href="../../reference/configuration/">configuration</a> (<code>blockstore.&lt;blockstore_type&gt;.disable_pre_signed_ui</code>   ).
 2. Add CORS (Cross-Origin Resource Sharing) permissions to the bucket for the UI to fetch objects using a presigned URL (instead of through lakeFS).
 3. The <code>blockstore.&lt;blockstore_type&gt;.disable_pre_signed</code> must be false to enable it in the UI.</p>
 <div class="admonition warning">

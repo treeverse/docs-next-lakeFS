@@ -4125,7 +4125,7 @@
 Through the Unity Catalog, you can search for and locate data assets across workspaces via a unified catalog.
 Leveraging the external tables feature within Unity Catalog, you can register a Delta Lake table exported from lakeFS and
 access it through the unified catalog. </p>
-<p>The subsequent step-by-step guide will lead you through the process of configuring a <a href="/howto/hooks/lua/">Lua hook</a>
+<p>The subsequent step-by-step guide will lead you through the process of configuring a <a href="../../howto/hooks/lua/">Lua hook</a>
 that exports Delta Lake tables from lakeFS, and subsequently registers them in Unity Catalog.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -4186,7 +4186,7 @@ The table descriptor should include (at minimum) the following fields:</p>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>lakectl<span class="w"> </span>commit<span class="w"> </span>lakefs://repo/main<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;add famous people table descriptor&quot;</span>
 </span></code></pre></div>
 <h3 id="write-some-data">Write some data<a class="headerlink" href="#write-some-data" title="Permanent link">&para;</a></h3>
-<p>Insert data into the table path, using your preferred method (e.g. <a href="/integrations/spark/">Spark</a>), and commit upon completion.</p>
+<p>Insert data into the table path, using your preferred method (e.g. <a href="../spark/">Spark</a>), and commit upon completion.</p>
 <p>We shall use Spark and lakeFS's S3 gateway to write some data as a Delta table:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pyspark<span class="w"> </span>--packages<span class="w"> </span><span class="s2">&quot;io.delta:delta-spark_2.12:3.0.0,org.apache.hadoop:hadoop-aws:3.3.4,com.amazonaws:aws-java-sdk-bundle:1.12.262&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--conf<span class="w"> </span>spark.sql.extensions<span class="o">=</span>io.delta.sql.DeltaSparkSessionExtension<span class="w"> </span><span class="se">\</span>
@@ -4212,8 +4212,8 @@ The table descriptor should include (at minimum) the following fields:</p>
 <h3 id="the-unity-catalog-exporter-script">The Unity Catalog exporter script<a class="headerlink" href="#the-unity-catalog-exporter-script" title="Permanent link">&para;</a></h3>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>For code references check <a href="/howto/hooks/lua/#lakefscatalogexportdelta_exporter">delta_exporter</a> and 
-<a href="/howto/hooks/lua/#lakefscatalogexportunity_exporter">unity_exporter</a> docs.</p>
+<p>For code references check <a href="../../howto/hooks/lua/#lakefscatalogexportdelta_exporter">delta_exporter</a> and 
+<a href="../../howto/hooks/lua/#lakefscatalogexportunity_exporter">unity_exporter</a> docs.</p>
 </div>
 <p>Create <code>unity_exporter.lua</code>:</p>
 <div class="language-lua highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;aws&quot;</span><span class="p">)</span>
@@ -4279,14 +4279,14 @@ events on the <code>main</code> branch.</p>
 <p>The action has run and exported the <code>famous_people</code> Delta Lake table to the repo's storage namespace, and has register 
 the table as an external table in Unity Catalog under the catalog <code>my-catalog-name</code>, schema <code>main</code> (as the branch's name) and 
 table name <code>famous_people</code>: <code>my-catalog-name.main.famous_people</code>.</p>
-<p><img alt="Hooks log result in lakeFS UI" src="/assets/img/unity_export_hook_result_log.png" /></p>
+<p><img alt="Hooks log result in lakeFS UI" src="../../assets/img/unity_export_hook_result_log.png" /></p>
 <h3 id="databricks-integration">Databricks Integration<a class="headerlink" href="#databricks-integration" title="Permanent link">&para;</a></h3>
 <p>After registering the table in Unity, you can leverage your preferred method to <a href="https://docs.databricks.com/en/query/index.html">query the data</a> 
 from the exported table under <code>my-catalog-name.main.famous_people</code>, and view it in the Databricks's Catalog Explorer, or
 retrieve it using the Databricks CLI with the following command: </p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>databricks<span class="w"> </span>tables<span class="w"> </span>get<span class="w"> </span>my-catalog-name.main.famous_people
 </span></code></pre></div>
-<p><img alt="Unity Catalog Explorer view" src="/assets/img/unity_exported_table_columns.png" /></p>
+<p><img alt="Unity Catalog Explorer view" src="../../assets/img/unity_exported_table_columns.png" /></p>
 
 
 

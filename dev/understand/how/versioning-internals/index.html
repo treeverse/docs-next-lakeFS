@@ -4022,7 +4022,7 @@
 <p>Each lakeFS commit is represented as a set of contiguous, non-overlapping SSTables that make up the entire keyspace of a repository at that commit.</p>
 <h2 id="sstable-file-format-graveler-file">SSTable File Format ("Graveler File")<a class="headerlink" href="#sstable-file-format-graveler-file" title="Permanent link">&para;</a></h2>
 <p>lakeFS metadata is encoded into a format called <strong>"Graveler"</strong> - a standardized way to encode content-addressable key value pairs. This is what a Graveler file looks like:</p>
-<p><img alt="Graveler File" src="/assets/img/graveler1.png" /></p>
+<p><img alt="Graveler File" src="../../../assets/img/graveler1.png" /></p>
 <p>Each Key/Value pair (<strong>"ValueRecord"</strong>) is constructed of a <code>key</code>, <code>identity</code>, and <code>value</code>.</p>
 <p>A simple identity could be, for example, a sha256 hash of the value’s bytes. It could be any sequence of bytes that uniquely identifies the value. As far as the Graveler is concerned, two <code>ValueRecord</code>s are considered identical if their key and identity fields are equal.</p>
 <p>A Graveler file itself is content-addressable, i.e., similarly to Git, the name of the file is its identity.
@@ -4036,7 +4036,7 @@ File identity is calculated based on the identity of the ValueRecords the file c
 <li>Allow an efficient diff between commits which runs in time proportional to the size of their difference and not their absolute sizes.</li>
 </ol>
 <p>To support these requirements, we decided to essentially build a 2-layer <a href="https://en.wikipedia.org/wiki/Merkle_tree" target="_blank">Merkle tree</a> composed of a set of leaf nodes (<strong>"Range"</strong>) addressed by their content address, and a <strong>"Meta Range"</strong>, which is a special range containing all ranges, thus representing an entire consistent view of the keyspace:</p>
-<p><img alt="Metarange to ranges relationship" src="/assets/img/graveler2.png" /></p>
+<p><img alt="Metarange to ranges relationship" src="../../../assets/img/graveler2.png" /></p>
 <p>Assuming commit B is derived from commit A, and only changed files in range <code>e-f</code>, it can reuse all ranges except for SSTable #N (the one containing the modified range of keys), which will be recreated with a new hash representing the state as exists after applying commit B’s changes. This will, in turn, also create a new Metarange since its hash is now changed as well (as it is derived from the hash of all contained ranges).</p>
 <p>Assuming most commits usually change related objects (i.e., that are likely to share some common prefix), the reuse ratio could be very high. We tested this assumption using S3 inventory from 2 design partners - we partitioned the keyspace to an arbitrary number of simulated blocks and measured their change over time. We saw a daily change rate of about 5-20%.</p>
 <p>Given the size of the repositories, it's safe to assume that a single day would translate into multiple commits. At a modest 20 commits per day, a commit is expected to reuse &gt;= 99% of the previous commit blocks, so acceptable in terms of write amplification generated on commit.</p>
@@ -4063,7 +4063,7 @@ File identity is calculated based on the identity of the ValueRecords the file c
 <p>Unlike committed metadata which is immutable, uncommitted (or "staged") metadata experiences frequent random writes and is very mutable in nature. This is also true for "refs" - in particular, branches, which are simply pointers to an underlying commit, are modified frequently: on every commit or merge operation.</p>
 <p>Both these types of metadata are not only mutable, but also require strong consistency guarantees while also being fault tolerant. If we can’t access the current pointer of the main branch, a big portion of the system is essentially down. </p>
 <p>Luckily, this is also much smaller set of metadata compared to the committed metadata.</p>
-<p>References and uncommitted metadata are currently stored on a key-value store (See <a href="/reference/configuration/">supported databases</a>) for consistency guarantees.</p>
+<p>References and uncommitted metadata are currently stored on a key-value store (See <a href="../../../reference/configuration/">supported databases</a>) for consistency guarantees.</p>
 
 
 

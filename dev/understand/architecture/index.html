@@ -4284,7 +4284,7 @@
 <h1 id="lakefs-architecture">lakeFS Architecture<a class="headerlink" href="#lakefs-architecture" title="Permanent link">&para;</a></h1>
 <p>lakeFS is distributed as a single binary encapsulating several logical services.</p>
 <p>The server itself is stateless, meaning you can easily add more instances to handle a bigger load.</p>
-<p><img alt="Architecture" src="/assets/img/architecture.png" /></p>
+<p><img alt="Architecture" src="../../assets/img/architecture.png" /></p>
 <h3 id="object-storage">Object Storage<a class="headerlink" href="#object-storage" title="Permanent link">&para;</a></h3>
 <p>lakeFS manages data stored on various object storage platforms, including: </p>
 <ul>
@@ -4299,7 +4299,7 @@
 <p>With <a href="../../enterprise/">lakeFS Enterprise</a>, you can leverage <a href="../../howto/multiple-storage-backends/">multiple storage backend support</a>
 to manage data across multiple storage locations, including on-prem, hybrid, and multi-cloud environments.</p>
 <h3 id="metadata-storage">Metadata Storage<a class="headerlink" href="#metadata-storage" title="Permanent link">&para;</a></h3>
-<p>In additional a Key Value storage is used for storing metadata, with supported databases including PostgreSQL, DynamoDB, and CosmosDB Instructions of how to deploy such database on AWS can be found <a href="/howto/deploy/aws/#grant-dynamodb-permissions-to-lakefs">here</a>.</p>
+<p>In additional a Key Value storage is used for storing metadata, with supported databases including PostgreSQL, DynamoDB, and CosmosDB Instructions of how to deploy such database on AWS can be found <a href="../../howto/deploy/aws/#grant-dynamodb-permissions-to-lakefs">here</a>.</p>
 <p>Additional information on the data format can be found in <a href="../how/versioning-internals/">Versioning internals</a> and <a href="../how/kv/">Internal database structure</a></p>
 <h3 id="load-balancing">Load Balancing<a class="headerlink" href="#load-balancing" title="Permanent link">&para;</a></h3>
 <p>Accessing lakeFS is done using HTTP.
@@ -4311,41 +4311,41 @@ to lakeFS server(s) would do.</p>
 <h2 id="lakefs-components">lakeFS Components<a class="headerlink" href="#lakefs-components" title="Permanent link">&para;</a></h2>
 <h3 id="s3-gateway">S3 Gateway<a class="headerlink" href="#s3-gateway" title="Permanent link">&para;</a></h3>
 <p>The S3 Gateway is the layer in lakeFS responsible for the compatibility with S3. It implements a compatible subset of the S3 API to ensure most data systems can use lakeFS as a drop-in replacement for S3.</p>
-<p>See the <a href="/reference/s3/">S3 API Reference</a> section for information on supported API operations.</p>
+<p>See the <a href="../../reference/s3/">S3 API Reference</a> section for information on supported API operations.</p>
 <h3 id="openapi-server">OpenAPI Server<a class="headerlink" href="#openapi-server" title="Permanent link">&para;</a></h3>
-<p>The Swagger (<a href="https://swagger.io/docs/specification/basic-structure/" target="_blank">OpenAPI</a>) server exposes the full set of lakeFS operations (see <a href="/reference/api/">Reference</a>). This includes basic CRUD operations against repositories and objects, as well as versioning related operations such as branching, merging, committing, and reverting changes to data.</p>
+<p>The Swagger (<a href="https://swagger.io/docs/specification/basic-structure/" target="_blank">OpenAPI</a>) server exposes the full set of lakeFS operations (see <a href="../../reference/api/">Reference</a>). This includes basic CRUD operations against repositories and objects, as well as versioning related operations such as branching, merging, committing, and reverting changes to data.</p>
 <h3 id="storage-adapter">Storage Adapter<a class="headerlink" href="#storage-adapter" title="Permanent link">&para;</a></h3>
 <p>The Storage Adapter is an abstraction layer for communicating with any underlying object store. 
 Its implementations allow compatibility with many types of underlying storage such as S3, GCS, Azure Blob Storage, or non-production usages such as the local storage adapter.</p>
-<p>See the <a href="/project/index/#roadmap">roadmap</a> for information on the future plans for storage compatibility. </p>
+<p>See the <a href="../../project/#roadmap">roadmap</a> for information on the future plans for storage compatibility. </p>
 <h3 id="graveler">Graveler<a class="headerlink" href="#graveler" title="Permanent link">&para;</a></h3>
 <p>The Graveler handles lakeFS versioning by translating lakeFS addresses to the actual stored objects.
-To learn about the data model used to store lakeFS metadata, see the <a href="/understand/how/versioning-internals/">versioning internals page</a>.</p>
+To learn about the data model used to store lakeFS metadata, see the <a href="../how/versioning-internals/">versioning internals page</a>.</p>
 <h3 id="authentication-authorization-service">Authentication &amp; Authorization Service<a class="headerlink" href="#authentication-authorization-service" title="Permanent link">&para;</a></h3>
 <p>The Auth service handles the creation, management, and validation of user credentials and <a href="https://en.wikipedia.org/wiki/Role-based_access_control" target="_blank">RBAC policies</a>.</p>
 <p>The credential scheme, along with the request signing logic, are compatible with AWS IAM (both <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-2.html">SIGv2</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">SIGv4</a>).</p>
 <p>Currently, the Auth service manages its own database of users and credentials and doesn't use IAM in any way. </p>
 <h3 id="hooks-engine">Hooks Engine<a class="headerlink" href="#hooks-engine" title="Permanent link">&para;</a></h3>
-<p>The Hooks Engine enables CI/CD for data by triggering user defined <a href="/understand/use_cases/cicd_for_data/#using-hooks-as-data-quality-gates">Actions</a> that will run during commit/merge. </p>
+<p>The Hooks Engine enables CI/CD for data by triggering user defined <a href="../use_cases/cicd_for_data/#using-hooks-as-data-quality-gates">Actions</a> that will run during commit/merge. </p>
 <h3 id="ui">UI<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
 <p>The UI layer is a simple browser-based client that uses the OpenAPI server. It allows management, exploration, and data access to repositories, branches, commits and objects in the system.</p>
 <h2 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">&para;</a></h2>
 <p>As a rule of thumb, lakeFS supports any S3-compatible application. This means that many common data applications work with lakeFS out-of-the-box.
-Check out our <a href="/integrations/index/">integrations</a> to learn more.</p>
+Check out our <a href="../../integrations/">integrations</a> to learn more.</p>
 <h2 id="lakefs-clients">lakeFS Clients<a class="headerlink" href="#lakefs-clients" title="Permanent link">&para;</a></h2>
 <p>Some data applications benefit from deeper integrations with lakeFS to support different use cases or enhanced functionality provided by lakeFS clients.</p>
 <h3 id="openapi-generated-sdks">OpenAPI Generated SDKs<a class="headerlink" href="#openapi-generated-sdks" title="Permanent link">&para;</a></h3>
 <p>OpenAPI specification can be used to generate lakeFS clients for many programming languages.
 For example, the <a href="https://pypi.org/project/lakefs-sdk/">Python lakefs-sdk</a> or the <a href="https://central.sonatype.com/artifact/io.lakefs/api-client">Java client</a> are published with every new lakeFS release.</p>
 <h3 id="lakectl">lakectl<a class="headerlink" href="#lakectl" title="Permanent link">&para;</a></h3>
-<p><a href="/reference/cli/">lakectl</a> is a CLI tool that enables lakeFS operations using the lakeFS API from your preferred terminal.</p>
+<p><a href="../../reference/cli/">lakectl</a> is a CLI tool that enables lakeFS operations using the lakeFS API from your preferred terminal.</p>
 <h3 id="spark-metadata-client">Spark Metadata Client<a class="headerlink" href="#spark-metadata-client" title="Permanent link">&para;</a></h3>
-<p>The lakeFS <a href="/reference/spark-client/">Spark Metadata Client</a> makes it easy to perform
-operations related to lakeFS metadata, at scale. Examples include <a href="/howto/garbage-collection/index/">garbage collection</a> or <a href="/howto/export/">exporting data from lakeFS</a>.</p>
+<p>The lakeFS <a href="../../reference/spark-client/">Spark Metadata Client</a> makes it easy to perform
+operations related to lakeFS metadata, at scale. Examples include <a href="/howto/garbage-collection/index/">garbage collection</a> or <a href="../../howto/export/">exporting data from lakeFS</a>.</p>
 <h3 id="lakefs-hadoop-filesystem">lakeFS Hadoop FileSystem<a class="headerlink" href="#lakefs-hadoop-filesystem" title="Permanent link">&para;</a></h3>
 <p>Thanks to the <a href="#s3-gateway">S3 Gateway</a>, it's possible to interact with lakeFS using Hadoop's S3AFIleSystem, 
 but due to limitations of the S3 API, doing so requires reading and writing data objects through the lakeFS server.
-Using <a href="/integrations/spark/#lakefs-hadoop-filesystem">lakeFSFileSystem</a> increases Spark ETL jobs performance by executing the metadata operations on the lakeFS server,
+Using <a href="../../integrations/spark/#lakefs-hadoop-filesystem">lakeFSFileSystem</a> increases Spark ETL jobs performance by executing the metadata operations on the lakeFS server,
 and all data operations directly through the same underlying object store that lakeFS uses.</p>
 <h2 id="how-lakefs-clients-and-gateway-handle-metadata-and-data-access">How lakeFS Clients and Gateway Handle Metadata and Data Access<a class="headerlink" href="#how-lakefs-clients-and-gateway-handle-metadata-and-data-access" title="Permanent link">&para;</a></h2>
 <p>When using the Python client, lakeCTL, or the lakeFS Spark client, these clients communicate with the lakeFS server to retrieve metadata information. For example, they may query lakeFS to understand which version of a file is needed or to track changes in branches and commits. This communication does not include the actual data transfer, but instead involves passing only metadata about data locations and versions.

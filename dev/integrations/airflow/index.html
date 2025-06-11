@@ -4144,8 +4144,8 @@ in the airflow-provider-lakeFS repository shows how to use all of these.</p>
 <h3 id="performing-other-operations">Performing other operations<a class="headerlink" href="#performing-other-operations" title="Permanent link">&para;</a></h3>
 <p>Sometimes an operator might not be supported by airflow-provider-lakeFS yet. You can access lakeFS directly by using:</p>
 <ul>
-<li><code>SimpleHttpOperator</code> to send <a href="/reference/api/">API requests</a> to lakeFS. </li>
-<li><code>BashOperator</code> with <a href="/reference/cli/">lakectl</a> commands.</li>
+<li><code>SimpleHttpOperator</code> to send <a href="../../reference/api/">API requests</a> to lakeFS. </li>
+<li><code>BashOperator</code> with <a href="../../reference/cli/">lakectl</a> commands.</li>
 </ul>
 <p>For example, deleting a branch using <code>BashOperator</code>:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">commit_extract</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>

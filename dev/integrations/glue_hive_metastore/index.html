@@ -4227,7 +4227,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Deprecated Feature</p>
 <p>Having heard the feedback from the community, we are planning to replace the below manual steps with an automated process.
-You can read more about it <a href="/howto/catalog_exports/">here</a>.</p>
+You can read more about it <a href="../../howto/catalog_exports/">here</a>.</p>
 </div>
 <h2 id="about-glue-hive-metastore">About Glue / Hive Metastore<a class="headerlink" href="#about-glue-hive-metastore" title="Permanent link">&para;</a></h2>
 <p>This part explains about how Glue/Hive Metastore work with lakeFS.</p>
@@ -4237,10 +4237,10 @@ They contain metadata such as the location of the table, information about colum
 <p>To query the table <code>my_table</code>, Spark will:
 * Request the metadata from Hive metastore (steps 1,2),
 * Use the location from the metadata to access the data in S3 (steps 3,4).
-<img alt="metastore with S3" src="/assets/img/metastore-S3.svg" /></p>
+<img alt="metastore with S3" src="../../assets/img/metastore-S3.svg" /></p>
 <h3 id="with-lakefs">With lakeFS<a class="headerlink" href="#with-lakefs" title="Permanent link">&para;</a></h3>
 <p>When using lakeFS, the flow stays exactly the same. Note that the location of the table <code>my_table</code> now contains the branch <code>s3://example/main/path/to/table</code>
-<img alt="metastore with S3" src="/assets/img/metastore-lakefs.svg" /></p>
+<img alt="metastore with S3" src="../../assets/img/metastore-lakefs.svg" /></p>
 <h2 id="managing-tables-with-lakefs-branches">Managing Tables With lakeFS Branches<a class="headerlink" href="#managing-tables-with-lakefs-branches" title="Permanent link">&para;</a></h2>
 <h3 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h3>
 <p>When creating a table in Glue/Hive metastore (using a client such as Spark, Hive, Presto), we specify the table location.

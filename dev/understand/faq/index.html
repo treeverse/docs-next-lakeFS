@@ -4048,12 +4048,12 @@
 <p>lakeFS uses zero-copy branching to avoid data duplication. That is, creating a new branch is a metadata-only operation: no objects are actually copied. Only when an object changes does lakeFS create another <a href="https://lakefs.io/blog/data-versioning/">version of the data</a> in the storage. </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>For more information, see <a href="/understand/how/versioning-internals/">Versioning internals</a>.</p>
+<p>For more information, see <a href="../how/versioning-internals/">Versioning internals</a>.</p>
 </div>
 <h3 id="3-how-do-i-get-support-for-my-lakefs-installation">3. How do I get support for my lakeFS installation?<a class="headerlink" href="#3-how-do-i-get-support-for-my-lakefs-installation" title="Permanent link">&para;</a></h3>
 <p>We are extremely responsive on our Slack channel, and we make sure to prioritize the most pressing issues for the community. For SLA-based support, please contact us at <a href="mailto:support@treeverse.io">support@treeverse.io</a>.</p>
 <h3 id="4-do-you-collect-data-from-your-active-installations">4. Do you collect data from your active installations?<a class="headerlink" href="#4-do-you-collect-data-from-your-active-installations" title="Permanent link">&para;</a></h3>
-<p>We collect anonymous usage statistics to understand the patterns of use and to detect product gaps we may have so we can fix them. This is optional and may be turned off by setting <code>stats.enabled</code> to <code>false</code>. See the <a href="/reference/configuration/#reference">configuration reference</a> for more details.</p>
+<p>We collect anonymous usage statistics to understand the patterns of use and to detect product gaps we may have so we can fix them. This is optional and may be turned off by setting <code>stats.enabled</code> to <code>false</code>. See the <a href="../../reference/configuration/#reference">configuration reference</a> for more details.</p>
 <p>The data we gather is limited to the following:</p>
 <ol>
 <li>A <code>UUID</code> which is generated when setting up lakeFS for the first time and contains no personal or otherwise identifiable information,</li>

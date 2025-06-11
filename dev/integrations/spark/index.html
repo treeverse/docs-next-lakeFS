@@ -4234,7 +4234,7 @@ interact with your data on lakeFS.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>io.lakefs:hadoop-lakefs-assembly:0.2.5
 </span></code></pre></div>
 <p>Once installed, it should look something like this:</p>
-<p><img alt="Databricks - Adding the lakeFS client Jar" src="/assets/img/databricks-install-package.png" /></p>
+<p><img alt="Databricks - Adding the lakeFS client Jar" src="../../assets/img/databricks-install-package.png" /></p>
 </div>
 <div class="tabbed-block">
 <p>Add the package to your <code>pyspark</code> or <code>spark-submit</code> command:</p>
@@ -4249,18 +4249,18 @@ interact with your data on lakeFS.</p>
 <li>From the CDP home screen, click the <code>Management Console</code> icon.</li>
 <li>In the Management Console, select <code>Data Hub Clusters</code> from the navigation pane.</li>
 <li>Select the cluster you want to configure. Click on <code>CM-UI</code> link under Services:
-    <img alt="Cloudera - Management Console" src="/assets/img/cloudera/ManagementConsole.png" /></li>
+    <img alt="Cloudera - Management Console" src="../../assets/img/cloudera/ManagementConsole.png" /></li>
 <li>
 <p>In Cloudera Manager web interface, click on <code>Clusters</code> from the navigation pane and click on <code>spark_on_yarn</code> option:</p>
-<p><img alt="Cloudera - Cloudera Manager" src="/assets/img/cloudera/ClouderaManager.png" /></p>
+<p><img alt="Cloudera - Cloudera Manager" src="../../assets/img/cloudera/ClouderaManager.png" /></p>
 </li>
 <li>
 <p>Click on <code>Configuration</code> tab and search for <code>spark.yarn.access.hadoopFileSystems</code> in the search box:</p>
-<p><img alt="Cloudera - spark_on_yarn" src="/assets/img/cloudera/spark_on_yarn.png" /></p>
+<p><img alt="Cloudera - spark_on_yarn" src="../../assets/img/cloudera/spark_on_yarn.png" /></p>
 </li>
 <li>
 <p>Add S3 bucket used by lakeFS <code>s3a://bucket-name</code> in the <code>spark.yarn.access.hadoopFileSystems</code> list:</p>
-<p><img alt="Cloudera - hadoopFileSystems" src="/assets/img/cloudera/hadoopFileSystems.png" /></p>
+<p><img alt="Cloudera - hadoopFileSystems" src="../../assets/img/cloudera/hadoopFileSystems.png" /></p>
 </li>
 </ol>
 </div>
@@ -4278,7 +4278,7 @@ interact with your data on lakeFS.</p>
 <ul>
 <li><code>fs.lakefs.auth.provider</code>: The default is <code>basic_auth</code> with <code>fs.lakefs.access.key</code> and <code>fs.lakefs.secret.key</code> for basic authentication.</li>
 </ul>
-<p>Can be set to <code>io.lakefs.auth.TemporaryAWSCredentialsLakeFSTokenProvider</code> for using temporary AWS credentials, you can read more about it <a href="/security/external-principals-aws/">here</a>.</p>
+<p>Can be set to <code>io.lakefs.auth.TemporaryAWSCredentialsLakeFSTokenProvider</code> for using temporary AWS credentials, you can read more about it <a href="../../security/external-principals-aws/">here</a>.</p>
 <p>When using <code>io.lakefs.auth.TemporaryAWSCredentialsLakeFSTokenProvider</code> as the auth provider the following configuration are relevant:</p>
 <ul>
 <li><code>fs.lakefs.token.aws.access.key</code>: AWS assumed role access key</li>
@@ -4286,7 +4286,7 @@ interact with your data on lakeFS.</p>
 <li><code>fs.lakefs.token.aws.session.token</code>: AWS assumed role temporary session token</li>
 <li><code>fs.lakefs.token.aws.sts.endpoint</code>: AWS STS regional endpoint for generated the presigned-url (i.e <code>https://sts.us-west-2.amazonaws.com</code>)</li>
 <li><code>fs.lakefs.token.aws.sts.duration_seconds</code>: Optional, the duration in seconds for the initial identity token (default is 60)</li>
-<li><code>fs.lakefs.token.duration_seconds</code>: Optional, the duration in seconds for the lakeFS token (default is set in the lakeFS configuration <a href="/reference/configuration/">auth.login_duration</a>)</li>
+<li><code>fs.lakefs.token.duration_seconds</code>: Optional, the duration in seconds for the lakeFS token (default is set in the lakeFS configuration <a href="../../reference/configuration/">auth.login_duration</a>)</li>
 <li><code>fs.lakefs.token.sts.additional_headers</code>: Optional, comma separated list of <code>header:value</code> to attach when generating presigned sts request. Default is <code>X-Lakefs-Server-ID:fs.lakefs.endpoint</code>.</li>
 </ul>
 <p>Configure the S3A FileSystem to access your S3 storage, for example using the <code>fs.s3a.*</code> configurations (these are <strong>not</strong> your lakeFS credentials):</p>
@@ -4385,7 +4385,7 @@ and then add these into a configuration file, e.g., <code>$SPARK_HOME/conf/hdfs-
 Amazon provides <a href="https://docs.aws.amazon.com/general/latest/gr/s3.html">S3 endpoints</a> you can use.</p>
 </div>
 <h3 id="usage-with-temporaryawscredentialslakefstokenprovider">Usage with TemporaryAWSCredentialsLakeFSTokenProvider<a class="headerlink" href="#usage-with-temporaryawscredentialslakefstokenprovider" title="Permanent link">&para;</a></h3>
-<p>An initial setup is required - you must have <a href="/security/external-principals-aws/">AWS Auth configured</a> with lakeFS.
+<p>An initial setup is required - you must have <a href="../../security/external-principals-aws/">AWS Auth configured</a> with lakeFS.
 The <code>TemporaryAWSCredentialsLakeFSTokenProvider</code> depends on the caller to provide AWS credentials (e.g Assumed Role Key,Secret and Token) as input to the lakeFS client.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

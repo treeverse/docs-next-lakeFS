@@ -4174,7 +4174,7 @@ for logging into the Web UI or authenticating programmatic requests to the API S
 This integration can be especially useful if you already have an existing authentication system in place, as it allows you to reuse that system instead of maintaining a new one.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>To configure a Remote Authenticator see the <a href="/reference/configuration/#auth">configuration fields</a>.</p>
+<p>To configure a Remote Authenticator see the <a href="../../reference/configuration/#auth">configuration fields</a>.</p>
 </div>
 <h3 id="api-server-authentication">API Server Authentication<a class="headerlink" href="#api-server-authentication" title="Permanent link">&para;</a></h3>
 <p>Authenticating against the API server is done using a key-pair, passed via <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic Access Authentication</a>.</p>
@@ -4187,7 +4187,7 @@ This integration can be especially useful if you already have an existing authen
 <h3 id="s3-gateway-authentication">S3 Gateway Authentication<a class="headerlink" href="#s3-gateway-authentication" title="Permanent link">&para;</a></h3>
 <p>To provide API compatibility with Amazon S3, authentication with the S3 Gateway supports both <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-2.html" target="_blank">SIGv2</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html" target="_blank">SIGv4</a>.
 Clients such as the AWS SDK that implement these authentication methods should work without modification.</p>
-<p>See <a href="/integrations/aws_cli/">this example for authenticating with the AWS CLI</a>.</p>
+<p>See <a href="../../integrations/aws_cli/">this example for authenticating with the AWS CLI</a>.</p>
 <h2 id="oidc-support">OIDC support<a class="headerlink" href="#oidc-support" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Deprecated</p>
@@ -4197,7 +4197,7 @@ Clients such as the AWS SDK that implement these authentication methods should w
 You can configure lakeFS to enable OIDC to manage your lakeFS users externally. 
 Essentially, once configured, this enables you the benefit of OpenID connect, such as a single sign-on (SSO), etc. </p>
 <h3 id="configuring-lakefs-server-for-oidc">Configuring lakeFS server for OIDC<a class="headerlink" href="#configuring-lakefs-server-for-oidc" title="Permanent link">&para;</a></h3>
-<p>To support OIDC, add the following to your <a href="/reference/configuration/">lakeFS configuration</a>:</p>
+<p>To support OIDC, add the following to your <a href="../../reference/configuration/">lakeFS configuration</a>:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">auth</span><span class="p">:</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">oidc</span><span class="p">:</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -4217,7 +4217,7 @@ The friendly name stored in KV is updated with each successful login, if the inc
 <div class="admonition note">
 <p class="admonition-title">Notes</p>
 <ol>
-<li>As always, you may choose to provide these configurations using <a href="/reference/configuration/">environment variables</a>.</li>
+<li>As always, you may choose to provide these configurations using <a href="../../reference/configuration/">environment variables</a>.</li>
 <li>You may already have other configuration values under the <em>auth</em> key, so make sure you combine them correctly.</li>
 </ol>
 </div>

@@ -4006,15 +4006,15 @@ many input sources.</p>
 <p>The integration between Airbyte and lakeFS brings resilience and manageability when you use Airbyte
 connectors to sync data to your S3 buckets by leveraging lakeFS branches and atomic commits and merges.</p>
 <h2 id="use-cases">Use cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
-<p>You can take advantage of lakeFS consistency guarantees and <a href="/understand/data_lifecycle_management/index/">Data Lifecycle Management</a> when ingesting data to S3 using lakeFS:</p>
+<p>You can take advantage of lakeFS consistency guarantees and <a href="../../understand/data_lifecycle_management/">Data Lifecycle Management</a> when ingesting data to S3 using lakeFS:</p>
 <ol>
 <li>Consolidate many data sources to a single branch and expose them to consumers simultaneously when merging to the <code>main</code> branch.</li>
-<li>Test incoming data for breaking schema changes using <a href="/understand/use_cases/cicd_for_data/#using-hooks-as-data-quality-gates">lakeFS hooks</a>.</li>
+<li>Test incoming data for breaking schema changes using <a href="../../understand/use_cases/cicd_for_data/#using-hooks-as-data-quality-gates">lakeFS hooks</a>.</li>
 <li>Prevent consumers from reading partial data from connectors which failed half-way through sync.</li>
 <li>Experiment with ingested data on a branch before exposing it.</li>
 </ol>
 <h2 id="s3-connector">S3 Connector<a class="headerlink" href="#s3-connector" title="Permanent link">&para;</a></h2>
-<p>lakeFS exposes an <a href="/understand/architecture/#s3-gateway">S3 Gateway</a> that enables applications to communicate
+<p>lakeFS exposes an <a href="../../understand/architecture/#s3-gateway">S3 Gateway</a> that enables applications to communicate
 with lakeFS the same way they would with Amazon S3.
 You can use Airbyte's <a href="https://airbyte.com/connectors/s3">S3 Connector</a> to upload data to lakeFS.</p>
 <div class="admonition warning">
@@ -4066,7 +4066,7 @@ Previous connector versions are not supported.</p>
 </tbody>
 </table>
 <p>The UI configuration will look as follows:</p>
-<p><img alt="S3 Destination Connector Configuration" src="/assets/img/airbyte.png" /></p>
+<p><img alt="S3 Destination Connector Configuration" src="../../assets/img/airbyte.png" /></p>
 
 
 

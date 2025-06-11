@@ -4068,7 +4068,7 @@ Concurrent commits/merges on the same branch result in a race. The first operati
 <h2 id="perform-meaningful-commits">Perform meaningful commits<a class="headerlink" href="#perform-meaningful-commits" title="Permanent link">&para;</a></h2>
 <p>It's a good idea to perform commits that are meaningful in the senese that they represent a logical point in your data's lifecycle. While lakeFS supports arbirartily large commits, avoiding commits with a huge number of objects will result in a more comprehensible commit history.</p>
 <h2 id="use-zero-copy-import">Use zero-copy import<a class="headerlink" href="#use-zero-copy-import" title="Permanent link">&para;</a></h2>
-<p>To import object into lakeFS, either a single time or regularly, lakeFS offers a <a href="/howto/import/#zero-copy-import">zero-copy import</a> feature.
+<p>To import object into lakeFS, either a single time or regularly, lakeFS offers a <a href="../../howto/import/#zero-copy-import">zero-copy import</a> feature.
 Use this feature to import a large number of objects to lakeFS, instead of simply copying them into your repository.
 This feature will create a reference to the existing objects on your bucket and avoids the copy.</p>
 <h2 id="read-data-using-the-commit-id">Read data using the commit ID<a class="headerlink" href="#read-data-using-the-commit-id" title="Permanent link">&para;</a></h2>
@@ -4078,15 +4078,15 @@ This feature will create a reference to the existing objects on your bucket and 
 <li>Add <code>@</code> before the path  <code>lakefs://repo/main@/path</code>.</li>
 </ul>
 <p>When accessing data using the branch name (e.g. <code>lakefs://repo/main/path</code>) lakeFS will also try to fetch uncommitted data, which may result in reduced performance.
-For more information, see <a href="/understand/how/versioning-internals/#representing-references-and-uncommitted-metadata">how uncommitted data is managed in lakeFS</a>.</p>
+For more information, see <a href="../how/versioning-internals/#representing-references-and-uncommitted-metadata">how uncommitted data is managed in lakeFS</a>.</p>
 <h2 id="operate-directly-on-the-storage">Operate directly on the storage<a class="headerlink" href="#operate-directly-on-the-storage" title="Permanent link">&para;</a></h2>
 <p>Sometimes, storage operations can become a bottleneck. For example, when your data pipelines upload many big objects.
 In such cases, it can be beneficial to perform only versioning operations on lakeFS, while performing storage reads/writes directly on the object store.
 lakeFS offers multiple ways to do that:</p>
 <ul>
-<li>The <a href="/reference/cli/#lakectl-fs-upload"><code>lakectl fs upload --pre-sign</code></a> command (or <a href="/reference/cli/#lakectl-fs-download">download</a>).</li>
-<li>The lakeFS <a href="/integrations/spark/#lakefs-hadoop-filesystem">Hadoop Filesystem</a>.</li>
-<li>The <a href="/reference/api/#operations-objects-stageObject">staging API</a> which can be used to add lakeFS references to objects after having written them to the storage.</li>
+<li>The <a href="../../reference/cli/#lakectl-fs-upload"><code>lakectl fs upload --pre-sign</code></a> command (or <a href="../../reference/cli/#lakectl-fs-download">download</a>).</li>
+<li>The lakeFS <a href="../../integrations/spark/#lakefs-hadoop-filesystem">Hadoop Filesystem</a>.</li>
+<li>The <a href="../../reference/api/#operations-objects-stageObject">staging API</a> which can be used to add lakeFS references to objects after having written them to the storage.</li>
 </ul>
 <p>Accessing the object store directly is a faster way to interact with your data.</p>
 <h2 id="zero-copy">Zero-copy<a class="headerlink" href="#zero-copy" title="Permanent link">&para;</a></h2>

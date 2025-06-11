@@ -4143,7 +4143,7 @@ you should use the <a href="../python/">Python OpenAPI client</a> lakeFS provide
 Check out the <a href="../python/">Python documentation</a> and the full <a href="../../reference/api/">API reference</a>.</p>
 <h3 id="non-function-based-containerops">Non-function-based ContainerOps<a class="headerlink" href="#non-function-based-containerops" title="Permanent link">&para;</a></h3>
 <p>To implement a non-function based ContainerOp, you should use the <a href="https://hub.docker.com/r/treeverse/lakectl"><code>treeverse/lakectl</code></a> docker image.
-With this image, you can run <a href="/reference/cli/">lakectl</a> commands to execute the desired lakeFS operation.</p>
+With this image, you can run <a href="../../reference/cli/">lakectl</a> commands to execute the desired lakeFS operation.</p>
 <p>For <code>lakectl</code> to work with Kubeflow, you will need to pass your lakeFS configurations as environment variables named:</p>
 <ul>
 <li><code>LAKECTL_CREDENTIALS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE</code></li>
@@ -4171,7 +4171,7 @@ With this image, you can run <a href="/reference/cli/">lakectl</a> commands to e
 </span></code></pre></div></p>
 </li>
 </ol>
-<p>You can invoke any lakeFS operation supported by <code>lakectl</code> by implementing it as a ContainerOp. Check out the complete <a href="/reference/cli/">CLI reference</a> for the list of supported operations.</p>
+<p>You can invoke any lakeFS operation supported by <code>lakectl</code> by implementing it as a ContainerOp. Check out the complete <a href="../../reference/cli/">CLI reference</a> for the list of supported operations.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The lakeFS Kubeflow integration that uses <code>lakectl</code> is supported on lakeFS version &gt;= v0.43.0.</p>

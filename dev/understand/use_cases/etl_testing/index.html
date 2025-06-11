@@ -4192,26 +4192,26 @@
 <h2 id="using-branches-as-development-and-testing-environments">Using branches as development and testing environments<a class="headerlink" href="#using-branches-as-development-and-testing-environments" title="Permanent link">&para;</a></h2>
 <p>The key difference when using lakeFS for isolated data environments is that you can create them immediately before testing a change. And once new data is merged into production, you can delete the branch - effectively deleting the old environment.</p>
 <p>This is different from creating a long-living test environment used as a staging area to test all the updates. With lakeFS, <strong>we create a new branch for each change to production</strong> that we want to make. One benefit of this is the ability to test multiple changes at one time.</p>
-<p><img alt="dev/test branches as environments" src="/assets/img/iso_env_dev_test_branching.png" /></p>
+<p><img alt="dev/test branches as environments" src="../../../assets/img/iso_env_dev_test_branching.png" /></p>
 <h2 id="try-it-out-creating-devtest-environments-with-lakefs-for-etl-testing">Try it out! Creating Dev/Test Environments with lakeFS for ETL Testing<a class="headerlink" href="#try-it-out-creating-devtest-environments-with-lakefs-for-etl-testing" title="Permanent link">&para;</a></h2>
-<p>lakeFS supports UI, CLI (<code>lakectl</code> command-line utility) and several clients for the <a href="/reference/api/">API</a> to run the Git-like operations. Let us explore how to create dev/test environments using each of these options below.</p>
+<p>lakeFS supports UI, CLI (<code>lakectl</code> command-line utility) and several clients for the <a href="../../../reference/api/">API</a> to run the Git-like operations. Let us explore how to create dev/test environments using each of these options below.</p>
 <p>There are two ways that you can try out lakeFS:</p>
 <ul>
 <li>The lakeFS Playground on lakeFS Cloud - fully managed lakeFS with a 30-day free trial</li>
-<li>Local Docker-based <a href="/quickstart/index/">quickstart</a> and <a href="https://github.com/treeverse/lakeFS-samples/">samples</a></li>
+<li>Local Docker-based <a href="../../../quickstart/">quickstart</a> and <a href="https://github.com/treeverse/lakeFS-samples/">samples</a></li>
 </ul>
-<p>You can also <a href="/howto/deploy/index/">deploy lakeFS</a> locally or self-managed on your cloud of choice.</p>
+<p>You can also <a href="../../../howto/deploy/">deploy lakeFS</a> locally or self-managed on your cloud of choice.</p>
 <h3 id="using-lakefs-playground-on-lakefs-cloud">Using lakeFS Playground on lakeFS Cloud<a class="headerlink" href="#using-lakefs-playground-on-lakefs-cloud" title="Permanent link">&para;</a></h3>
 <p>In this tutorial, we will use <a href="https://lakefs.cloud/">a lakeFS playground environment</a> to create dev/test data environments for ETL testing. This allows you to spin up a lakeFS instance in a click, create different data environments by simply branching out of your data repository and develop &amp; test data pipelines in these isolated branches.</p>
 <p>First, let us spin up a <a href="https://lakefs.cloud/">playground</a> instance. Once you have a live environment, login to your instance with access and secret keys. Then, you can work with the sample data repository <code>my-repo</code> that is created for you.</p>
-<p><img alt="sample repository" src="/assets/img/iso_env_myrepo.png" /></p>
+<p><img alt="sample repository" src="../../../assets/img/iso_env_myrepo.png" /></p>
 <p>Click on <code>my-repo</code> and notice that by default, the repository has a <code>main</code> branch created and <code>sample_data</code> preloaded to work with.</p>
-<p><img alt="main branch" src="/assets/img/iso_env_sampledata.png" /></p>
+<p><img alt="main branch" src="../../../assets/img/iso_env_sampledata.png" /></p>
 <p>You can create a new branch (say, <code>test-env</code>) by going to the <em>Branches</em> tab and clicking <em>Create Branch</em>. Once it is successful, you will see two branches under the repository: <code>main</code> and <code>test-env</code>.</p>
-<p><img alt="test-env branch" src="/assets/img/iso_env_testenv_branch.png" /></p>
+<p><img alt="test-env branch" src="../../../assets/img/iso_env_testenv_branch.png" /></p>
 <p>Now you can add, modify or delete objects under the <code>test-env</code> branch without affecting the data in the main branch.</p>
 <h3 id="trying-out-lakefs-with-docker-and-jupyter-notebooks">Trying out lakeFS with Docker and Jupyter Notebooks<a class="headerlink" href="#trying-out-lakefs-with-docker-and-jupyter-notebooks" title="Permanent link">&para;</a></h3>
-<p>This use case shows how to create dev/test data environments for ETL testing using lakeFS branches. The following tutorial provides a lakeFS environment, a Jupyter notebook, and Python SDK API to demonstrate integration of lakeFS with <a href="/integrations/spark/">Spark</a>. You can run this tutorial on your local machine.</p>
+<p>This use case shows how to create dev/test data environments for ETL testing using lakeFS branches. The following tutorial provides a lakeFS environment, a Jupyter notebook, and Python SDK API to demonstrate integration of lakeFS with <a href="../../../integrations/spark/">Spark</a>. You can run this tutorial on your local machine.</p>
 <p>Follow the tutorial video below to get started with the playground and Jupyter notebook, or follow the instructions on this page.</p>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/fprpDZ96JQo"></iframe>
 
@@ -4258,8 +4258,8 @@
 </span></code></pre></div>
 <p>lakeFS can be configured to work with Spark in two ways:</p>
 <ul>
-<li>Access lakeFS using the <a href="/integrations/spark/#use-the-s3-compatible-api">S3-compatible API</a></li>
-<li>Access lakeFS using the <a href="/integrations/spark/#lakefs-hadoop-filesystem">lakeFS-specific Hadoop FileSystem</a></li>
+<li>Access lakeFS using the <a href="../../../integrations/spark/#use-the-s3-compatible-api">S3-compatible API</a></li>
+<li>Access lakeFS using the <a href="../../../integrations/spark/#lakefs-hadoop-filesystem">lakeFS-specific Hadoop FileSystem</a></li>
 </ul>
 <h4 id="upload-the-sample-data-to-main-branch">Upload the Sample Data to Main Branch<a class="headerlink" href="#upload-the-sample-data-to-main-branch" title="Permanent link">&para;</a></h4>
 <p>To upload an object to the <code>my-repo</code>, use the following command.</p>
