@@ -4352,7 +4352,7 @@
 <h1 id="multi-storage-backend">Multi-Storage Backend<a class="headerlink" href="#multi-storage-backend" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Multi-storage backend support is only available to licensed <a href="/enterprise/index/">lakeFS Enterprise</a> customers.
+<p>Multi-storage backend support is only available to licensed <a href="../../enterprise/">lakeFS Enterprise</a> customers.
 <a href="https://info.lakefs.io/thanks-msb">Contact us</a> to get started!</p>
 </div>
 <h2 id="what-is-multi-storage-backend-support">What is Multi-storage Backend Support?<a class="headerlink" href="#what-is-multi-storage-backend-support" title="Permanent link">&para;</a></h2>
@@ -4516,7 +4516,7 @@ If removed, lakeFS will fail to start because it will treat existing repositorie
 <p>lakeFS will fail to start if there are repositories defined on a removed storage. Ensure all necessary cleanup is completed before removing a storage backend.</p>
 </div>
 <h3 id="listing-connected-storage-backends">Listing Connected Storage Backends<a class="headerlink" href="#listing-connected-storage-backends" title="Permanent link">&para;</a></h3>
-<p>The <a href="/reference/api/#/config/getConfig">Get Config</a> API endpoint returns a list of storage
+<p>The <a href="../../reference/api/#/config/getConfig">Get Config</a> API endpoint returns a list of storage
 configurations. In multi-storage setups, this is the recommended method to list connected storage backends and view their details.</p>
 <h3 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
 <table>
@@ -4671,7 +4671,7 @@ the underlying storage where the repository's data is stored.</p>
 <p>Use the <code>storage_id</code> parameter in the <a href="../../reference/api/#/repositories/createRepository">Create Repository endpoint</a>.</p>
 </div>
 <div class="tabbed-block">
-<p>Starting from version 0.9.0 of the <a href="/integrations/python/#using-the-lakefs-sdk">High-level Python SDK</a>,
+<p>Starting from version 0.9.0 of the <a href="../../integrations/python/#using-the-lakefs-sdk">High-level Python SDK</a>,
 you can use <code>kwargs</code> to pass <code>storage_id</code> dynamically when calling the <a href="https://pydocs-lakefs.lakefs.io/lakefs.repository.html#lakefs.repository.Repository.create">create repository method</a>:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">lakefs</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>

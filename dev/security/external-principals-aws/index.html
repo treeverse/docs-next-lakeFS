@@ -4154,7 +4154,7 @@ If the <code>SessionName</code> is <code>john@acme.com</code> then lakeFS would 
 <p>lakeFS Helm chart supports the configuration since version <code>1.2.11</code> - see usage <a href="https://github.com/treeverse/charts/blob/master/examples/lakefs/enterprise/values-external-aws.yaml">values.yaml example</a>.</p>
 </div>
 <ul>
-<li>in lakeFS <code>auth.authentication_api.external_principals_enabled</code> must be set to <code>true</code> in the configuration file, other configuration (<code>auth.authentication_api.*</code>) can be found at <a href="/reference/configuration/">configuration reference</a></li>
+<li>in lakeFS <code>auth.authentication_api.external_principals_enabled</code> must be set to <code>true</code> in the configuration file, other configuration (<code>auth.authentication_api.*</code>) can be found at <a href="../../reference/configuration/">configuration reference</a></li>
 </ul>
 <p>For the full list of the Fluffy server configuration, see <a href="/enterprise/configuration/#fluffy-server-configuration">Fluffy Configuration</a> under <code>auth.external.aws_auth</code></p>
 <div class="admonition note">
@@ -4215,7 +4215,7 @@ Currently, the login operation is supported out of the box in:</p>
 <ul>
 <li><a href="/integrations/spark/#lakefs-hadoop-filesystem">lakeFS Hadoop FileSystem</a> version 0.2.4, see <a href="/integrations/spark/#usage-with-temporaryawscredentialslakefstokenprovider">Spark usage</a></li>
 <li><a href="#login-with-python">python</a></li>
-<li><a href="/reference/mount/#authenticating-with-aws-iam-role">Everest mount</a></li>
+<li><a href="../reference/mount/#authenticating-with-aws-iam-role.md">Everest mount</a></li>
 </ul>
 <p>For other use cases authenticate to lakeFS via login endpoint, this will require building the request input.</p>
 <h2 id="login-with-python">Login with python<a class="headerlink" href="#login-with-python" title="Permanent link">&para;</a></h2>

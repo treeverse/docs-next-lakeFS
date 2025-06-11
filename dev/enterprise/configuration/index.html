@@ -4020,7 +4020,7 @@
 <h1 id="lakefs-enterprise-configuration-reference">lakeFS Enterprise Configuration Reference<a class="headerlink" href="#lakefs-enterprise-configuration-reference" title="Permanent link">&para;</a></h1>
 <p>Working with lakeFS Enterprise involve configuring both lakeFS and Fluffy. You can find the extended configuration references for both components below.</p>
 <h2 id="lakefs-configuration">lakeFS Configuration<a class="headerlink" href="#lakefs-configuration" title="Permanent link">&para;</a></h2>
-<p>See the full <a href="/reference/configuration/">lakeFS Server Configuration</a></p>
+<p>See the full <a href="../../reference/configuration/">lakeFS Server Configuration</a></p>
 <h2 id="fluffy-server-configuration">Fluffy Server Configuration<a class="headerlink" href="#fluffy-server-configuration" title="Permanent link">&para;</a></h2>
 <p>Configuring Fluffy using a YAML configuration file and/or environment variables.
 The configuration file's location can be set with the '--config' flag. If not specified, the first file found in the following order will be used:</p>
@@ -4159,7 +4159,7 @@ If the provider redirects to a URL not in this list, the login will fail. This p
 <li><code>auth.cache.ttl</code> <code>(duration : 20s)</code> - Cache items time to live expiry.</li>
 <li><code>auth.cache.jitter</code> <code>(duration : 3s)</code> - Cache items time to live jitter.</li>
 <li><code>auth.external</code> - Configuration section for the external authentication methods</li>
-<li><code>auth.external.aws_auth</code> - Configuration section for authenticating to lakeFS using AWS presign get-caller-identity request: <a href="/security/external-principals-aws/">External Principals AWS Auth</a></li>
+<li><code>auth.external.aws_auth</code> - Configuration section for authenticating to lakeFS using AWS presign get-caller-identity request: <a href="../../security/external-principals-aws/">External Principals AWS Auth</a></li>
 <li><code>auth.external.aws_auth.enabled</code> <code>(bool : false)</code> - If true, external principals API will be enabled, e.g auth service and login api's.</li>
 <li><code>auth.external.aws_auth.get_caller_identity_max_age</code> <code>(duration : 15m)</code> - The maximum age in seconds for the GetCallerIdentity request to be valid, the max is 15 minutes enforced by AWS, smaller TTL can be set.</li>
 <li><code>auth.authentication_api.external_principals_enabled</code> <code>(bool : false)</code> - If true, external principals API will be enabled, e.g auth service and login api's.</li>

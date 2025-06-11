@@ -4065,7 +4065,7 @@ If you are interested in copying data into lakeFS, see <a href="../copying/">Cop
 <li>Press <em>Import</em>.</li>
 </ol>
 <p>Once the import is complete, a new commit containing the imported objects will be created in the destination branch.</p>
-<p><img alt="lakeFS UI import dialog" src="/assets/img/UI-Import-Dialog.png" /></p>
+<p><img alt="lakeFS UI import dialog" src="../../assets/img/UI-Import-Dialog.png" /></p>
 <h2 id="using-the-cli-lakectl-import">Using the CLI: <em>lakectl import</em><a class="headerlink" href="#using-the-cli-lakectl-import" title="Permanent link">&para;</a></h2>
 <p>The <em>lakectl import</em> command acts the same as the UI import wizard. It commits the changes to the selected branch.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="aws-s3-or-s3-api-compatible-storage" name="__tabbed_1" type="radio" /><input id="azure-blob" name="__tabbed_1" type="radio" /><input id="google-cloud-storage" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="aws-s3-or-s3-api-compatible-storage">AWS S3 or S3 API Compatible storage</label><label for="azure-blob">Azure Blob</label><label for="google-cloud-storage">Google Cloud Storage</label></div>
@@ -4096,8 +4096,8 @@ If you are interested in copying data into lakeFS, see <a href="../copying/">Cop
 <li>Any previously existing objects under the destination prefix will be deleted.</li>
 <li>The import duration depends on the amount of imported objects, but will roughly be a few thousand objects per second.</li>
 <li>For security reasons, if you are using lakeFS on top of your local disk (<code>blockstore.type=local</code>), you need to enable the import feature explicitly. 
-To do so, set the <code>blockstore.local.import_enabled</code> to <code>true</code> and specify the allowed import paths in <code>blockstore.local.allowed_external_prefixes</code> (see <a href="/reference/configuration/">configuration reference</a>).
-When using lakectl or the lakeFS UI, you can currently import only directories locally. If you need to import a single file, use the <a href="/reference/api#/import/importStart">HTTP API</a> or API Clients with <code>type=object</code> in the request body and <code>destination=&lt;full-path-to-file&gt;</code>. </li>
+To do so, set the <code>blockstore.local.import_enabled</code> to <code>true</code> and specify the allowed import paths in <code>blockstore.local.allowed_external_prefixes</code> (see <a href="../../reference/configuration/">configuration reference</a>).
+When using lakectl or the lakeFS UI, you can currently import only directories locally. If you need to import a single file, use the <a href="../../reference/api/#/import/importStart">HTTP API</a> or API Clients with <code>type=object</code> in the request body and <code>destination=&lt;full-path-to-file&gt;</code>. </li>
 <li>Making changes to data in the original bucket will not be reflected in lakeFS, and may cause inconsistencies. </li>
 </ol>
 </div>
@@ -4155,7 +4155,7 @@ the following policy needs to be attached to the lakeFS S3 service-account to al
 <p class="admonition-title">Note</p>
 <p>The use of the <code>adls</code> hint for ADLS Gen2 storage accounts is deprecated, please use the original source url for import.</p>
 </div>
-<p>See <a href="/howto/deploy/azure/#storage-account-credentials">Azure deployment</a> on limitations when using account credentials.</p>
+<p>See <a href="../deploy/azure/#storage-account-credentials">Azure deployment</a> on limitations when using account credentials.</p>
 </div>
 <div class="tabbed-block">
 <p>No specific prerequisites</p>

@@ -4109,9 +4109,9 @@
 <p>The instructions given here are for a self-managed deployment of lakeFS on Azure. <br/>
 For a hosted lakeFS service with guaranteed SLAs, try <a href="https://lakefs.cloud">lakeFS Cloud</a></p>
 </div>
-<p>When you deploy lakeFS on Azure these are the options available to use: </p>
-<p><img alt="" src="/assets/img/deploy/deploy-on-azure.excalidraw.png" /></p>
-<p>This guide walks you through the options available and how to configure them, finishing with configuring and running lakeFS itself and creating your first repository. </p>
+<p>When you deploy lakeFS on Azure these are the options available to use:</p>
+<p><img alt="" src="../../../assets/img/deploy/deploy-on-azure.excalidraw.png" /></p>
+<p>This guide walks you through the options available and how to configure them, finishing with configuring and running lakeFS itself and creating your first repository.</p>
 <div class="admonition info">
 <p class="admonition-title">⏰ Expected deployment time: 25 min</p>
 </div>
@@ -4189,13 +4189,13 @@ the account credentials for any access to data located in the given account, and
 </div>
 </div>
 <h2 id="kv-store">K/V Store<a class="headerlink" href="#kv-store" title="Permanent link">&para;</a></h2>
-<p>lakeFS stores metadata in a database for its versioning engine. 
-This is done via a Key-Value interface that can be implemented on any DB engine and lakeFS comes with several built-in driver implementations (You can read more about it <a href="https://docs.lakefs.io/understand/how/kv.html">here</a>). </p>
+<p>lakeFS stores metadata in a database for its versioning engine.
+This is done via a Key-Value interface that can be implemented on any DB engine and lakeFS comes with several built-in driver implementations (You can read more about it <a href="https://docs.lakefs.io/understand/how/kv.html">here</a>).</p>
 <p>The database used doesn't <em>have</em> to be a dedicated K/V database.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="cosmosdb" name="__tabbed_2" type="radio" /><input id="postgresql" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="cosmosdb">CosmosDB</label><label for="postgresql">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a href="https://azure.microsoft.com/en-us/products/cosmos-db/">CosmosDB</a> is a managed database service provided by Azure. </p>
+<p><a href="https://azure.microsoft.com/en-us/products/cosmos-db/">CosmosDB</a> is a managed database service provided by Azure.</p>
 <p>lakeFS supports <a href="https://learn.microsoft.com/en-GB/azure/cosmos-db/nosql/">CosmosDB For NoSQL</a> as a database backend. </p>
 <ol>
 <li>Follow the official <a href="https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-create-account?tabs=azure-cli">Azure documentation</a> 
@@ -4207,7 +4207,7 @@ for single region deployments.</li>
 <li>Create a new container in the database and select type 
 <code>partitionKey</code> as the Partition key (case sensitive). </li>
 <li>Pass the endpoint, database name and container name to lakeFS as 
-described in the <a href="/reference/configuration/#example-azure-blob-storage">configuration guide</a>.
+described in the [configuration guide][config-reference-azure-block].
 You can either pass the CosmosDB's account read-write key to lakeFS, or 
 use a managed identity to authenticate to CosmosDB, as described 
 <a href="#identity-based-credentials">earlier</a>.</li>
@@ -4220,7 +4220,7 @@ use a managed identity to authenticate to CosmosDB, as described
 <li>Follow the official <a href="https://docs.microsoft.com/en-us/azure/postgresql/quickstart-create-server-database-portal" target="_blank">Azure documentation</a> on how to create a PostgreSQL instance and connect to it.
 Make sure that you're using PostgreSQL version &gt;= 11.</li>
 <li>Once your Azure Database for PostgreSQL server is set up and the server is in the <em>Available</em> state, take note of the endpoint and username.
-<img alt="Azure postgres Connection String" src="/assets/img/azure_postgres_conn.png" /></li>
+<img alt="Azure postgres Connection String" src="../../../assets/img/azure_postgres_conn.png" /></li>
 <li>Make sure your Access control roles allow you to connect to the database instance.</li>
 </ol>
 </div>
@@ -4250,7 +4250,7 @@ Make sure that you're using PostgreSQL version &gt;= 11.</li>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure</span>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nt">azure</span><span class="p">:</span>
 </span></code></pre></div>
-1. <a href="/index/#downloads">Download the binary</a> to run on the VM.
+1. [Download the binary][downloads] to run on the VM.
 1. Run the <code>lakefs</code> binary:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>lakefs<span class="w"> </span>--config<span class="w"> </span>config.yaml<span class="w"> </span>run
 </span></code></pre></div>
@@ -4273,7 +4273,7 @@ command to demonstrate starting lakeFS using Docker:</p>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span>-e<span class="w"> </span><span class="nv">LAKEFS_BLOCKSTORE_AZURE_STORAGE_ACCESS_KEY</span><span class="o">=</span><span class="s2">&quot;[YOUR_ACCESS_KEY]&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span>treeverse/lakefs:latest<span class="w"> </span>run
 </span></code></pre></div>
-<p>See the <a href="/reference/configuration/#using-environment-variables">reference</a> for a complete list of environment variables.</p>
+<p>See the [reference][config-envariables] for a complete list of environment variables.</p>
 </div>
 <div class="tabbed-block">
 <p>You can install lakeFS on Kubernetes using a <a href="https://github.com/treeverse/charts/tree/master/charts/lakefs">Helm chart</a>.</p>
@@ -4318,8 +4318,8 @@ By default, lakeFS operates on port 8000 and exposes a <code>/_health</code> end
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The NGINX Ingress Controller by default limits the client body size to 1 MiB.</p>
-<p>Some clients use bigger chunks to upload objects - for example, multipart upload to lakeFS using the <a href="/understand/architecture/#s3-gateway">S3-compatible Gateway</a> or 
-a simple PUT request using the <a href="/understand/architecture/#openapi-server">OpenAPI Server</a>.</p>
+<p>Some clients use bigger chunks to upload objects - for example, multipart upload to lakeFS using the [S3-compatible Gateway][s3-gateway] or 
+a simple PUT request using the [OpenAPI Server][openapi].</p>
 <p>Check out the Nginx <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#custom-max-body-size">documentation</a> for increasing the limit, or an example of Nginx configuration with <a href="https://docs.min.io/docs/setup-nginx-proxy-with-minio.html">MinIO</a>.</p>
 </div>
 <h2 id="create-the-admin-user">Create the admin user<a class="headerlink" href="#create-the-admin-user" title="Permanent link">&para;</a></h2>
@@ -4328,11 +4328,11 @@ a simple PUT request using the <a href="/understand/architecture/#openapi-server
 <li>Open <code>http://&lt;lakefs-host&gt;/</code> in your browser. If you haven't set up a load balancer, this will likely be <code>http://&lt;instance ip address&gt;:8000/</code></li>
 <li>On first use, you'll be redirected to the setup page:</li>
 </ol>
-<p><img src="/assets/img/setup.png" alt="Create user"></p>
+<p><img src="../../assets/img/setup.png" alt="Create user"></p>
 <ol>
 <li>Follow the steps to create an initial administrator user. Save the credentials you’ve received somewhere safe, you won’t be able to see them again!</li>
 </ol>
-<p><img src="/assets/img/setup_done.png" alt="Setup Done"></p>
+<p><img src="../../assets/img/setup_done.png" alt="Setup Done"></p>
 <ol>
 <li>Follow the link and go to the login screen. Use the credentials from the previous step to log in.</li>
 </ol>
@@ -4341,13 +4341,13 @@ a simple PUT request using the <a href="/understand/architecture/#openapi-server
 <li>Use the credentials from the previous step to log in</li>
 <li>Click <em>Create Repository</em> and choose <em>Blank Repository</em>.</li>
 </ol>
-<p><img src="/assets/img/create-repo-no-sn.png" alt="Create Repo"/></p>
+<p><img src="../../assets/img/create-repo-no-sn.png" alt="Create Repo"/></p>
 <ol>
 <li>Under Storage Namespace, enter a path to your desired location on the object store. This is where data written to this repository will be stored.</li>
 <li>Click <em>Create Repository</em></li>
 <li>You should now have a configured repository, ready to use!</li>
 </ol>
-<p><img src="/assets/img/repo-created.png" alt="Repo Created" style="border: 1px solid #DDDDDD;"/></p>
+<p><img src="../../assets/img/repo-created.png" alt="Repo Created" style="border: 1px solid #DDDDDD;"/></p>
 <div class="admonition success">
 <p class="admonition-title">Congratulations</p>
 <p>Your environment is now ready 🤩</p>

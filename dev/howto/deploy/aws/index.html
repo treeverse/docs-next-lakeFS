@@ -4109,9 +4109,9 @@
 <p>The instructions given here are for a self-managed deployment of lakeFS on AWS. <br/>
 For a hosted lakeFS service with guaranteed SLAs, try <a href="https://lakefs.cloud">lakeFS Cloud</a></p>
 </div>
-<p>When you deploy lakeFS on AWS these are the options available to use: </p>
-<p><img alt="" src="/assets/img/deploy/deploy-on-aws.excalidraw.png" /></p>
-<p>This guide walks you through the options available and how to configure them, finishing with configuring and running lakeFS itself and creating your first repository. </p>
+<p>When you deploy lakeFS on AWS these are the options available to use:</p>
+<p><img alt="" src="../../../assets/img/deploy/deploy-on-aws.excalidraw.png" /></p>
+<p>This guide walks you through the options available and how to configure them, finishing with configuring and running lakeFS itself and creating your first repository.</p>
 <div class="admonition info">
 <p class="admonition-title">⏰ Expected deployment time: 25 min</p>
 </div>
@@ -4154,7 +4154,7 @@ For a hosted lakeFS service with guaranteed SLAs, try <a href="https://lakefs.cl
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can also use lakeFS with PostgreSQL instead of DynamoDB!<br/>
-See the <a href="/reference/configuration/">configuration reference</a> for more information.</p>
+See the <a href="../../../reference/configuration/">configuration reference</a> for more information.</p>
 </div>
 <h2 id="run-the-lakefs-server">Run the lakeFS server<a class="headerlink" href="#run-the-lakefs-server" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="ec2" name="__tabbed_1" type="radio" /><input id="eks" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="ec2">EC2</label><label for="eks">EKS</label></div>
@@ -4175,7 +4175,7 @@ See the <a href="/reference/configuration/">configuration reference</a> for more
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nt">blockstore</span><span class="p">:</span>
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3</span>
 </span></code></pre></div></li>
-<li><a href="/index/#downloads">Download the binary</a> to run on the EC2 instance.</li>
+<li>[Download the binary][downloads] to run on the EC2 instance.</li>
 <li>
 <p>Run the <code>lakefs</code> binary on the EC2 instance:
     <div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>lakefs<span class="w"> </span>--config<span class="w"> </span>config.yaml<span class="w"> </span>run
@@ -4212,7 +4212,7 @@ See the <a href="/reference/configuration/">configuration reference</a> for more
 </span></code></pre></div></li>
 <li>Fill in the missing values and save the file as <code>conf-values.yaml</code>. For more configuration options, see our Helm chart <a href="https://github.com/treeverse/charts/blob/master/charts/lakefs/README.md#custom-configuration">README</a>.
     !!! note
-        The <code>lakefsConfig</code> parameter is the lakeFS configuration documented <a href="/reference/configuration/">here</a> but without sensitive information.
+        The <code>lakefsConfig</code> parameter is the lakeFS configuration documented <a href="../../../reference/configuration/">here</a> but without sensitive information.
         Sensitive information like <code>databaseConnectionString</code> is given through separate parameters, and the chart will inject it into Kubernetes secrets.</li>
 <li>
 <p>In the directory where you created <code>conf-values.yaml</code>, run the following commands:
@@ -4238,8 +4238,8 @@ By default, lakeFS operates on port 8000 and exposes a <code>/_health</code> end
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The NGINX Ingress Controller by default limits the client body size to 1 MiB.</p>
-<p>Some clients use bigger chunks to upload objects - for example, multipart upload to lakeFS using the <a href="/understand/architecture/#s3-gateway">S3 Gateway</a> or
-a simple PUT request using the <a href="/understand/architecture/#openapi-server">OpenAPI Server</a>.</p>
+<p>Some clients use bigger chunks to upload objects - for example, multipart upload to lakeFS using the [S3 Gateway][s3-gateway] or
+a simple PUT request using the [OpenAPI Server][openapi].</p>
 <p>Checkout the Nginx <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#custom-max-body-size">documentation</a> for increasing the limit, or an example of Nginx configuration with <a href="https://docs.min.io/docs/setup-nginx-proxy-with-minio.html">MinIO</a>.</p>
 </div>
 <h2 id="prepare-your-s3-bucket">Prepare your S3 bucket<a class="headerlink" href="#prepare-your-s3-bucket" title="Permanent link">&para;</a></h2>
@@ -4287,7 +4287,7 @@ a simple PUT request using the <a href="/understand/architecture/#openapi-server
 <ul>
 <li>Replace <code>[BUCKET_NAME]</code>, <code>[ACCOUNT_ID]</code> and <code>[IAM_ROLE]</code> with values relevant to your environment.</li>
 <li><code>[BUCKET_NAME_AND_PREFIX]</code> can be the bucket name. If you want to minimize the bucket policy permissions, use the bucket name together with a prefix (e.g. <code>example-bucket/a/b/c</code>).
-This way, lakeFS will be able to create repositories only under this specific path (see: <a href="/understand/model/#repository">Storage Namespace</a>).</li>
+This way, lakeFS will be able to create repositories only under this specific path (see: [Storage Namespace][understand-repository]).</li>
 <li>lakeFS will try to assume the role <code>[IAM_ROLE]</code>.</li>
 </ul>
 </div>
@@ -4338,22 +4338,22 @@ This way, lakeFS will be able to create repositories only under this specific pa
 <ul>
 <li>Replace <code>[BUCKET_NAME]</code>, <code>[ACCOUNT_ID]</code> and <code>[IAM_ROLE]</code> with values relevant to your environment.</li>
 <li><code>[BUCKET_NAME_AND_PREFIX]</code> can be the bucket name. If you want to minimize the bucket policy permissions, use the bucket name together with a prefix (e.g. <code>example-bucket/a/b/c</code>).
-This way, lakeFS will be able to create repositories only under this specific path (see: <a href="/understand/model/#repository">Storage Namespace</a>).</li>
+This way, lakeFS will be able to create repositories only under this specific path (see: [Storage Namespace][understand-repository]).</li>
 <li>lakeFS will try to assume the role <code>[IAM_ROLE]</code>.</li>
 </ul>
 </div>
 <div class="tabbed-block">
-<p>If required lakeFS can operate without accessing the data itself, this permission section is useful if you are using <a href="/security/presigned-url/#">presigned URLs mode</a> or the <a href="/integrations/spark/#lakefs-hadoop-filesystem">lakeFS Hadoop FileSystem Spark integration</a>.
+<p>If required lakeFS can operate without accessing the data itself, this permission section is useful if you are using <a href="../../../security/presigned-url/">presigned URLs mode</a> or the <a href="../../../integrations/spark/#lakefs-hadoop-filesystem">lakeFS Hadoop FileSystem Spark integration</a>.
 Since this FileSystem performs many operations directly on the storage, lakeFS requires less permissive permissions, resulting in increased security.</p>
 <p>lakeFS always requires permissions to access the <code>_lakefs</code> prefix under your storage namespace, in which metadata
-is stored (<a href="/understand/how/versioning-internals/#constructing-a-consistent-view-of-the-keyspace-ie-a-commit">learn more</a>).</p>
+is stored ([learn more][understand-commits]).</p>
 <p>By setting this policy <strong>without</strong> presign mode you'll be able to perform only metadata operations through lakeFS, meaning that you'll <strong>not</strong> be able
 to use lakeFS to upload or download objects. Specifically you won't be able to:</p>
 <ul>
 <li>Upload objects using the lakeFS GUI (<strong>Works with presign mode</strong>)</li>
 <li>Upload objects through Spark using the S3 gateway</li>
 <li>Run <code>lakectl fs</code> commands (unless using <strong>presign mode</strong> with <code>--pre-sign</code> flag)</li>
-<li>Use <a href="/howto/hooks/">Actions and Hooks</a></li>
+<li>Use <a href="../hooks.md">Actions and Hooks</a></li>
 </ul>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[POLICY_ID]&quot;</span><span class="p">,</span>
@@ -4388,7 +4388,7 @@ to use lakeFS to upload or download objects. Specifically you won't be able to:<
 </span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">    </span><span class="p">]</span>
 </span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>We can use <a href="/security/presigned-url/#">presigned URLs mode</a> without allowing access to the data from the lakeFS server directly. 
+<p>We can use <a href="../../../security/presigned-url/">presigned URLs mode</a> without allowing access to the data from the lakeFS server directly. 
 We can achieve this by using <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html">condition keys</a> such as <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-referer">aws:referer</a>, <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcevpc">aws:SourceVpc</a> and <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceip">aws:SourceIp</a>.</p>
 <div class="admonition example">
 <p class="admonition-title">For example, assume the following scenario</p>
@@ -4442,11 +4442,11 @@ We can achieve this by using <a href="https://docs.aws.amazon.com/IAM/latest/Use
 <li>Open <code>http://&lt;lakefs-host&gt;/</code> in your browser. If you haven't set up a load balancer, this will likely be <code>http://&lt;instance ip address&gt;:8000/</code></li>
 <li>On first use, you'll be redirected to the setup page:</li>
 </ol>
-<p><img src="/assets/img/setup.png" alt="Create user"></p>
+<p><img src="../../assets/img/setup.png" alt="Create user"></p>
 <ol>
 <li>Follow the steps to create an initial administrator user. Save the credentials you’ve received somewhere safe, you won’t be able to see them again!</li>
 </ol>
-<p><img src="/assets/img/setup_done.png" alt="Setup Done"></p>
+<p><img src="../../assets/img/setup_done.png" alt="Setup Done"></p>
 <ol>
 <li>Follow the link and go to the login screen. Use the credentials from the previous step to log in.</li>
 </ol>
@@ -4455,13 +4455,13 @@ We can achieve this by using <a href="https://docs.aws.amazon.com/IAM/latest/Use
 <li>Use the credentials from the previous step to log in</li>
 <li>Click <em>Create Repository</em> and choose <em>Blank Repository</em>.</li>
 </ol>
-<p><img src="/assets/img/create-repo-no-sn.png" alt="Create Repo"/></p>
+<p><img src="../../assets/img/create-repo-no-sn.png" alt="Create Repo"/></p>
 <ol>
 <li>Under Storage Namespace, enter a path to your desired location on the object store. This is where data written to this repository will be stored.</li>
 <li>Click <em>Create Repository</em></li>
 <li>You should now have a configured repository, ready to use!</li>
 </ol>
-<p><img src="/assets/img/repo-created.png" alt="Repo Created" style="border: 1px solid #DDDDDD;"/></p>
+<p><img src="../../assets/img/repo-created.png" alt="Repo Created" style="border: 1px solid #DDDDDD;"/></p>
 <div class="admonition success">
 <p class="admonition-title">Congratulations</p>
 <p>Your environment is now ready 🤩</p>

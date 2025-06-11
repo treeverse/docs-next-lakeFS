@@ -4281,7 +4281,7 @@ feasible it becomes to consume it from a single machine. lakeFS addresses this c
 of large-scale data stored remotely. </p>
 <p>In addition to its capability to manage large datasets, lakeFS offers the flexibility
 to work with versioned data by exposing it as a local filesystem directory.  </p>
-<p>This page explains <a href="/reference/mount">lakeFS Mount</a> and <code>lakectl local</code>: two common ways of exposing lakeFS data locally, with different performance characteristics.  </p>
+<p>This page explains <a href="../../reference/mount/">lakeFS Mount</a> and <code>lakectl local</code>: two common ways of exposing lakeFS data locally, with different performance characteristics.  </p>
 <h2 id="use-cases">Use cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
 <h3 id="local-development-of-ml-models">Local development of ML models<a class="headerlink" href="#local-development-of-ml-models" title="Permanent link">&para;</a></h3>
 <p>The development of machine learning models is a dynamic and iterative process, including experimentation with various data versions, 
@@ -4311,7 +4311,7 @@ storage, resulting in cost savings.</p>
 </ul>
 <h3 id="mounting-a-lakefs-reference-as-a-local-directory">Mounting a lakeFS reference as a local directory<a class="headerlink" href="#mounting-a-lakefs-reference-as-a-local-directory" title="Permanent link">&para;</a></h3>
 <p>lakeFS Mount works by exposing a virtual mountpoint on the host computer. </p>
-<p>This "acts" as a local directory, allowing applications to read write and interact with data as it is all local to the machine, while lakeFS Mount optimizes this behind the scenes by lazily fetching data as requested, caching accessed objects and efficiently managing metadata to ensure best in class performance. <a href="/reference/mount.md">Read more about how lakeFS Mount optimizes performance</a></p>
+<p>This "acts" as a local directory, allowing applications to read write and interact with data as it is all local to the machine, while lakeFS Mount optimizes this behind the scenes by lazily fetching data as requested, caching accessed objects and efficiently managing metadata to ensure best in class performance. <a href="../../reference/mount/">Read more about how lakeFS Mount optimizes performance</a></p>
 <p>Mounting a reference is a single command:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>everest<span class="w"> </span>mount<span class="w"> </span>lakefs://example-repo/example-branch/path/to/data/<span class="w"> </span>./my_local_dir
 </span></code></pre></div>
@@ -4321,7 +4321,7 @@ storage, resulting in cost savings.</p>
 <p>Which should return the listing of the mounted path.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>lakeFS Mount allows quite a bit of tuning to ensure optimal performance. <a href="/reference/mount/">Read more</a> about how lakeFS Mount works and how to configure it.</p>
+<p>lakeFS Mount allows quite a bit of tuning to ensure optimal performance. <a href="../../reference/mount/">Read more</a> about how lakeFS Mount works and how to configure it.</p>
 </div>
 <h3 id="reading-from-a-mount">Reading from a mount<a class="headerlink" href="#reading-from-a-mount" title="Permanent link">&para;</a></h3>
 <p>Reading from a lakeFS Mount requires no special tools, integrations or SDKs! Simply point your code to the directory and read from it as if it was in fact local:</p>
@@ -4398,16 +4398,16 @@ for the model. The code for the model is versioned by Git while the model datase
 be using lakectl local to tie code versions to data versions to achieve model reproducibility.  </p>
 <h3 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
 <p>To get start with, we have initialized a Git repo called <code>is_alpaca</code> that includes the model code:
-<img alt="Git repo" src="/assets/img/lakectl-local/code_repo.png" /></p>
+<img alt="Git repo" src="../../assets/img/lakectl-local/code_repo.png" /></p>
 <p>We also created a lakeFS repository and uploaded the <em>is_alpaca</em> train <a href="https://www.kaggle.com/datasets/sayedmahmoud/alpaca-dataset">dataset</a> 
 by Kaggel into it:
-<img alt="lakeFS repo" src="/assets/img/lakectl-local/lakefs-repo-with-train-dataset.png" /></p>
+<img alt="lakeFS repo" src="../../assets/img/lakectl-local/lakefs-repo-with-train-dataset.png" /></p>
 <h3 id="create-an-isolated-environment-for-experiments">Create an Isolated Environment for Experiments<a class="headerlink" href="#create-an-isolated-environment-for-experiments" title="Permanent link">&para;</a></h3>
 <p>Our goal is to improve the model predictions. To meet our goal, we will experiment with editing the training dataset. 
 We will run our experiments in isolation to not change anything until after we are certain the data is improved and ready.    </p>
 <p>Let's create a new lakeFS branch called <code>experiment-1</code>. Our <em>is_alpaca</em> dataset is accessible on that branch, 
 and we will interact with the data from that branch only.
-<img alt="experiment-1-branch" src="/assets/img/lakectl-local/experiment-branch.png" /></p>
+<img alt="experiment-1-branch" src="../../assets/img/lakectl-local/experiment-branch.png" /></p>
 <p>On the code side, we will create a Git branch also called <code>experiment-1</code> to not pollute our main branch with a dataset
 which is under tuning.</p>
 <h3 id="clone-lakefs-data-into-a-local-git-repository">Clone lakeFS Data into a Local Git Repository<a class="headerlink" href="#clone-lakefs-data-into-a-local-git-repository" title="Permanent link">&para;</a></h3>
@@ -4550,7 +4550,7 @@ area of our experiment branch and verifying it is empty. </p>
 </span></code></pre></div>
 <p>Looking at the lakeFS UI we can see that the lakeFS commit includes metadata that tells us what was the code version of 
 the linked Git repository at the time of the commit.
-<img alt="git metadata in lakeFS" src="/assets/img/lakectl-local/lakefs-commit-git-commit-id.png" /></p>
+<img alt="git metadata in lakeFS" src="../../assets/img/lakectl-local/lakefs-commit-git-commit-id.png" /></p>
 <p>Inspecting the Git repository, we can see that the input/.lakefs_ref.yaml is pointing to the latest lakeFS commit <code>0b376f01b925a075851bbaffacf104a80de04a43ed7e56054bf54c42d2c8cce6</code>.  </p>
 <p>We will now re-train our model with the modified dataset and give a try to predict whether an axolotl is an alpaca: </p>
 <p><div class="language-shell highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>is_alpaca<span class="w"> </span>%<span class="w"> </span>./predict.py<span class="w"> </span>~/axolotl1.jpeg
@@ -4623,7 +4623,7 @@ we will use <a href="../../reference/cli/#lakectl-local-status">lakectl local st
 </span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a>Parents:<span class="w"> </span>0b376f01b925a075851bbaffacf104a80de04a43ed7e56054bf54c42d2c8cce6
 </span></code></pre></div>
 <p>Looking at the lakFS UI we see that our test data is now available at lakeFS:
-<img alt="test_dataset" src="/assets/img/lakectl-local/tes-and-train-dataset.png" /></p>
+<img alt="test_dataset" src="../../assets/img/lakectl-local/tes-and-train-dataset.png" /></p>
 <p>Finally, we will Git commit the local changes to link between the Git and lakeFS repositories state.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>

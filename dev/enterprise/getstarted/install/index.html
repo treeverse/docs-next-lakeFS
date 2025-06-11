@@ -4211,7 +4211,7 @@
 <p>For production deployments of lakeFS Enterprise, follow this guide.</p>
 </div>
 <h2 id="lakefs-enterprise-architecture">lakeFS Enterprise Architecture<a class="headerlink" href="#lakefs-enterprise-architecture" title="Permanent link">&para;</a></h2>
-<p>We recommend to review the <a href="/enterprise/architecture/">lakeFS Enterprise architecture</a> to understand the components you will be deploying.</p>
+<p>We recommend to review the <a href="../../architecture/">lakeFS Enterprise architecture</a> to understand the components you will be deploying.</p>
 <h2 id="deploy-lakefs-enterprise-on-kubernetes">Deploy lakeFS Enterprise on Kubernetes<a class="headerlink" href="#deploy-lakefs-enterprise-on-kubernetes" title="Permanent link">&para;</a></h2>
 <p>The guide is using the <a href="https://github.com/treeverse/charts/tree/master/charts/lakefs">lakeFS Helm Chart</a> to deploy a fully functional lakeFS Enterprise.</p>
 <p>The guide includes example configurations, follow the steps below and adjust the example configurations according to:</p>
@@ -4226,11 +4226,11 @@
 <li><a href="https://helm.sh/docs/intro/install/">Helm</a> is installed</li>
 <li>Access to download <em>dockerhub/fluffy</em> from <a href="https://hub.docker.com/u/treeverse">Docker Hub</a>. <a href="https://lakefs.io/contact-sales/">Contact us</a> to gain access to lakeFS Enterprise features.</li>
 <li>A KV Database that will be shared by lakeFS and Fluffy. The available options are dependent in your <a href="../../../howto/deploy/#deployment-and-setup-details">deployment platform</a>.</li>
-<li>A proxy server configured to route traffic between the lakeFS and Fluffy servers, see Reverse Proxy in <a href="/enterprise/architecture/">lakeFS Enterprise architecture</a>.</li>
+<li>A proxy server configured to route traffic between the lakeFS and Fluffy servers, see Reverse Proxy in <a href="../../architecture/">lakeFS Enterprise architecture</a>.</li>
 </ol>
 <h4 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Access to configure your SSO IdP <a href="/security/sso/#sso-for-lakefs-enterprise">supported by lakeFS Enterprise</a>.</li>
+<li>Access to configure your SSO IdP <a href="../../../security/sso/#sso-for-lakefs-enterprise">supported by lakeFS Enterprise</a>.</li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4244,8 +4244,8 @@
 </ul>
 <h3 id="authentication-configuration">Authentication Configuration<a class="headerlink" href="#authentication-configuration" title="Permanent link">&para;</a></h3>
 <p>Authentication in lakeFS Enterprise is handled by the Fluffy SSO service which runs side-by-side to lakeFS. This section explains
-what Fluffy configurations are required for configuring the SSO service. See <a href="/enterprise/configuration/#fluffy-server-configuration">this</a> configuration reference for additional Fluffy configurations.</p>
-<p>See <a href="/security/sso/#sso-for-lakefs-enterprise">SSO for lakeFS Enterprise</a> for the supported identity providers and protocols.</p>
+what Fluffy configurations are required for configuring the SSO service. See <a href="../../configuration/#fluffy-server-configuration">this</a> configuration reference for additional Fluffy configurations.</p>
+<p>See <a href="../../../security/sso/#sso-for-lakefs-enterprise">SSO for lakeFS Enterprise</a> for the supported identity providers and protocols.</p>
 <p>The examples below include example configuration for each of the supported SSO protocols. Note the IdP-specific details you'll need to
 replace with your IdP details.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="openid-connect" name="__tabbed_1" type="radio" /><input id="saml-with-azure-ad" name="__tabbed_1" type="radio" /><input id="ldap" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="openid-connect">OpenID Connect</label><label for="saml-with-azure-ad">SAML (With Azure AD)</label><label for="ldap">LDAP</label></div>
@@ -4254,7 +4254,7 @@ replace with your IdP details.</p>
 <p>The following <code>values</code> file will run lakeFS Enterprise with OIDC integration.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The full OIDC configurations explained <a href="/security/sso/#oidc">here</a>.</p>
+<p>The full OIDC configurations explained <a href="../../../security/sso/#oidc">here</a>.</p>
 </div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">lakefsConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="no">logging:</span>
@@ -4330,7 +4330,7 @@ replace with your IdP details.</p>
 <p>You can use this example configuration to configure Active Directory Federation Services (AD FS) with SAML.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The full SAML configurations explained <a href="/security/sso/#adfs">here</a>.</p>
+<p>The full SAML configurations explained <a href="../../../security/sso/#adfs">here</a>.</p>
 </div>
 <h4 id="azure-app-configuration">Azure App Configuration<a class="headerlink" href="#azure-app-configuration" title="Permanent link">&para;</a></h4>
 <ol>
@@ -4427,7 +4427,7 @@ replace with your IdP details.</p>
 <p>The following <code>values</code> file will run lakeFS Enterprise with LDAP.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The full LDAP configurations explained <a href="/security/sso/#ldap">here</a>.</p>
+<p>The full LDAP configurations explained <a href="../../../security/sso/#ldap">here</a>.</p>
 </div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">lakefsConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="no">logging:</span>
@@ -4491,7 +4491,7 @@ replace with your IdP details.</p>
 <p>Notes:
 * By default, the lakeFS Helm chart comes with <code>useDevPostgres: true</code>, you should change it to <code>useDevPostgres: false</code> for Fluffy to work with your KV Database and be suitable for production needs.
 * The KV database is shared between lakeFS and Fluffy, and therefore both services must use the same configuration.
-* See <a href="/enterprise/configuration/#fluffy-server-configuration">fluffy</a> and <a href="/reference/configuration/#database">lakeFS</a> <code>database</code> configuration.</p>
+* See <a href="../../configuration/#fluffy-server-configuration">fluffy</a> and <a href="../../../reference/configuration/#database">lakeFS</a> <code>database</code> configuration.</p>
 <p>The database configuration structure between lakeFS and fluffy can be set directly via <code>fluffyConfig</code>, via K8S Secret Kind, and <code>lakefsConfig</code> or via environment variables.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="postgres-via-environment-variables" name="__tabbed_2" type="radio" /><input id="via-fluffyconfig" name="__tabbed_2" type="radio" /><input id="postgres-via-shared-secret-kind" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="postgres-via-environment-variables">Postgres via environment variables</label><label for="via-fluffyconfig">Via fluffyConfig</label><label for="postgres-via-shared-secret-kind">Postgres via shared Secret kind</label></div>
 <div class="tabbed-content">

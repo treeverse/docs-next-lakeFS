@@ -4268,7 +4268,7 @@
 <h1 id="mirroring">Mirroring<a class="headerlink" href="#mirroring" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Mirroring is only available for <a href="/cloud/">lakeFS Cloud</a>.</p>
+<p>Mirroring is only available for <a href="../../cloud/">lakeFS Cloud</a>.</p>
 </div>
 <h2 id="what-is-lakefs-mirroring">What is lakeFS mirroring?<a class="headerlink" href="#what-is-lakefs-mirroring" title="Permanent link">&para;</a></h2>
 <p>Mirroring in lakeFS allows replicating a lakeFS repository ("source") into read-only copies ("mirror") in different locations.</p>
@@ -4509,7 +4509,7 @@ Deletions from garbage collection should be replicated from the source:</p>
 <li>Mirroring is currently only supported on <a href="https://aws.amazon.com/s3/">AWS S3</a> and <a href="https://lakefs.cloud">lakeFS Cloud for AWS</a></li>
 <li>Read-only mirrors cannot be written to. Mirroring is one-way, from source to destination(s)</li>
 <li>Currently, only branches are mirrored. Tags and arbitrary commits that do not belong to any branch are not replicated</li>
-<li><a href="/howto/hooks/">lakeFS Hooks</a> will only run on the source repository, not its replicas</li>
+<li><a href="../hooks/">lakeFS Hooks</a> will only run on the source repository, not its replicas</li>
 <li>Replication is still asynchronous: reading from a branch will always return a valid commit that the source has pointed to, but it is not guaranteed to be the <strong>latest commit</strong> the source branch is pointing to.</li>
 </ol>
 

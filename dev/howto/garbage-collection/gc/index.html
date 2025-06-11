@@ -4100,19 +4100,23 @@
 <h1 id="garbage-collection">Garbage Collection<a class="headerlink" href="#garbage-collection" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><a href="https://lakefs.cloud">lakeFS Cloud</a> users enjoy a <a href="/howto/garbage-collection/managed-gc/">managed garbage collection</a> service, and do not need to run this Spark program.</p>
+<p><a href="https://lakefs.cloud">lakeFS Cloud</a> users enjoy a <a href="../managed-gc/">managed garbage collection</a> service, and do not need to run this Spark program.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><a href="/enterprise/index/">lakeFS Enterprise</a> users can run a <a href="/howto/garbage-collection/standalone-gc/">stand alone GC program</a>, instead of this Spark program.</p>
+<p><a href="../../../enterprise/">lakeFS Enterprise</a> users can run a <a href="../standalone-gc/">stand alone GC program</a>, instead of this Spark program.</p>
 </div>
 <p>By default, lakeFS keeps all your objects forever. This allows you to travel back in time to previous versions of your data.
 However, sometimes you may want to remove the objects from the underlying storage completely.
 Reasons for this include cost-reduction and privacy policies.</p>
-<p>The garbage collection (GC) job is a Spark program that removes the following from the underlying storage:
-1. <em>Committed objects</em> that have been deleted (or replaced) in lakeFS, and are considered expired according to <a href="#garbage-collection-rules">rules you define</a>.
-2. <em>Uncommitted objects</em> that are no longer accessible
-    * For example, objects deleted before ever being committed.</p>
+<p>The garbage collection (GC) job is a Spark program that removes the following from the underlying storage:</p>
+<ol>
+<li><em>Committed objects</em> that have been deleted (or replaced) in lakeFS, and are considered expired according to <a href="#garbage-collection-rules">rules you define</a>.</li>
+<li><em>Uncommitted objects</em> that are no longer accessible<ul>
+<li>For example, objects deleted before ever being committed.</li>
+</ul>
+</li>
+</ol>
 <h2 id="garbage-collection-rules">Garbage collection rules<a class="headerlink" href="#garbage-collection-rules" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4137,7 +4141,7 @@ all relevant branches.</p>
 However, if present in the branch <code>main</code>, objects will be retained for 21 days.
 Objects present <em>only</em> in the <code>dev</code> branch will be retained for 7 days after they are deleted.</p>
 <h3 id="how-to-configure-garbage-collection-rules">How to configure garbage collection rules<a class="headerlink" href="#how-to-configure-garbage-collection-rules" title="Permanent link">&para;</a></h3>
-<p>To define retention rules, either use the <code>lakectl</code> command, the lakeFS web UI, or <a href="/reference/api.html#/retention/set%20garbage%20collection%20rules">API</a>:</p>
+<p>To define retention rules, either use the <code>lakectl</code> command, the lakeFS web UI, or <a href="../../../reference/api/#/retention/set%20garbage%20collection%20rules">API</a>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="cli" name="__tabbed_1" type="radio" /><input id="web-ui" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="cli">CLI</label><label for="web-ui">Web UI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

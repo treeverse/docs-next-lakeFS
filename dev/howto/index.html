@@ -3967,61 +3967,61 @@
 
 
 <h1 id="lakefs-how-to">lakeFS - How To<a class="headerlink" href="#lakefs-how-to" title="Permanent link">&para;</a></h1>
-<p><img src="/assets/img/docs_logo.png" alt="lakeFS Docs" width=200 style="float: right; margin: 0 0 10px 10px;"/></p>
+<p><img src="../assets/img/docs_logo.png" alt="lakeFS Docs" width=200 style="float: right; margin: 0 0 10px 10px;"/></p>
 <h2 id="installation-and-upgrades">Installation and upgrades<a class="headerlink" href="#installation-and-upgrades" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>Step-by-step instructions for deploying and configuring lakeFS on <a href="/howto/deploy/aws.html">AWS</a>, <a href="/howto/deploy/gcp.html">GCP</a>, <a href="/howto/deploy/azure.html">Azure</a>, and <a href="/howto/deploy/onprem.html">on-premises</a>. </p>
+<p>Step-by-step instructions for deploying and configuring lakeFS on <a href="deploy/aws/">AWS</a>, <a href="deploy/gcp/">GCP</a>, <a href="deploy/azure/">Azure</a>, and <a href="deploy/onprem/">on-premises</a>.</p>
 </li>
 <li>
-<p>Details on <a href="/howto/deploy/upgrade.html">how to upgrade lakeFS</a></p>
+<p>Details on <a href="deploy/upgrade/">how to upgrade lakeFS</a></p>
 </li>
 </ul>
 <h2 id="getting-data-in-and-out-of-lakefs">Getting data in and out of lakeFS<a class="headerlink" href="#getting-data-in-and-out-of-lakefs" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="/howto/import.html">Import</a> and <a href="/howto/export.html">Export Data</a> from lakeFS</li>
-<li><a href="/howto/copying.html">Copy data</a> to/from lakeFS</li>
-<li><a href="/howto/catalog_exports.html">Using external Data Catalogs</a> with data stored on lakeFS</li>
-<li><a href="/howto/migrate-away.html">Migrating</a> away from lakeFS</li>
+<li><a href="import/">Import</a> and <a href="export/">Export Data</a> from lakeFS</li>
+<li><a href="copying/">Copy data</a> to/from lakeFS</li>
+<li><a href="catalog_exports/">Using external Data Catalogs</a> with data stored on lakeFS</li>
+<li><a href="migrate-away/">Migrating</a> away from lakeFS</li>
 <li>Working with lakeFS data <a href="local-checkouts/">locally</a></li>
 </ul>
 <h2 id="actions-and-hooks-in-lakefs">Actions and Hooks in lakeFS<a class="headerlink" href="#actions-and-hooks-in-lakefs" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Use <a href="/howto/hooks/">Actions and Hooks</a> as part of your workflow to validate data, enforce constraints, and do more when events occur.</li>
+<li>Use <a href="hooks/">Actions and Hooks</a> as part of your workflow to validate data, enforce constraints, and do more when events occur.</li>
 </ul>
 <h2 id="branch-protection">Branch Protection<a class="headerlink" href="#branch-protection" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="/howto/protect-branches.html">Branch Protection</a> prevents commits directly to a branch. This is a good way to enforce good practice and make sure that changes to important branches are only done by a merge.</li>
+<li><a href="protect-branches/">Branch Protection</a> prevents commits directly to a branch. This is a good way to enforce good practice and make sure that changes to important branches are only done by a merge.</li>
 </ul>
 <h2 id="pull-requests">Pull Requests<a class="headerlink" href="#pull-requests" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Improve collaboration over data with <a href="/howto/pull-requests.html">Pull Requests</a>.</li>
+<li>Improve collaboration over data with <a href="pull-requests/">Pull Requests</a>.</li>
 </ul>
 <h2 id="lakefs-sizing-guide">lakeFS Sizing Guide<a class="headerlink" href="#lakefs-sizing-guide" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>This <a href="/howto/sizing-guide.html">comprehensive guide</a> details all you need to know to correctly size and test your lakeFS deployment for production use at scale, including: </p>
-<ul>
-<li><a href="/howto/sizing-guide.html#system-requirements">System Requirements</a></li>
-<li><a href="/howto/sizing-guide.html#scaling-factors">Scaling factors</a></li>
-<li><a href="/howto/sizing-guide.html#benchmarks">Benchmarks</a></li>
-<li><a href="/howto/sizing-guide.html#important-metrics">Important metrics</a></li>
-<li><a href="/howto/sizing-guide.html#reference-architectures">Reference architectures</a></li>
-</ul>
+<p>This <a href="sizing-guide/">comprehensive guide</a> details all you need to know to correctly size and test your lakeFS deployment for production use at scale, including:</p>
 </li>
+<li>
+<p><a href="sizing-guide/#system-requirements">System Requirements</a></p>
+</li>
+<li><a href="sizing-guide/#scaling-factors">Scaling factors</a></li>
+<li><a href="sizing-guide/#benchmarks">Benchmarks</a></li>
+<li><a href="sizing-guide/#important-metrics">Important metrics</a></li>
+<li><a href="sizing-guide/#reference-architectures">Reference architectures</a></li>
 </ul>
 <h2 id="garbage-collection">Garbage Collection<a class="headerlink" href="#garbage-collection" title="Permanent link">&para;</a></h2>
 <ul>
-<li>lakeFS will keep all of your objects forever, unless you tell it otherwise. Use <a href="/howto/garbage-collection/index/">Garbage Collection</a> (GC) to remove objects from the underlying storage.
-    If you want GC to happen automagically then you can use <a href="/howto/garbage-collection/managed-gc/">Managed Garbage Collection</a> which is available as part of lakeFS Cloud.</li>
+<li>lakeFS will keep all of your objects forever, unless you tell it otherwise. Use <a href="garbage-collection/gc/">Garbage Collection</a> (GC) to remove objects from the underlying storage.
+    If you want GC to happen automatically then you can use <a href="garbage-collection/managed-gc/">Managed Garbage Collection</a> which is available as part of lakeFS Cloud.</li>
 </ul>
 <h2 id="private-link">Private Link<a class="headerlink" href="#private-link" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="/howto/private-link/">Private Link</a> enables lakeFS Cloud to interact with your infrastructure using private networking.</li>
+<li><a href="private-link/">Private Link</a> enables lakeFS Cloud to interact with your infrastructure using private networking.</li>
 </ul>
 <h2 id="unity-delta-sharing">Unity Delta Sharing<a class="headerlink" href="#unity-delta-sharing" title="Permanent link">&para;</a></h2>
 <ul>
-<li>lakeFS <a href="/howto/unity-delta-sharing/">Unity Delta Sharing</a> provides a read-only experience from Unity Catalog for lakeFS customers.</li>
+<li>lakeFS <a href="unity-delta-sharing/">Unity Delta Sharing</a> provides a read-only experience from Unity Catalog for lakeFS customers.</li>
 </ul>
 
 

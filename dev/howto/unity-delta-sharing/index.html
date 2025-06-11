@@ -3906,7 +3906,7 @@
           <li class="md-nav__item">
   <a href="#3-connect-unity-to-lakefs-delta-sharing" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Connect Unity to lakeFS Delta Sharing!
+      3. Connect Unity to lakeFS Delta Sharing
     </span>
   </a>
   
@@ -4033,7 +4033,7 @@ You might use this command on Linux:</p>
 <p>Upload it to your config URL.  For instance if the config URL is <code>lakefs://repo/main/lakefs_delta_sharing.yaml</code>, you might use:</p>
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>lakectl<span class="w"> </span>fs<span class="w"> </span>upload<span class="w"> </span>-s<span class="w"> </span>./lakefs_delta_sharing.yaml<span class="w"> </span>lakefs://repo/main/lakefs_delta_sharing.yaml
 </span></code></pre></div>
-<h3 id="3-connect-unity-to-lakefs-delta-sharing">3. Connect Unity to lakeFS Delta Sharing!<a class="headerlink" href="#3-connect-unity-to-lakefs-delta-sharing" title="Permanent link">&para;</a></h3>
+<h3 id="3-connect-unity-to-lakefs-delta-sharing">3. Connect Unity to lakeFS Delta Sharing<a class="headerlink" href="#3-connect-unity-to-lakefs-delta-sharing" title="Permanent link">&para;</a></h3>
 <p>You now need to configure Unity to use the lakeFS Delta Sharing server. Create a share provider file <code>config.share.json</code>; see the <a href="https://docs.databricks.com/data-sharing/manage-provider.html#instructions">Delta Sharing manual</a>:</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;shareCredentialsVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
@@ -4045,21 +4045,21 @@ You might use this command on Linux:</p>
 <p>"GENERATED TOKEN" is the secret authorization token use above.</p>
 <p>Install the <a href="https://docs.databricks.com/dev-tools/cli/index.html">databricks cli</a>.  We will use it to create Delta Share on Unity.  Follow the
 <a href="https://docs.databricks.com/dev-tools/cli/index.html#set-up-authentication-using-a-databricks-personal-access-token">instructions</a> to configure it.</p>
-<p>Run the provider creation command:
-   <div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>databricks<span class="w"> </span>unity-catalog<span class="w"> </span>providers<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<p>Run the provider creation command:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>databricks<span class="w"> </span>unity-catalog<span class="w"> </span>providers<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>--name<span class="w"> </span>lakefs-cloud<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>--recipient-profile-json-file<span class="w"> </span>config.share.json
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>Go to "Data &gt;&gt; Delta Sharing" on the DataBricks environment.  Once Treeverse have configured lakeFS Delta Sharing on your account with your config URL,
 the "lakefs-cloud" provider should appear under "Shared with me".</p>
-<p><img src="/assets/img/unity-delta-sharing-provider.png" alt="lakeFS-Cloud provider appearing on DataBricks Delta Sharing / Shared with me" class="quickstart"/></p>
+<p><img src="../assets/img/unity-delta-sharing-provider.png" alt="lakeFS-Cloud provider appearing on DataBricks Delta Sharing / Shared with me" class="quickstart"/></p>
 <p>Click the provider to see its shares.</p>
-<p><img src="/assets/img/unity-delta-sharing-shares.png" alt="lakeFS-Cloud provider, showing share and create catalog" class="quickstart"/></p>
+<p><img src="../assets/img/unity-delta-sharing-shares.png" alt="lakeFS-Cloud provider, showing share and create catalog" class="quickstart"/></p>
 <p>You can now create a catalog from these shares.</p>
-<p><img src="/assets/img/unity-delta-sharing-create-catalog.png" alt="lakeFS-Cloud provider, create catalog from share" class="quickstart"/></p>
+<p><img src="../assets/img/unity-delta-sharing-create-catalog.png" alt="lakeFS-Cloud provider, create catalog from share" class="quickstart"/></p>
 <p>And you can see schemas for each of the branches that you configured in the share.  Here branch name <code>dev_experiment1</code> matches the pattern <code>dev_*</code> that
 we defined in the configuration object <code>lakefs-delta-sharing.yaml</code>, so it appears as a schema.</p>
-<p><img src="/assets/img/unity-delta-sharing-schema-per-branch.png" alt="lakeFS-Cloud provider, every configured branch is a schema" class="quickstart"/></p>
+<p><img src="../assets/img/unity-delta-sharing-schema-per-branch.png" alt="lakeFS-Cloud provider, every configured branch is a schema" class="quickstart"/></p>
 <p>At this point you have configured Delta Sharing on lakeFS, and DataBricks to communicate with lakeFS delta sharing.  No further Treeverse involvement is required.<br />
 Updates to <code>lakefs_delta_sharing.yaml</code> will update within a minute of uploading a new version.</p>
 <h3 id="4-configure-tables">4. Configure tables<a class="headerlink" href="#4-configure-tables" title="Permanent link">&para;</a></h3>

@@ -5848,7 +5848,7 @@
 <h2 id="action-file-lua-hook-properties">Action File Lua Hook Properties<a class="headerlink" href="#action-file-lua-hook-properties" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>See the <a href="../#action-file">Action configuration</a> for overall configuration schema and details.</p>
+<p>See the <a href="../#action-files">Action configuration</a> for overall configuration schema and details.</p>
 </div>
 <table>
 <thead>
@@ -5994,11 +5994,9 @@
 <p>Parameters:</p>
 <ul>
 <li><code>database(string)</code>: Glue Database name.</li>
-<li><code>options(table)</code> (optional):<ul>
+<li><code>options(table)</code> (optional):</li>
 <li><code>error_on_already_exists(boolean)</code>: Whether the call fail with an error if a DB with this name already exists</li>
 <li><code>create_db_input(Table)</code>: a Table that is passed "as is" to AWS and is parallel to the AWS SDK <a href="https://docs.aws.amazon.com/glue/latest/webapi/API_CreateDatabase.html#API_CreateDatabase_RequestSyntax">CreateDatabaseInput</a></li>
-</ul>
-</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -6070,7 +6068,7 @@ The <code>table_input</code> is the same as the argument in <code>glue.create_ta
 <p>Deletes the object at the given key<br />
 <code>path_uri</code> - A valid Azure blob storage uri in the form of <code>https://myaccount.blob.core.windows.net/mycontainer/myblob</code></p>
 <h3 id="azureabfss_transform_pathpath"><code>azure/abfss_transform_path(path)</code><a class="headerlink" href="#azureabfss_transform_pathpath" title="Permanent link">&para;</a></h3>
-<p>Transform an HTTPS Azure URL to a ABFSS scheme. Used by the delta_exporter function to support Azure Unity catalog use cases  <br />
+<p>Transform an HTTPS Azure URL to a ABFSS scheme. Used by the delta_exporter function to support Azure Unity catalog use cases
 <code>path</code> - A valid Azure blob storage URL in the form of <code>https://myaccount.blob.core.windows.net/mycontainer/myblob</code></p>
 <h3 id="crypto"><code>crypto</code><a class="headerlink" href="#crypto" title="Permanent link">&para;</a></h3>
 <h3 id="cryptoaesencryptcbckey-plaintext"><code>crypto/aes/encryptCBC(key, plaintext)</code><a class="headerlink" href="#cryptoaesencryptcbckey-plaintext" title="Permanent link">&para;</a></h3>
@@ -6124,7 +6122,7 @@ Returns the created/fetched schema name.</p>
 </div>
 <h3 id="databricksclientregister_external_tabletable_name-physical_path-warehouse_id-catalog_name-schema_name-metadata"><code>databricks/client.register_external_table(table_name, physical_path, warehouse_id, catalog_name, schema_name, metadata)</code><a class="headerlink" href="#databricksclientregister_external_tabletable_name-physical_path-warehouse_id-catalog_name-schema_name-metadata" title="Permanent link">&para;</a></h3>
 <p>Registers an external table under the provided warehouse ID, catalog name, and schema name.
-In order for this method call to succeed, an external location should be configured in the catalog, with the 
+In order for this method call to succeed, an external location should be configured in the catalog, with the
 <code>physical_path</code>'s root storage URI (for example: <code>s3://mybucket</code>).
 Returns the table's creation status.</p>
 <p>Parameters:</p>
@@ -6178,15 +6176,17 @@ Returns the table's creation status.</p>
 <h3 id="formats"><code>formats</code><a class="headerlink" href="#formats" title="Permanent link">&para;</a></h3>
 <h3 id="formatsdelta_clientkey-secret-region"><code>formats/delta_client(key, secret, region)</code><a class="headerlink" href="#formatsdelta_clientkey-secret-region" title="Permanent link">&para;</a></h3>
 <p>Creates a new Delta Lake client used to interact with the lakeFS server.
-- <code>key</code>: lakeFS access key id
-- <code>secret</code>: lakeFS secret access key
-- <code>region</code>: The region in which your lakeFS server is configured at.</p>
+* <code>key</code>: lakeFS access key id
+* <code>secret</code>: lakeFS secret access key
+* <code>region</code>: The region in which your lakeFS server is configured at.</p>
 <h3 id="formatsdelta_clientget_tablerepository_id-reference_id-prefix"><code>formats/delta_client.get_table(repository_id, reference_id, prefix)</code><a class="headerlink" href="#formatsdelta_clientget_tablerepository_id-reference_id-prefix" title="Permanent link">&para;</a></h3>
 <p>Returns a representation of a Delta Lake table under the given repository, reference, and prefix.
-The format of the response is two tables: 
-1. the first is a table of the format <code>{number, {string}}</code> where <code>number</code> is a version in the Delta Log, and the mapped <code>{string}</code> 
-array contains JSON strings of the different Delta Lake log operations listed in the mapped version entry. e.g.:</p>
-<p><div class="language-lua highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
+The format of the response is two tables:</p>
+<ol>
+<li>the first is a table of the format <code>{number, {string}}</code> where <code>number</code> is a version in the Delta Log, and the mapped <code>{string}</code>
+array contains JSON strings of the different Delta Lake log operations listed in the mapped version entry. e.g.:</li>
+</ol>
+<div class="language-lua highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">  </span><span class="mi">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">commitInfo</span><span class="se">\&quot;</span><span class="s2">:...}&quot;</span><span class="p">,</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">add</span><span class="se">\&quot;</span><span class="s2">: ...}&quot;</span><span class="p">,</span>
@@ -6199,15 +6199,19 @@ array contains JSON strings of the different Delta Lake log operations listed in
 </span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="p">}</span>
 </span></code></pre></div>
-2. the second is a table of the metadata of the current table snapshot. The metadata table can be used to initialize the Delta Lake table in an external Catalog.<br />
-It consists of the following fields:
-    - <code>id</code>: The table's ID
-    - <code>name</code>: The table's name
-    - <code>description</code>: The table's description
-    - <code>schema_string</code>: The table's schema string
-    - <code>partition_columns</code>: The table's partition columns
-    - <code>configuration</code>: The table's configuration
-    - <code>created_time</code>: The table's creation time</p>
+<ol>
+<li>the second is a table of the metadata of the current table snapshot. The metadata table can be used to initialize the Delta Lake table in an external Catalog.<br />
+It consists of the following fields:<ul>
+<li><code>id</code>: The table's ID</li>
+<li><code>name</code>: The table's name</li>
+<li><code>description</code>: The table's description</li>
+<li><code>schema_string</code>: The table's schema string</li>
+<li><code>partition_columns</code>: The table's partition columns</li>
+<li><code>configuration</code>: The table's configuration</li>
+<li><code>created_time</code>: The table's creation time</li>
+</ul>
+</li>
+</ol>
 <h3 id="gcloud"><code>gcloud</code><a class="headerlink" href="#gcloud" title="Permanent link">&para;</a></h3>
 <h3 id="gcloudgs_clientgcs_credentials_json_string"><code>gcloud/gs_client(gcs_credentials_json_string)</code><a class="headerlink" href="#gcloudgs_clientgcs_credentials_json_string" title="Permanent link">&para;</a></h3>
 <p>Create a new Google Cloud Storage client using a string that contains a valid <a href="https://developers.google.com/workspace/guides/create-credentials"><code>credentials.json</code></a> file content.</p>
@@ -6299,7 +6303,7 @@ Returns 2 values:</p>
 <h3 id="lakefscatalogexportdelta_exporterexport_delta_logaction-table_def_names-write_object-delta_client-table_descriptors_path-path_transformer"><code>lakefs/catalogexport/delta_exporter.export_delta_log(action, table_def_names, write_object, delta_client, table_descriptors_path, path_transformer)</code><a class="headerlink" href="#lakefscatalogexportdelta_exporterexport_delta_logaction-table_def_names-write_object-delta_client-table_descriptors_path-path_transformer" title="Permanent link">&para;</a></h3>
 <p>The function used to export Delta Lake tables.
 The return value is a table with mapping of table names to external table location (from which it is possible to query the data) and latest Delta table version's metadata.<br />
-The response is of the form: 
+The response is of the form:
 <code>{&lt;table_name&gt; = {path = "s3://mybucket/mypath/mytable", metadata = {id = "table_id", name = "table_name", ...}}}</code>.</p>
 <p>Parameters:</p>
 <ul>
@@ -6404,7 +6408,7 @@ The response is of the form:
 </span></code></pre></div>
 </div>
 <h3 id="lakefscatalogexportdelta_exporterchanged_table_defstable_def_names-table_descriptors_path-repository_id-ref-compare_ref"><code>lakefs/catalogexport/delta_exporter.changed_table_defs(table_def_names, table_descriptors_path, repository_id, ref, compare_ref)</code><a class="headerlink" href="#lakefscatalogexportdelta_exporterchanged_table_defstable_def_names-table_descriptors_path-repository_id-ref-compare_ref" title="Permanent link">&para;</a></h3>
-<p>Utility function to filter list of table defs based on those that have changed. Returns the subset of the tables in the table_def_names parameter that have changed. </p>
+<p>Utility function to filter list of table defs based on those that have changed. Returns the subset of the tables in the table_def_names parameter that have changed.</p>
 <p>Parameters:</p>
 <ul>
 <li><code>table_def_names(table of strings)</code>: List of table names to filter based on the diff</li>
@@ -6427,15 +6431,15 @@ The response is of the form:
 <h3 id="lakefscatalogexporttable_extractor"><code>lakefs/catalogexport/table_extractor</code><a class="headerlink" href="#lakefscatalogexporttable_extractor" title="Permanent link">&para;</a></h3>
 <p>Utility package to parse <code>_lakefs_tables/</code> descriptors.</p>
 <h3 id="lakefscatalogexporttable_extractorlist_table_descriptor_entriesclient-repo_id-commit_id"><code>lakefs/catalogexport/table_extractor.list_table_descriptor_entries(client, repo_id, commit_id)</code><a class="headerlink" href="#lakefscatalogexporttable_extractorlist_table_descriptor_entriesclient-repo_id-commit_id" title="Permanent link">&para;</a></h3>
-<p>List all YAML files under <code>_lakefs_tables/*</code> and return a list of type <code>[{physical_address, path}]</code>, ignores hidden files. 
+<p>List all YAML files under <code>_lakefs_tables/*</code> and return a list of type <code>[{physical_address, path}]</code>, ignores hidden files.
 The <code>client</code> is <code>lakefs</code> client.</p>
 <h3 id="lakefscatalogexporttable_extractorget_table_descriptorclient-repo_id-ref-logical_path"><code>lakefs/catalogexport/table_extractor.get_table_descriptor(client, repo_id, ref, logical_path)</code><a class="headerlink" href="#lakefscatalogexporttable_extractorget_table_descriptorclient-repo_id-ref-logical_path" title="Permanent link">&para;</a></h3>
 <p>Read a table descriptor and parse YAML object. Will set <code>partition_columns</code> to <code>{}</code> if no partitions are defined.</p>
 <p>Parameters:
-- <code>client</code>: <code>lakefs</code> client
-- <code>repo_id(string)</code>: The repository ID
-- <code>ref(string)</code>: reference pointing at a specific version of the data i.e. a branch, commit ID, or tag
-- <code>logical_path(string)</code>: logical path of the table descriptor file within the repo</p>
+* <code>client</code>: <code>lakefs</code> client
+* <code>repo_id(string)</code>: The repository ID
+* <code>ref(string)</code>: reference pointing at a specific version of the data i.e. a branch, commit ID, or tag
+* <code>logical_path(string)</code>: logical path of the table descriptor file within the repo</p>
 <h3 id="lakefscatalogexporthiveextract_partition_pagerclient-repo_id-commit_id-base_path-partition_cols-page_size"><code>lakefs/catalogexport/hive.extract_partition_pager(client, repo_id, commit_id, base_path, partition_cols, page_size)</code><a class="headerlink" href="#lakefscatalogexporthiveextract_partition_pagerclient-repo_id-commit_id-base_path-partition_cols-page_size" title="Permanent link">&para;</a></h3>
 <p>Hive format partition iterator each result set is a collection of files under the same partition in lakeFS.</p>
 <div class="admonition example">
@@ -6472,12 +6476,10 @@ Currently only <code>S3</code> is supported.</p>
 <li><code>s3_client</code>: Configured client.</li>
 <li><code>table_src_path(string)</code>: Path to the table spec YAML file in <code>_lakefs_tables</code> (e.g. _lakefs_tables/my_table.yaml).</li>
 <li><code>action_info(table)</code>: The global action object.</li>
-<li><code>options(table)</code>:<ul>
+<li><code>options(table)</code>:</li>
 <li><code>debug(boolean)</code>: Print extra info.</li>
 <li><code>export_base_uri(string)</code>: Override the prefix in S3 e.g. <code>s3://other-bucket/path/</code>.</li>
 <li><code>writer(function(bucket, key, data))</code>: If passed then will not use s3 client, helpful for debug.</li>
-</ul>
-</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -6491,8 +6493,8 @@ Currently only <code>S3</code> is supported.</p>
 <h3 id="lakefscatalogexportglue_exporter"><code>lakefs/catalogexport/glue_exporter</code><a class="headerlink" href="#lakefscatalogexportglue_exporter" title="Permanent link">&para;</a></h3>
 <p>A Package for automating the export process from lakeFS stored tables into Glue catalog.</p>
 <h3 id="lakefscatalogexportglue_exporterexport_glueglue-db-table_src_path-create_table_input-action_info-options"><code>lakefs/catalogexport/glue_exporter.export_glue(glue, db, table_src_path, create_table_input, action_info, options)</code><a class="headerlink" href="#lakefscatalogexportglue_exporterexport_glueglue-db-table_src_path-create_table_input-action_info-options" title="Permanent link">&para;</a></h3>
-<p>Represent lakeFS table in Glue Catalog. 
-This function will create a table in Glue based on configuration. 
+<p>Represent lakeFS table in Glue Catalog.
+This function will create a table in Glue based on configuration.
 It assumes that there is a symlink location that is already created and only configures it by default for the same commit.</p>
 <p>Parameters:</p>
 <ul>
@@ -6500,16 +6502,14 @@ It assumes that there is a symlink location that is already created and only con
 <li><code>db(string)</code>: glue database name</li>
 <li><code>table_src_path(string)</code>: path to table spec (e.g. _lakefs_tables/my_table.yaml)</li>
 <li><code>create_table_input(table)</code>: Input equal mapping to <a href="https://docs.aws.amazon.com/glue/latest/webapi/API_CreateTable.html#API_CreateTable_RequestSyntax">table_input</a> in AWS, the same as we use for <code>glue.create_table</code>.
-should contain inputs describing the data format (e.g. InputFormat, OutputFormat, SerdeInfo) since the exporter is agnostic to this. 
+should contain inputs describing the data format (e.g. InputFormat, OutputFormat, SerdeInfo) since the exporter is agnostic to this.
 by default this function will configure table location and schema.</li>
 <li><code>action_info(table)</code>: the global action object.</li>
-<li><code>options(table)</code>:<ul>
+<li><code>options(table)</code>:</li>
 <li><code>table_name(string)</code>: Override default glue table name</li>
 <li><code>debug(boolean</code></li>
 <li><code>export_base_uri(string)</code>: Override the default prefix in S3 for symlink location e.g. s3://other-bucket/path/</li>
 <li><code>create_db_input(table)</code>: if this is specified, then it indicates we want to create a new database for the table export. The parameter expects a table that is converted to JSON and passed "as is" to AWS and is parallel to the AWS SDK <a href="https://docs.aws.amazon.com/glue/latest/webapi/API_CreateDatabase.html#API_CreateDatabase_RequestSyntax">CreateDatabaseInput</a></li>
-</ul>
-</li>
 </ul>
 <p>When creating a glue table, the final table input will consist of the <code>create_table_input</code> input parameter and lakeFS computed defaults that will override it:</p>
 <ul>
@@ -6526,12 +6526,12 @@ by default this function will configure table location and schema.</li>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="kd">local</span><span class="w"> </span><span class="nv">glue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws</span><span class="p">.</span><span class="nf">glue_client</span><span class="p">(</span><span class="nv">args</span><span class="p">.</span><span class="py">aws_access_key_id</span><span class="p">,</span><span class="w"> </span><span class="nv">args</span><span class="p">.</span><span class="py">aws_secret_access_key</span><span class="p">,</span><span class="w"> </span><span class="nv">args</span><span class="p">.</span><span class="py">aws_region</span><span class="p">)</span>
 </span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1">-- table_input can be passed as a simple Key-Value object in YAML as an argument from an action, this is inline example:</span>
 </span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="kd">local</span><span class="w"> </span><span class="nv">table_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="nv">StorageDescriptor</span><span class="p">:</span><span class="w"> </span>
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="nv">StorageDescriptor</span><span class="p">:</span>
 </span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">    </span><span class="py">InputFormat</span><span class="p">:</span><span class="w"> </span><span class="err">&quot;</span><span class="py">org</span><span class="p">.</span><span class="py">apache</span><span class="p">.</span><span class="py">hadoop</span><span class="p">.</span><span class="py">hive</span><span class="p">.</span><span class="py">ql</span><span class="p">.</span><span class="py">io</span><span class="p">.</span><span class="py">SymlinkTextInputFormat</span><span class="s2">&quot;</span>
 </span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="s2">    OutputFormat: &quot;</span><span class="nv">org</span><span class="p">.</span><span class="py">apache</span><span class="p">.</span><span class="py">hadoop</span><span class="p">.</span><span class="py">hive</span><span class="p">.</span><span class="py">ql</span><span class="p">.</span><span class="py">io</span><span class="p">.</span><span class="py">IgnoreKeyTextOutputFormat</span><span class="s2">&quot;</span>
 </span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="s2">    SerdeInfo:</span>
 </span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="s2">    SerializationLibrary: &quot;</span><span class="nv">org</span><span class="p">.</span><span class="py">apache</span><span class="p">.</span><span class="py">hadoop</span><span class="p">.</span><span class="py">hive</span><span class="p">.</span><span class="py">ql</span><span class="p">.</span><span class="py">io</span><span class="p">.</span><span class="py">parquet</span><span class="p">.</span><span class="py">serde</span><span class="p">.</span><span class="py">ParquetHiveSerDe</span><span class="s2">&quot;</span>
-</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="s2">Parameters: </span>
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="s2">Parameters:</span>
 </span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="s2">    classification: &quot;</span><span class="nv">parquet</span><span class="s2">&quot;</span>
 </span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="s2">    EXTERNAL: &quot;</span><span class="nv">TRUE</span><span class="s2">&quot;</span>
 </span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="s2">    &quot;</span><span class="nv">parquet</span><span class="p">.</span><span class="py">compression</span><span class="s2">&quot;: &quot;</span><span class="nv">SNAPPY</span><span class="s2">&quot;</span>
@@ -6605,7 +6605,7 @@ the <a href="/integrations/unity-catalog/">Unity Catalog docs</a>.</p>
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="p">{</span>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;parent&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;a/b/&quot;</span>
 </span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;base_name&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;c.csv&quot;</span>
-</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="p">}</span>
 </span></code></pre></div>
 </div>
 <h3 id="pathjoinpath_parts"><code>path/join(*path_parts)</code><a class="headerlink" href="#pathjoinpath_parts" title="Permanent link">&para;</a></h3>
@@ -6740,7 +6740,7 @@ Request will time out after 30 seconds.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <div class="language-lua highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="kd">local</span><span class="w"> </span><span class="nv">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">require</span><span class="p">(</span><span class="s2">&quot;net/http&quot;</span><span class="p">)</span>
-</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">code</span><span class="p">,</span><span class="w"> </span><span class="nv">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">)</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="kd">local</span><span class="w"> </span><span class="nv">code</span><span class="p">,</span><span class="w"> </span><span class="nv">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="s2">&quot;&lt;https://example.com&gt;&quot;</span><span class="p">)</span>
 </span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="kr">if</span><span class="w"> </span><span class="nv">code</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="kr">then</span>
 </span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="nv">body</span><span class="p">)</span>
 </span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="kr">else</span>
