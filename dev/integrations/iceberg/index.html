@@ -1819,6 +1819,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How it works
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How it works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-reading-an-iceberg-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Reading an Iceberg Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-writing-an-iceberg-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Writing an Iceberg Table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#related-resources" class="md-nav__link">
     <span class="md-ellipsis">
       Related Resources
@@ -4308,6 +4341,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How it works
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How it works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-reading-an-iceberg-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Reading an Iceberg Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-writing-an-iceberg-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Writing an Iceberg Table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#related-resources" class="md-nav__link">
     <span class="md-ellipsis">
       Related Resources
@@ -4363,6 +4429,7 @@
 <h3 id="what-is-lakefs-iceberg-rest-catalog">What is lakeFS Iceberg REST Catalog?<a class="headerlink" href="#what-is-lakefs-iceberg-rest-catalog" title="Permanent link">&para;</a></h3>
 <p>lakeFS Iceberg REST Catalog allow you to use lakeFS as a <a href="https://github.com/apache/iceberg/blob/main/open-api/rest-catalog-open-api.yaml">spec-compliant</a> Apache <a href="https://editor-next.swagger.io/?url=https://raw.githubusercontent.com/apache/iceberg/main/open-api/rest-catalog-open-api.yaml">Iceberg REST catalog</a>, 
 allowing Iceberg clients to manage and access tables using a standard REST API. </p>
+<p><img alt="lakeFS Iceberg REST Catalog" src="../../assets/img/lakefs_iceberg_rest_catalog.png" /></p>
 <p>Using lakeFS Iceberg REST Catalog, you can use lakeFS a drop-in replacement for other Iceberg catalogs like AWS Glue, Nessie, Hive Metastore - or the lakeFS HadoopCatalog (see <a href="#deprecated-iceberg-hadoopcatalog">below</a>)</p>
 <p>With lakeFS Iceberg REST Catalog, you can:</p>
 <ul>
@@ -4533,8 +4600,8 @@ Creating or deleting a namespace or a table results in a lakeFS commit on the re
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Currently, lakeFS handles table changes as file operations during merges.</p>
-<p>This means that when merging branches with table changes, lakeFS treats the table metadata files as regular files. 
-No special merge logic is applied to handle conflicting table changes, and if there are conflicting changes to the same table in different branches, 
+<p>This means that when merging branches with table changes, lakeFS treats the table metadata files as regular files.</p>
+<p>No special merge logic is applied to handle conflicting table changes, and if there are conflicting changes to the same table in different branches, 
 the merge will fail with a conflict that needs to be resolved manually.</p>
 </div>
 <h3 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h3>
@@ -4597,19 +4664,63 @@ To authenticate, clients must provide their lakeFS access key and secret in the 
 <li>Bulk import capabilities for large-scale migrations</li>
 </ul>
 </li>
+<li><strong>Azure Storage Support</strong></li>
 <li><strong>Advanced Features</strong>:<ul>
 <li>Views API support</li>
 <li>Table transactions</li>
 </ul>
 </li>
-<li><strong>Azure Storage Support</strong></li>
+<li><strong>Advanced versioning capabilities</strong><ul>
+<li>merge non-conflicting table updates</li>
+</ul>
+</li>
 </ol>
+<h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<p>Under the hood, the lakeFS Iceberg REST Catalog keeps track of each table's metadata file. This is typically referred to as the <a href="https://iceberg.apache.org/spec/#overview" target="_blank">table pointer</a>.</p>
+<p>This pointer is stored inside the repository's <a href="../../understand/glossary/#storage-namespace" title="A storage namespace is a path on the underlying storage that defines where a lakeFS repository stores both metadata and data">storage namespace</a>. </p>
+<p>When a request is made, the catalog would examine the table's fully qualified namespace: <code>&lt;repository&gt;.&lt;reference&gt;.&lt;namespace&gt;.&lt;table_name&gt;</code> to read that special pointer file from the given reference specified,
+and returns the underlying object store location of the metadata file to the client. When a table is created or updated, lakeFS would make sure to generate a new metadata file inside the storage namespace, and register
+that metadata file as the current pointer for the requested branch.</p>
+<p>This approach leverages Iceberg's existing metadata and the immutability of its snapshots: a commit in lakeFS captures a metadata file, which in turn captures manifest lists, manifest files and all related data files.</p>
+<p>Besides simply avoiding "double booking" where both Iceberg and lakeFS would need to keep track of which files belong to which version, it also greatly improves the scalability and compatibility of the catalog with the existing Iceberg tool ecosystem.</p>
+<h4 id="example-reading-an-iceberg-table">Example: Reading an Iceberg Table<a class="headerlink" href="#example-reading-an-iceberg-table" title="Permanent link">&para;</a></h4>
+<p>Here's a simplified example of what reading from an Iceberg table would look like:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    Actor Iceberg Client
+    participant lakeFS Catalog API
+    participant lakeFS
+    participant Object Store
+
+    Iceberg Client-&gt;&gt;lakeFS Catalog API: get table metadata("repo.branch.table")
+    lakeFS Catalog API-&gt;&gt;lakeFS: get('repo', 'branch', 'table')
+    lakeFS-&gt;&gt;lakeFS Catalog API: physical_address
+    lakeFS Catalog API-&gt;&gt;Iceberg Client: object location ("s3://.../metadata.json")
+    Iceberg Client-&gt;&gt;Object Store: GetObject
+    Object Store-&gt;&gt;Iceberg Client: table data</code></pre>
+<h4 id="example-writing-an-iceberg-table">Example: Writing an Iceberg Table<a class="headerlink" href="#example-writing-an-iceberg-table" title="Permanent link">&para;</a></h4>
+<p>Here's a simplified example of what writing to an Iceberg table would look like:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    Actor Iceberg Client
+    participant lakeFS Catalog API
+    participant lakeFS
+    participant Object Store
+    Iceberg Client-&gt;&gt;Object Store: table data
+    Iceberg Client-&gt;&gt;lakeFS Catalog API: commit
+    lakeFS Catalog API-&gt;&gt;lakeFS: create branch("branch-tx-uuid")
+    lakeFS Catalog API-&gt;&gt;lakeFS: put('new table pointer')
+    lakeFS-&gt;&gt;Object Store: PutObject("metdata.json")
+    lakeFS Catalog API-&gt;&gt;lakeFS: merge('branch-tx-uuid', 'branch)
+    lakeFS Catalog API-&gt;&gt;Iceberg Client: done</code></pre>
 <h3 id="related-resources">Related Resources<a class="headerlink" href="#related-resources" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Further Reading</p>
 <ul>
 <li><a href="https://editor-next.swagger.io/?url=https://raw.githubusercontent.com/apache/iceberg/main/open-api/rest-catalog-open-api.yaml">Iceberg REST Catalog API Specification</a></li>
 <li><a href="https://iceberg.apache.org/docs/latest/">Iceberg Official Documentation</a></li>
 <li><a href="../../enterprise/">lakeFS Enterprise Features</a></li>
 </ul>
+</div>
+<hr />
 <h2 id="deprecated-iceberg-hadoopcatalog">Deprecated: Iceberg HadoopCatalog<a class="headerlink" href="#deprecated-iceberg-hadoopcatalog" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
