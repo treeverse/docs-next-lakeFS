@@ -4052,14 +4052,14 @@ You might use this command on Linux:</p>
 </span></code></pre></div>
 <p>Go to "Data &gt;&gt; Delta Sharing" on the DataBricks environment.  Once Treeverse have configured lakeFS Delta Sharing on your account with your config URL,
 the "lakefs-cloud" provider should appear under "Shared with me".</p>
-<p><img src="../assets/img/unity-delta-sharing-provider.png" alt="lakeFS-Cloud provider appearing on DataBricks Delta Sharing / Shared with me" class="quickstart"/></p>
+<p><img src="../../assets/img/unity-delta-sharing-provider.png" alt="lakeFS-Cloud provider appearing on DataBricks Delta Sharing / Shared with me" class="quickstart"/></p>
 <p>Click the provider to see its shares.</p>
-<p><img src="../assets/img/unity-delta-sharing-shares.png" alt="lakeFS-Cloud provider, showing share and create catalog" class="quickstart"/></p>
+<p><img src="../../assets/img/unity-delta-sharing-shares.png" alt="lakeFS-Cloud provider, showing share and create catalog" class="quickstart"/></p>
 <p>You can now create a catalog from these shares.</p>
-<p><img src="../assets/img/unity-delta-sharing-create-catalog.png" alt="lakeFS-Cloud provider, create catalog from share" class="quickstart"/></p>
+<p><img src="../../assets/img/unity-delta-sharing-create-catalog.png" alt="lakeFS-Cloud provider, create catalog from share" class="quickstart"/></p>
 <p>And you can see schemas for each of the branches that you configured in the share.  Here branch name <code>dev_experiment1</code> matches the pattern <code>dev_*</code> that
 we defined in the configuration object <code>lakefs-delta-sharing.yaml</code>, so it appears as a schema.</p>
-<p><img src="../assets/img/unity-delta-sharing-schema-per-branch.png" alt="lakeFS-Cloud provider, every configured branch is a schema" class="quickstart"/></p>
+<p><img src="../../assets/img/unity-delta-sharing-schema-per-branch.png" alt="lakeFS-Cloud provider, every configured branch is a schema" class="quickstart"/></p>
 <p>At this point you have configured Delta Sharing on lakeFS, and DataBricks to communicate with lakeFS delta sharing.  No further Treeverse involvement is required.<br />
 Updates to <code>lakefs_delta_sharing.yaml</code> will update within a minute of uploading a new version.</p>
 <h3 id="4-configure-tables">4. Configure tables<a class="headerlink" href="#4-configure-tables" title="Permanent link">&para;</a></h3>
