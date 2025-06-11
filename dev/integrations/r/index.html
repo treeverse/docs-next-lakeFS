@@ -4158,15 +4158,15 @@
 <h1 id="using-r-with-lakefs">Using R with lakeFS<a class="headerlink" href="#using-r-with-lakefs" title="Permanent link">&para;</a></h1>
 <p>R is a powerful language used widely in data science. lakeFS interfaces with R in two ways: </p>
 <ul>
-<li>To <strong>read and write data in lakeFS</strong> use standard S3 tools such as the <code>aws.s3</code> library. lakeFS has a <a href="https://docs.lakefs.io/understand/architecture.html#s3-gateway">S3 gateway</a> which presents a lakeFS repository as an S3 bucket. </li>
-<li>For working with <strong>lakeFS operations such as branches and commits</strong> use the <a href="https://docs.lakefs.io/reference/api.html">API</a> for which can be accessed from R using the <code>httr</code> library. </li>
+<li>To <strong>read and write data in lakeFS</strong> use standard S3 tools such as the <code>aws.s3</code> library. lakeFS has a <a href="../../understand/architecture/#s3-gateway">S3 gateway</a> which presents a lakeFS repository as an S3 bucket. </li>
+<li>For working with <strong>lakeFS operations such as branches and commits</strong> use the <a href="../../reference/api/">API</a> for which can be accessed from R using the <code>httr</code> library. </li>
 </ul>
 <div class="admonition examples">
 <p class="admonition-title">Examples</p>
 <p>To see examples of R in action with lakeFS please visit the <a href="https://github.com/treeverse/lakeFS-samples/">lakeFS-samples</a> repository and the <a href="https://github.com/treeverse/lakeFS-samples/blob/main/00_notebooks/R.ipynb">sample</a> <a href="https://github.com/treeverse/lakeFS-samples/blob/main/00_notebooks/R-weather.ipynb">notebooks</a></p>
 </div>
 <h2 id="reading-and-writing-from-lakefs-with-r">Reading and Writing from lakeFS with R<a class="headerlink" href="#reading-and-writing-from-lakefs-with-r" title="Permanent link">&para;</a></h2>
-<p>Working with data stored in lakeFS from R is the same as you would with an S3 bucket, via the <a href="https://docs.lakefs.io/understand/architecture.html#s3-gateway">S3 Gateway that lakeFS provides</a>.</p>
+<p>Working with data stored in lakeFS from R is the same as you would with an S3 bucket, via the <a href="../../understand/architecture/#s3-gateway">S3 Gateway that lakeFS provides</a>.</p>
 <p>You can use any library that interfaces with S3. In this example we'll use the <a href="https://github.com/cloudyr/aws.s3">aws.s3</a> library.</p>
 <div class="language-r highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;aws.s3&quot;</span><span class="p">))</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">aws.s3</span><span class="p">)</span>
@@ -4262,7 +4262,7 @@
 </span></code></pre></div>
 <h2 id="performing-lakefs-operations-using-the-lakefs-api-from-r">Performing lakeFS Operations using the lakeFS API from R<a class="headerlink" href="#performing-lakefs-operations-using-the-lakefs-api-from-r" title="Permanent link">&para;</a></h2>
 <p>As well as reading and writing data, you will also want to carry out lakeFS operations from R including creating branches, committing data, and more. </p>
-<p>To do this call the lakeFS <a href="https://docs.lakefs.io/reference/api.html">API</a> from the <code>httr</code> library. You should refer to the API documentation for full details of the endpoints and their behaviour. Below are a few examples to illustrate the usage. </p>
+<p>To do this call the lakeFS <a href="../../reference/api/">API</a> from the <code>httr</code> library. You should refer to the API documentation for full details of the endpoints and their behaviour. Below are a few examples to illustrate the usage. </p>
 <h3 id="check-the-lakefs-server-version">Check the lakeFS Server Version<a class="headerlink" href="#check-the-lakefs-server-version" title="Permanent link">&para;</a></h3>
 <p>This is a useful API call to establish connectivity and test authentication. </p>
 <div class="language-r highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">httr</span><span class="p">)</span>
@@ -4275,7 +4275,7 @@
 </span></code></pre></div>
 <p>The returned object <code>r</code> can be inspected to determine the outcome of the operation by comparing it to the status codes specified in the API. Here is some example R code to demonstrate the idea: </p>
 <div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="o">$</span><span class="n">status_code</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;✅lakeFS credentials and connectivity verified. ℹ️lakeFS version &quot;</span><span class="p">,</span><span class="nf">content</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">$</span><span class="n">version</span><span class="p">))</span><span class="w">   </span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;✅ lakeFS credentials and connectivity verified. ℹ️ lakeFS version &quot;</span><span class="p">,</span><span class="nf">content</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">$</span><span class="n">version</span><span class="p">))</span><span class="w">   </span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;🛑 failed to get lakeFS version&quot;</span><span class="p">)</span>
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">content</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">$</span><span class="n">message</span><span class="p">)</span>

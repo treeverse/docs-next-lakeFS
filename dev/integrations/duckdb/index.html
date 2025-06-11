@@ -4057,7 +4057,7 @@
 <p><a href="https://duckdb.org/" target="_blank">DuckDB</a> is an in-process SQL OLAP database management system. You can access data in lakeFS from DuckDB, as well as use DuckDB from within the web interface of lakeFS</p>
 <h2 id="accessing-lakefs-from-duckdb">Accessing lakeFS from DuckDB<a class="headerlink" href="#accessing-lakefs-from-duckdb" title="Permanent link">&para;</a></h2>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
-<p>Querying data in lakeFS from DuckDB is similar to querying data in S3 from DuckDB. It is done using the <a href="https://duckdb.org/docs/stable/core_extensions/httpfs/overview" target="_blank">httpfs extension</a> connecting to the <a href="https://docs.lakefs.io/understand/architecture.html#s3-gateway">S3 Gateway that lakeFS provides</a>.</p>
+<p>Querying data in lakeFS from DuckDB is similar to querying data in S3 from DuckDB. It is done using the <a href="https://duckdb.org/docs/stable/core_extensions/httpfs/overview" target="_blank">httpfs extension</a> connecting to the <a href="../../understand/architecture/#s3-gateway">S3 Gateway that lakeFS provides</a>.</p>
 <p>If not loaded already, install and load the <code>HTTPFS</code> extension: </p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">INSTALL</span><span class="w"> </span><span class="n">httpfs</span><span class="p">;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">LOAD</span><span class="w"> </span><span class="n">httpfs</span><span class="p">;</span>

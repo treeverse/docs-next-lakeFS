@@ -4801,7 +4801,7 @@ we're doing roughly 625 requests/core, so 24 cores should cover our peak traffic
 <p>On to the PostgreSQL instance - at 500k, the expected dataset size is <code>150MiB (for 100k records) * 25 = 3750 MiB</code>. 
 To ensure we have enough RAM to hold this, we'll need at least 15 GiB of RAM, so we'll go with a <code>db.r5.xlarge</code> (4 vCPUs, 32GB RAM) Aurora instance.
 An equivalent database instance on GCP or Azure should give similar results.</p>
-<p><img src="../assets/img/reference_arch2.png" alt="Automated pipelines lakeFS reference architecture"/></p>
+<p><img alt="Automated pipelines lakeFS reference architecture" src="../../assets/img/reference_arch2.png" /></p>
 
 
 

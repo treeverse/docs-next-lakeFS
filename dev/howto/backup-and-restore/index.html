@@ -4264,14 +4264,14 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">lakefs_sdk_client</span><span class="o">.</span><span class="n">internal_api</span><span class="o">.</span><span class="n">dump_refs</span><span class="p">(</span><span class="s2">&quot;example-repo&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <ul>
-<li>Example commands to dump metadata by using <a href="https://docs.lakefs.io/reference/cli.html#lakectl-refs-dump">lakeFS CLI</a> and upload to S3 storage for the repository:</li>
+<li>Example commands to dump metadata by using <a href="../../reference/cli/#lakectl-refs-dump">lakeFS CLI</a> and upload to S3 storage for the repository:</li>
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>lakectl<span class="w"> </span>refs-dump<span class="w"> </span>lakefs://example-repo<span class="w"> </span>&gt;<span class="w"> </span>refs_manifest.json
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>refs_manifest.json<span class="w"> </span>s3://source-bucket-name/example-repo/_lakefs/refs_manifest.json
 </span></code></pre></div>
 <ul>
-<li>Example commands to dump metadata by using <a href="https://docs.lakefs.io/reference/cli.html#lakectl-refs-dump">lakeFS CLI</a> and upload to Azure Blob storage for the repository:</li>
+<li>Example commands to dump metadata by using <a href="../../reference/cli/#lakectl-refs-dump">lakeFS CLI</a> and upload to Azure Blob storage for the repository:</li>
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>lakectl<span class="w"> </span>refs-dump<span class="w"> </span>lakefs://example-repo<span class="w"> </span>&gt;<span class="w"> </span>refs_manifest.json
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
@@ -4311,12 +4311,12 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">lakefs</span><span class="o">.</span><span class="n">Repository</span><span class="p">(</span><span class="s2">&quot;target-example-repo&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">bare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">storage_namespace</span><span class="o">=</span><span class="s2">&quot;https://target-storage-account-name.blob.core.windows.net/targetContainer/example-repo&quot;</span><span class="p">,</span> <span class="n">default_branch</span><span class="o">=</span><span class="s2">&quot;same-default-branch-as-in-source-repo&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <ul>
-<li><a href="https://docs.lakefs.io/reference/cli.html#lakectl-repo-create-bare">lakeFS CLI</a> command to create a bare lakeFS repository using S3 storage:</li>
+<li><a href="../../reference/cli/#lakectl-repo-create-bare">lakeFS CLI</a> command to create a bare lakeFS repository using S3 storage:</li>
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>lakectl<span class="w"> </span>repo<span class="w"> </span>create-bare<span class="w"> </span>lakefs://target-example-repo<span class="w"> </span>s3://target-bucket-name/example-repo<span class="w"> </span>--default-branch<span class="w"> </span><span class="s2">&quot;same-default-branch-as-in-source-repo&quot;</span>
 </span></code></pre></div>
 <ul>
-<li><a href="https://docs.lakefs.io/reference/cli.html#lakectl-repo-create-bare">lakeFS CLI</a> command to create a bare lakeFS repository using Azure storage:</li>
+<li><a href="../../reference/cli/#lakectl-repo-create-bare">lakeFS CLI</a> command to create a bare lakeFS repository using Azure storage:</li>
 </ul>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>lakectl repo create-bare lakefs://target-example-repo https://target-storage-account-name.blob.core.windows.net/targetContainer/example-repo --default-branch &quot;same-default-branch-as-in-source-repo&quot;
 </span></code></pre></div>
@@ -4337,12 +4337,12 @@
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">target_lakefs_sdk_client</span><span class="o">.</span><span class="n">internal_api</span><span class="o">.</span><span class="n">restore_refs</span><span class="p">(</span><span class="n">target_repo_name</span><span class="p">,</span> <span class="n">refs_manifest_json</span><span class="p">)</span>
 </span></code></pre></div>
 <ul>
-<li><a href="https://docs.lakefs.io/reference/cli.html#lakectl-refs-restore">lakeFS CLI</a> command to restore metadata to new repository using S3 storage:</li>
+<li><a href="../../reference/cli/#lakectl-refs-restore">lakeFS CLI</a> command to restore metadata to new repository using S3 storage:</li>
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://target-bucket-name/example-repo/_lakefs/refs_manifest.json<span class="w"> </span>-<span class="w"> </span><span class="p">|</span><span class="w"> </span>lakectl<span class="w"> </span>refs-restore<span class="w"> </span>lakefs://target-example-repo<span class="w"> </span>--manifest<span class="w"> </span>-
 </span></code></pre></div>
 <ul>
-<li><a href="https://docs.lakefs.io/reference/cli.html#lakectl-refs-restore">lakeFS CLI</a> command to restore metadata to new repository using Azure storage:</li>
+<li><a href="../../reference/cli/#lakectl-refs-restore">lakeFS CLI</a> command to restore metadata to new repository using Azure storage:</li>
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>az<span class="w"> </span>storage<span class="w"> </span>blob<span class="w"> </span>download<span class="w"> </span>--container-name<span class="w"> </span>targetContainer<span class="w"> </span>--name<span class="w"> </span>example-repo/_lakefs/refs_manifest.json<span class="w"> </span>--account-name<span class="w"> </span>target-storage-account-name<span class="w"> </span>--account-key<span class="w"> </span>&lt;target-storage-account-key&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>lakectl<span class="w"> </span>refs-restore<span class="w"> </span>lakefs://target-example-repo<span class="w"> </span>--manifest<span class="w"> </span>-
 </span></code></pre></div>

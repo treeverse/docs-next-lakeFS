@@ -4179,7 +4179,7 @@
 <li>Minimal Kubernetes versions <code>&gt;=1.23.0</code>. </li>
 <li>Tested Cluster providers EKS, Openshift (Partially).</li>
 <li>Static provisioning only explain below.</li>
-<li>Setting Pods <code>securityContext</code> UID and GID (i.e <code>runAsUser: 1000</code>, <code>runAsGroup: 2000</code>) is very neuanced in nature and does not have wide coverage currently, not supported but might work.</li>
+<li>Setting Pods <code>securityContext</code> UID and GID (i.e <code>runAsUser: 1000</code>, <code>runAsGroup: 2000</code>) is very nuanced in nature and does not have wide coverage currently, not supported but might work.</li>
 <li>Pod only supports access mode <code>ReadOnlyMany</code></li>
 </ul>
 <p><strong>Static Provisioning only (Relevant for pods)</strong></p>
@@ -4213,7 +4213,7 @@ The driver only supports Static Provisioning as of today, and you need an existi
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>helm<span class="w"> </span>show<span class="w"> </span>values<span class="w"> </span>lakefs/everest-lakefs-csi-driver<span class="w"> </span>--version<span class="w"> </span>&lt;version&gt;
 </span></code></pre></div>
 <p><strong>CSI driver config:</strong></p>
-<p>All the driver CLI flags can be configured via environment variables (prefiedx <code>CSI_DRIVER_</code>) and can be passed to the driver.</p>
+<p>All the driver CLI flags can be configured via environment variables (prefixed <code>CSI_DRIVER_</code>) and can be passed to the driver.</p>
 <div class="admonition example">
 <p class="admonition-title">Example: Minimal required arguments not commented</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># image:  </span>
@@ -4264,9 +4264,9 @@ The driver only supports Static Provisioning as of today, and you need an existi
 <p>Once the CSI Driver is installed, we can start using it similarly to how all <code>PersistentVolume</code> (PV) and <code>PersistentVolumeClaim</code> (PVC) are used in Kubernetes.</p>
 <p>The only required argument to set is <code>lakeFSMountUri</code> in the <code>PV</code> (See examples below).</p>
 <h3 id="mount-options">Mount Options<a class="headerlink" href="#mount-options" title="Permanent link">&para;</a></h3>
-<p>Most of the options are optional and can be omitted, but each mount request can be configured with <a href="https://docs.lakefs.io/reference/mount.html#mount-command">everest mount cli options</a>, they are passed as <code>mountOptions</code> in the <code>PVC</code> spec.</p>
+<p>Most of the options are optional and can be omitted, but each mount request can be configured with <a href="../mount/#mount-command">everest mount cli options</a>, they are passed as <code>mountOptions</code> in the <code>PVC</code> spec.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
-<p>The examples demonstrates different mount sncenarios with the CSI Driver.
+<p>The examples demonstrates different mount scenarios with the CSI Driver.
 All of them are essentially running <code>ls &lt;mount-dir&gt;</code> and <code>tail -f /dev/null</code> in a centos container.
 If the mount succeeded you will see the contents of your mount directory.</p>
 <ol>
@@ -4498,7 +4498,7 @@ To completley delete use k delete with --force flag or first delete the PVC: 'ku
 <p><strong>Scale Down:</strong></p>
 <p>replicas: 0 can be set to scale down the StatefulSet and bring back up with replicas: 1.</p>
 <p><strong>Replicas &gt; 1:</strong></p>
-<p>not supported in this example, since the driver only supports static provisoning. 
+<p>not supported in this example, since the driver only supports static provisioning. 
 to use Statefulset with replica &gt; 1 we need to add PersistentVolume(s) manually.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -4581,7 +4581,7 @@ In general, the flags are set in <code>mountOptions</code> and are passed to the
 </span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lakectl-access-key-id &lt;LAKEFS_ACCESS_KEY_ID&gt;</span>
 </span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lakectl-secret-access-key &lt;LAKEFS_SECRET_ACCESS_KEY&gt;</span>
 </span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lakectl-server-url &lt;LAKEFS_ENDPOINT&gt;</span>
-</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">    </span><span class="c1"># WARN: an advanced flag and rarelly needed if at all, performs mount directly using fuser relying on it to exist on the host server without using FUSE syscalls</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">    </span><span class="c1"># WARN: an advanced flag and rarely needed if at all, performs mount directly using fuser relying on it to exist on the host server without using FUSE syscalls</span>
 </span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">    </span><span class="c1"># be default fuse-direct-mount is true</span>
 </span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">    </span><span class="c1"># - fuse-direct-mount false</span>
 </span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">    </span><span class="c1"># - mount-gid 2000</span>

@@ -4113,7 +4113,7 @@
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Available in <strong>lakeFS Cloud</strong> and <strong>lakeFS Enterprise</strong><br/>
-If you're using the open-source version you can check the <a href="https://docs.lakefs.io/security/rbac.html#pluggable-authentication-and-authorization">pluggable APIs</a>.</p>
+If you're using the open-source version you can check the <a href="../rbac/#pluggable-authentication-and-authorization">pluggable APIs</a>.</p>
 </div>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>lakeFS supports authenticating users programmatically using AWS IAM roles instead of using static lakeFS access and secret keys.
@@ -4131,12 +4131,12 @@ For example, consider the following mapping: </p>
 </thead>
 <tbody>
 <tr>
-<td>arn:aws:sts::123456:assumed-role/Dev</td>
-<td>foo</td>
+<td><code>arn:aws:sts::123456:assumed-role/Dev</code></td>
+<td><code>foo</code></td>
 </tr>
 <tr>
-<td>arn:aws:sts::123456:assumed-role/Dev/john@acme.com</td>
-<td>john</td>
+<td><code>arn:aws:sts::123456:assumed-role/Dev/john@acme.com</code></td>
+<td><code>john</code></td>
 </tr>
 </tbody>
 </table>

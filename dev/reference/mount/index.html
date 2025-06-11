@@ -4435,8 +4435,8 @@ Searching for lakeFS credentials and server endpoint in the following order:</p>
 When IAM authentication is configured, Everest will use AWS SDK default behavior that will pick your <strong>AWS environment</strong> to generate a <strong>session token</strong> used for authenticating against lakeFS (i.e use <code>AWS_PROFILE</code>, <code>AWS_ACCESS_KEY_ID</code>, etc). This token is seamlessly refreshed as long as the AWS session remains valid.  </p>
 <h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Make sure your lakeFS server supports <a href="https://docs.lakefs.io/security/external-principals-aws.html">AWS IAM Role Login</a>.</li>
-<li>Make sure your IAM role is attached to lakeFS. See <a href="https://docs.lakefs.io/security/external-principals-aws.html#administration-of-iam-roles-in-lakefs">Administration of IAM Roles in lakeFS</a></li>
+<li>Make sure your lakeFS server supports <a href="../../security/external-principals-aws/">AWS IAM Role Login</a>.</li>
+<li>Make sure your IAM role is attached to lakeFS. See <a href="../../security/external-principals-aws/#administration-of-iam-roles-in-lakefs">Administration of IAM Roles in lakeFS</a></li>
 </ol>
 <h3 id="configure-everest-to-use-iam">Configure everest to use IAM<a class="headerlink" href="#configure-everest-to-use-iam" title="Permanent link">&para;</a></h3>
 <p>To use IAM authentication, new configuration fields were introduced:</p>
@@ -4726,8 +4726,8 @@ Since <code>.everest/source</code> is in source control, it will mount the same 
 <h5>Use lakectl local</h5>
 
 <ul>
-<li>For enabling lakeFS writes with <a href="https://docs.lakefs.io/reference/cli.html#lakectl-local-commit">lakectl local commit</a>.</li>
-<li>To integrate seamlessly with <a href="https://docs.lakefs.io/integrations/git.html">Git</a>.</li>
+<li>For enabling lakeFS writes with <a href="../cli/#lakectl-local-commit">lakectl local commit</a>.</li>
+<li>To integrate seamlessly with <a href="../../integrations/git/">Git</a>.</li>
 </ul>
 <h5>Use lakeFS Mount</h5>
 
