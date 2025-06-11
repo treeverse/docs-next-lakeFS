@@ -4178,7 +4178,7 @@
 <h1 id="etl-testing-with-isolated-devtest-environments">ETL Testing with Isolated Dev/Test Environments<a class="headerlink" href="#etl-testing-with-isolated-devtest-environments" title="Permanent link">&para;</a></h1>
 <h2 id="why-are-multiple-environments-so-important">Why are multiple environments so important?<a class="headerlink" href="#why-are-multiple-environments-so-important" title="Permanent link">&para;</a></h2>
 <p>When working with a data lake, it's useful to have replicas of your production environment. These replicas allow you to test these ETLs and understand changes to your data without impacting the consumers of the production data.</p>
-<p>Running ETL and transformation jobs directly in production without proper ETL testing presents a huge risk of having data issues flow into dashboards, ML models, and other consumers sooner or later. </p>
+<p>Running ETL and transformation jobs directly in production without proper ETL testing presents a huge risk of having data issues flow into dashboards, ML models, and other consumers sooner or later.</p>
 <p>The most common approach to avoid making changes directly in production is to create and maintain multiple data environments and perform ETL testing on them. Dev environments give you a space in which to develop the data pipelines and test environment where pipeline changes are tested before pushing it to production.</p>
 <p>Without lakeFS, the challenge with this approach is that it can be time-consuming and costly to maintain these separate dev/test environments to enable thorough effective ETL testing. And for larger teams it forces multiple people to share these environments, requiring significant coordination. Depending on the size of the data involved there can also be high costs due to the duplication of data.</p>
 <h2 id="how-does-lakefs-help-with-devtest-environments">How does lakeFS help with Dev/Test environments?<a class="headerlink" href="#how-does-lakefs-help-with-devtest-environments" title="Permanent link">&para;</a></h2>
@@ -4242,7 +4242,7 @@
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">lakefs_secret_key</span> <span class="o">=</span> <span class="s1">&#39;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&#39;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">lakefs_endpoint</span> <span class="o">=</span> <span class="s1">&#39;http://lakefs:8000&#39;</span>
 </span></code></pre></div>
-<p>Next, setup the storage namespace to a location in the bucket you have configured. The storage namespace is a location in the underlying storage where data for this repository will be stored. </p>
+<p>Next, setup the storage namespace to a location in the bucket you have configured. The storage namespace is a location in the underlying storage where data for this repository will be stored.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">storageNamespace</span> <span class="o">=</span> <span class="s1">&#39;s3://example/&#39;</span> 
 </span></code></pre></div>
 <p>You can use lakeFS through the UI, API or <code>lakectl</code> command-line. For this use-case, we use python <code>lakefs</code> to run lakeFS core operations.</p>
@@ -4258,7 +4258,7 @@
 </span></code></pre></div>
 <p>lakeFS can be configured to work with Spark in two ways:</p>
 <ul>
-<li>Access lakeFS using the <a href="../../../integrations/spark/#use-the-s3-compatible-api">S3-compatible API</a></li>
+<li>Access lakeFS using the <a href="../../../integrations/spark/#s3-compatible-api">S3-compatible API</a></li>
 <li>Access lakeFS using the <a href="../../../integrations/spark/#lakefs-hadoop-filesystem">lakeFS-specific Hadoop FileSystem</a></li>
 </ul>
 <h4 id="upload-the-sample-data-to-main-branch">Upload the Sample Data to Main Branch<a class="headerlink" href="#upload-the-sample-data-to-main-branch" title="Permanent link">&para;</a></h4>

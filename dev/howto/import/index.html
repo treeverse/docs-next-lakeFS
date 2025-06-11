@@ -4095,10 +4095,10 @@ If you are interested in copying data into lakeFS, see <a href="../copying/">Cop
 <ol>
 <li>Any previously existing objects under the destination prefix will be deleted.</li>
 <li>The import duration depends on the amount of imported objects, but will roughly be a few thousand objects per second.</li>
-<li>For security reasons, if you are using lakeFS on top of your local disk (<code>blockstore.type=local</code>), you need to enable the import feature explicitly. 
+<li>For security reasons, if you are using lakeFS on top of your local disk (<code>blockstore.type=local</code>), you need to enable the import feature explicitly.
 To do so, set the <code>blockstore.local.import_enabled</code> to <code>true</code> and specify the allowed import paths in <code>blockstore.local.allowed_external_prefixes</code> (see <a href="../../reference/configuration/">configuration reference</a>).
-When using lakectl or the lakeFS UI, you can currently import only directories locally. If you need to import a single file, use the <a href="../../reference/api/#/import/importStart">HTTP API</a> or API Clients with <code>type=object</code> in the request body and <code>destination=&lt;full-path-to-file&gt;</code>. </li>
-<li>Making changes to data in the original bucket will not be reflected in lakeFS, and may cause inconsistencies. </li>
+When using lakectl or the lakeFS UI, you can currently import only directories locally. If you need to import a single file, use the <a href="../../reference/api/#/import/importStart">HTTP API</a> or API Clients with <code>type=object</code> in the request body and <code>destination=&lt;full-path-to-file&gt;</code>.</li>
+<li>Making changes to data in the original bucket will not be reflected in lakeFS, and may cause inconsistencies.</li>
 </ol>
 </div>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
@@ -4155,7 +4155,7 @@ the following policy needs to be attached to the lakeFS S3 service-account to al
 <p class="admonition-title">Note</p>
 <p>The use of the <code>adls</code> hint for ADLS Gen2 storage accounts is deprecated, please use the original source url for import.</p>
 </div>
-<p>See <a href="../deploy/azure/#storage-account-credentials">Azure deployment</a> on limitations when using account credentials.</p>
+<p>See [Azure deployment][deploy-azure-storage-account-creds] on limitations when using account credentials.</p>
 </div>
 <div class="tabbed-block">
 <p>No specific prerequisites</p>

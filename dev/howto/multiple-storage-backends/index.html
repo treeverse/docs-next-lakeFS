@@ -4396,7 +4396,7 @@ The <code>blockstores.stores</code> field is an array of storage backends, each 
 <p>For a complete list of available options, refer to the <a href="../../reference/configuration/#blockstores">server configuration reference</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you're upgrading from a single-store lakeFS setup, refer to the <a href="#upgrading-from-single-to-multi-store">upgrade guidelines</a>
+<p>If you're upgrading from a single-store lakeFS setup, refer to the <a href="#upgrading-from-a-single-storage-backend-to-multiple-storage-backends">upgrade guidelines</a>
 to ensure a smooth transition.</p>
 </div>
 <h3 id="example-configurations">Example Configurations<a class="headerlink" href="#example-configurations" title="Permanent link">&para;</a></h3>
@@ -4494,14 +4494,12 @@ to ensure a smooth transition.</p>
   configurations are mutually exclusive - lakeFS does not support both simultaneously.</li>
 <li>Define all previously available <a href="../../reference/configuration/#blockstore">single-blockstore settings</a> under their respective storage backends.</li>
 <li>The <code>signing.secret_key</code> is a required setting global to all connected stores.</li>
-<li>Set <code>backward_compatible: true</code> for the existing storage backend to ensure:<ul>
+<li>Set <code>backward_compatible: true</code> for the existing storage backend to ensure:</li>
 <li>Existing repositories continue to use the original storage backend.</li>
 <li>Newly created repositories default to this backend unless explicitly assigned a different one, to ensure a non-breaking upgrade process.</li>
 <li><strong>This setting is mandatory</strong> — lakeFS will not function if it is unset.  </li>
 <li><strong>Do not remove this setting</strong> as long as you need to support repositories created before the upgrade.
-If removed, lakeFS will fail to start because it will treat existing repositories as disconnected from any configured storage.</li>
-</ul>
-</li>
+    If removed, lakeFS will fail to start because it will treat existing repositories as disconnected from any configured storage.</li>
 </ul>
 <h3 id="adding-or-removing-a-storage-backend">Adding or Removing a Storage Backend<a class="headerlink" href="#adding-or-removing-a-storage-backend" title="Permanent link">&para;</a></h3>
 <p>To add a storage backend, update the server configuration with the new storage entry and restart the server.</p>
@@ -4570,13 +4568,15 @@ configurations. In multi-storage setups, this is the recommended method to list 
 </span></code></pre></div>
 <p>This will create manifest files for each repository.</p>
 <p>Optionally, you can use the <code>--rm</code> flag to automatically delete repositories after successful dump:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Dump and delete a single repository</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Dump and delete a single repository</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>python<span class="w"> </span>lakefs-refs.py<span class="w"> </span>dump<span class="w"> </span>my-repository<span class="w"> </span>--rm
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Or dump and delete all repositories</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>python<span class="w"> </span>lakefs-refs.py<span class="w"> </span>dump<span class="w"> </span>--all<span class="w"> </span>--rm
 </span></code></pre></div>
-2. <strong>Delete Source Repositories</strong> (if not using --rm flag)</p>
+</li>
+<li>
+<p><strong>Delete Source Repositories</strong> (if not using --rm flag)</p>
 <p>If you didn't use the <code>--rm</code> flag in step 1, you'll need to delete the repositories manually. Note that deleting a repository only removes the repository record from lakeFS - it does not delete the actual data files or metadata from your storage.</p>
 <p>You can delete repositories through:</p>
 <p>a. The lakeFS UI
@@ -4682,12 +4682,10 @@ you can use <code>kwargs</code> to pass <code>storage_id</code> dynamically when
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Important Notes</p>
-<ul>
-<li>In multi-storage setups where a storage backend is marked as <code>backward_compatible: true</code>, repository creation requests
-without a storage ID will default to this storage.</li>
-<li>If no storage backend is marked as <code>backward_compatible</code>, repository creation requests without a storage ID will fail.</li>
-<li>Each repository is linked to a single backend and stores data within a single storage namespace on that backend.</li>
-</ul>
+<p>*In multi-storage setups where a storage backend is marked as <code>backward_compatible: true</code>, repository creation requests
+without a storage ID will default to this storage.
+* If no storage backend is marked as <code>backward_compatible</code>, repository creation requests without a storage ID will fail.
+* Each repository is linked to a single backend and stores data within a single storage namespace on that backend.</p>
 </div>
 <h3 id="viewing-repository-details">Viewing Repository Details<a class="headerlink" href="#viewing-repository-details" title="Permanent link">&para;</a></h3>
 <p>To check which storage backend is associated with a repository:</p>

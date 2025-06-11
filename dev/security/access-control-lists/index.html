@@ -4077,29 +4077,39 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>ACLs were <a href="https://lakefs.io/blog/why-moving-acls-out-of-core-lakefs/">removed from core lakeFS</a>.</p>
-<p>For a more robust authorization solution, please see <a href="../rbac/">Role-Based Access Control</a>, available in <a href="..../cloud/index.md">lakeFS Cloud</a> and <a href="..../enterprise/index.md">lakeFS Enterprise</a>.<br />
+<p>For a more robust authorization solution, please see <a href="../rbac/">Role-Based Access Control</a>, available in <a href="../../cloud/">lakeFS Cloud</a> and <a href="../../enterprise/">lakeFS Enterprise</a>.<br />
 The following documentation is aimed for users with existing installations who wish to continue working with ACLs. </p>
 </div>
 <h2 id="basic-auth-functionality">Basic Auth Functionality<a class="headerlink" href="#basic-auth-functionality" title="Permanent link">&para;</a></h2>
 <p>New lakeFS versions will provide basic auth functionality featuring a single Admin user with a single set of credentials.
 Existing lakeFS installations that have a single user and a single set of credentials will migrate seamlessly to the new version.<br />
-Installations that have more than one user / credentials will require to run a command and choose which set of user + credentials to migrate 
+Installations that have more than one user / credentials will require to run a command and choose which set of user + credentials to migrate
 (more details <a href="#migration-of-existing-user">here</a>)</p>
 <h3 id="credentials-replacement">Credentials Replacement<a class="headerlink" href="#credentials-replacement" title="Permanent link">&para;</a></h3>
-<p>In a single user setup, replacing credentials can be done as follows:
-1. Delete the existing user:
-    <div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>lakectl<span class="w"> </span>auth<span class="w"> </span>users<span class="w"> </span>delete<span class="w"> </span>--id<span class="w"> </span>&lt;user-id&gt;
+<p>In a single user setup, replacing credentials can be done as follows:</p>
+<ol>
+<li>
+<p>Delete the existing user:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>lakectl<span class="w"> </span>auth<span class="w"> </span>users<span class="w"> </span>delete<span class="w"> </span>--id<span class="w"> </span>&lt;user-id&gt;
 </span></code></pre></div>
-2. Shut down the lakeFS server - Required for invalidating the old credentials on the server
-3. Create a new user, with the same name and new credentials:
-    <div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>lakefs<span class="w"> </span>superuser<span class="w"> </span>--user-name<span class="w"> </span>&lt;user-id&gt;
+</li>
+<li>
+<p>Shut down the lakeFS server - Required for invalidating the old credentials on the server</p>
+</li>
+<li>
+<p>Create a new user, with the same name and new credentials:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>lakefs<span class="w"> </span>superuser<span class="w"> </span>--user-name<span class="w"> </span>&lt;user-id&gt;
 </span></code></pre></div>
-    This will generate a new set of credentials, and will print it out to the screen:
-    <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>credentials:
+<p>This will generate a new set of credentials, and will print it out to the screen:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>credentials:
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  access_key_id: *** (omitted)
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  secret_access_key: *** (omitted)
 </span></code></pre></div>
-4. Re-run lakeFS server</p>
+</li>
+<li>
+<p>Re-run lakeFS server</p>
+</li>
+</ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Calling the <code>superuser</code> command with pre-defined <code>--access-key-id</code> and <code>--secret-access-key</code> is possible,
@@ -4118,8 +4128,8 @@ In order to do that, users will need to run the separate ACL server as part of t
 <p>Under the <code>contrib/auth/acl</code> you will be able to find an ACL server reference.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This implementation is a reference and is not fit for production use. </p>
-<p>For a more robust authorization solution, please see <a href="../rbac/">Role-Based Access Control</a>, available in <a href="..../cloud/index.md">lakeFS Cloud</a> and <a href="..../enterprise/index.md">lakeFS Enterprise</a>. </p>
+<p>This implementation is a reference and is not fit for production use.</p>
+<p>For a more robust authorization solution, please see <a href="../rbac/">Role-Based Access Control</a>, available in <a href="../../cloud/">lakeFS Cloud</a> and <a href="../../enterprise/">lakeFS Enterprise</a>. </p>
 </div>
 <p>The configuration of the ACL server is similar to lakeFS configuration, here's an example of an <code>.aclserver.yaml</code> config file:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nn">---</span>
@@ -4147,7 +4157,7 @@ In order to do that, users will need to run the separate ACL server as part of t
 <h3 id="migration-of-existing-user">Migration of existing user<a class="headerlink" href="#migration-of-existing-user" title="Permanent link">&para;</a></h3>
 <p>For installation with multiple users / credentials, upgrading to the new lakeFS version requires choosing which user + credentials will be used for the single user mode.
 This is done via the <code>lakefs superuser</code> command.
-For example, if you have a user with username <code>&lt;my-username&gt;</code> and credential key <code>&lt;my-access-key-id&gt;</code> use the following command to migrate that user: </p>
+For example, if you have a user with username <code>&lt;my-username&gt;</code> and credential key <code>&lt;my-access-key-id&gt;</code> use the following command to migrate that user:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>lakefs<span class="w"> </span>superuser<span class="w"> </span>--user-name<span class="w"> </span>&lt;my-username&gt;<span class="w"> </span>--access-key-id<span class="w"> </span>&lt;my-access-key-id&gt;
 </span></code></pre></div>
 <p>After running the command you will be able to access the installation using the user's access key id and its respective secret access key.</p>

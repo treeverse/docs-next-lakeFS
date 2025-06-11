@@ -4166,11 +4166,11 @@
 <p>lakeFS authenticates users from a built-in authentication database.</p>
 <h4 id="built-in-database">Built-in database<a class="headerlink" href="#built-in-database" title="Permanent link">&para;</a></h4>
 <p>The built-in authentication database is always present and active. You can use the
-Web UI at Administration / Users to create users. </p>
+Web UI at Administration / Users to create users.</p>
 <p>Users have an access key <code>AKIA...</code> and an associated secret access key. These credentials are valid
 for logging into the Web UI or authenticating programmatic requests to the API Server or the S3 Gateway.</p>
 <h4 id="remote-authenticator-service">Remote Authenticator Service<a class="headerlink" href="#remote-authenticator-service" title="Permanent link">&para;</a></h4>
-<p>lakeFS server supports external authentication, the feature can be configured by providing an HTTP endpoint to an external authentication service. 
+<p>lakeFS server supports external authentication, the feature can be configured by providing an HTTP endpoint to an external authentication service.
 This integration can be especially useful if you already have an existing authentication system in place, as it allows you to reuse that system instead of maintaining a new one.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4194,8 +4194,8 @@ Clients such as the AWS SDK that implement these authentication methods should w
 <p>This feature is deprecated. For single sign-on with lakeFS, try <a href="https://lakefs.cloud">lakeFS Cloud</a></p>
 </div>
 <p>OpenID Connect (OIDC) is a simple identity layer on top of the OAuth 2.0 protocol.
-You can configure lakeFS to enable OIDC to manage your lakeFS users externally. 
-Essentially, once configured, this enables you the benefit of OpenID connect, such as a single sign-on (SSO), etc. </p>
+You can configure lakeFS to enable OIDC to manage your lakeFS users externally.
+Essentially, once configured, this enables you the benefit of OpenID connect, such as a single sign-on (SSO), etc.</p>
 <h3 id="configuring-lakefs-server-for-oidc">Configuring lakeFS server for OIDC<a class="headerlink" href="#configuring-lakefs-server-for-oidc" title="Permanent link">&para;</a></h3>
 <p>To support OIDC, add the following to your <a href="../../reference/configuration/">lakeFS configuration</a>:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">auth</span><span class="p">:</span>
@@ -4209,7 +4209,7 @@ Essentially, once configured, this enables you the benefit of OpenID connect, su
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nt">friendly_name_claim_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="w">                      </span><span class="c1">#  Optional: use the value from this claim as the user&#39;s display name</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nt">persist_friendly_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">                         </span><span class="c1">#  Optional: persist friendly name to KV store so it can be displayed in the user list</span>
 </span></code></pre></div>
-<p>Your login page will now include a link to sign in using the 
+<p>Your login page will now include a link to sign in using the
 OIDC provider. When a user first logs in through the provider, a corresponding user is created in lakeFS.</p>
 <h4 id="friendly-name-persistence">Friendly Name Persistence<a class="headerlink" href="#friendly-name-persistence" title="Permanent link">&para;</a></h4>
 <p>When the <code>persist_friendly_name</code> configuration property is set to <code>true</code> <strong>and</strong> <code>friendly_name_claim_name</code> is set to a valid claim name, which exists in the incoming <code>id_token</code>, the friendly name will be persisted to the KV store. This will allow users with access to the lakeFS administration section to see friendly names in the users list, when listing group members, and when adding/removing group members.<br />
@@ -4222,13 +4222,13 @@ The friendly name stored in KV is updated with each successful login, if the inc
 </ol>
 </div>
 <h2 id="user-permissions">User permissions<a class="headerlink" href="#user-permissions" title="Permanent link">&para;</a></h2>
-<p>Authorization is managed via <a href="/security/rbac/}">lakeFS groups and policies</a>.</p>
+<p>Authorization is managed via <a href="../rbac/">lakeFS groups and policies</a>.</p>
 <p>By default, an externally managed user is assigned to the lakeFS groups configured in the <em>default_initial_groups</em> property above.
 For a user to be assigned to other groups, add the <em>initial_groups</em> claim to their <strong>ID token</strong> claims. The claim should contain a
 comma-separated list of group names.</p>
 <p>Once the user has been created, you can manage their permissions from the Administration pages in the lakeFS UI or using <em>lakectl</em>.</p>
 <h3 id="using-a-different-claim-name">Using a different claim name<a class="headerlink" href="#using-a-different-claim-name" title="Permanent link">&para;</a></h3>
-<p>To supply the initial groups using another claim from your ID token, you can use the <code>auth.oidc.initial_groups_claim_name</code> 
+<p>To supply the initial groups using another claim from your ID token, you can use the <code>auth.oidc.initial_groups_claim_name</code>
 lakeFS configuration. For example, to take the initial groups from the <em>roles</em> claim, add:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">auth</span><span class="p">:</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">oidc</span><span class="p">:</span>

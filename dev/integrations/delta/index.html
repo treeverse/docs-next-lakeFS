@@ -4152,16 +4152,16 @@
 <li>lakeFS supports zero-copy branching for quick experimentation with full isolation.</li>
 </ol>
 <h2 id="delta-lake-tables-from-the-lakefs-perspective">Delta Lake Tables from the lakeFS Perspective<a class="headerlink" href="#delta-lake-tables-from-the-lakefs-perspective" title="Permanent link">&para;</a></h2>
-<p>lakeFS is a data versioning tool, functioning at the <strong>object</strong> level. This implies that, by default, lakeFS remains agnostic 
-to whether the objects within a Delta table location represent a table, table metadata, or data. As per the Delta Lake <a href="https://github.com/delta-io/delta/blob/master/PROTOCOL.md">protocol</a>, 
-any modification to a table—whether it involves adding data or altering table metadata—results in the creation of a new object 
-in the table's <a href="https://www.databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html">transaction log</a>. 
+<p>lakeFS is a data versioning tool, functioning at the <strong>object</strong> level. This implies that, by default, lakeFS remains agnostic
+to whether the objects within a Delta table location represent a table, table metadata, or data. As per the Delta Lake <a href="https://github.com/delta-io/delta/blob/master/PROTOCOL.md">protocol</a>,
+any modification to a table—whether it involves adding data or altering table metadata—results in the creation of a new object
+in the table's <a href="https://www.databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html">transaction log</a>.
 Typically, residing under the <code>_delta_log</code> path, relative to the root of the table's directory. This new object has an incremented version compared to its predecessor.</p>
-<p>Consequently, when making changes to a Delta table within the lakeFS environment, these changes are reflected as changes 
-to objects within the table location. For instance, inserting a record into a table named "my-table," which is partitioned 
+<p>Consequently, when making changes to a Delta table within the lakeFS environment, these changes are reflected as changes
+to objects within the table location. For instance, inserting a record into a table named "my-table," which is partitioned
 by 'category' and 'country,' is represented in lakeFS as added objects within the table prefix (i.e., the table data) and the table transaction log.
 <img alt="Record addition" src="../../assets/img/delta-record-addition.png" /></p>
-<p>Similarly, when performing a metadata operation such as renaming a table column, new objects are appended to the table transaction log, 
+<p>Similarly, when performing a metadata operation such as renaming a table column, new objects are appended to the table transaction log,
 indicating the schema change.
 <img alt="Record addition" src="../../assets/img/delta-schema-change.png" /></p>
 <h2 id="using-delta-lake-with-lakefs-from-apache-spark">Using Delta Lake with lakeFS from Apache Spark<a class="headerlink" href="#using-delta-lake-with-lakefs-from-apache-spark" title="Permanent link">&para;</a></h2>
@@ -4194,7 +4194,7 @@ indicating the schema change.
 </span></code></pre></div>
 <p>To see the integration in action see <a href="https://github.com/treeverse/lakeFS-samples/blob/main/00_notebooks/delta-lake-python.ipynb">this notebook</a> in the <a href="https://github.com/treeverse/lakeFS-samples/">lakeFS Samples Repository</a>.</p>
 <h2 id="exporting-delta-lake-tables-from-lakefs-into-unity-catalog">Exporting Delta Lake tables from lakeFS into Unity Catalog<a class="headerlink" href="#exporting-delta-lake-tables-from-lakefs-into-unity-catalog" title="Permanent link">&para;</a></h2>
-<p>This option is for users who are managing Delta Lake tables with lakeFS and access them through Databricks <a href="https://www.databricks.com/product/unity-catalog">Unity Catalog</a>. lakeFS offers 
+<p>This option is for users who are managing Delta Lake tables with lakeFS and access them through Databricks <a href="https://www.databricks.com/product/unity-catalog">Unity Catalog</a>. lakeFS offers
 a <a href="../../howto/catalog_exports/">Data Catalog Export</a> functionality that provides read-only access to your Delta tables from within Unity catalog. Using the data catalog exporters,<br />
 you can work on Delta tables in isolation and easily explore them within the Unity Catalog.</p>
 <p>Once exported, you can query the versioned table data with:</p>
@@ -4218,7 +4218,7 @@ you can work on Delta tables in isolation and easily explore them within the Uni
 <p class="admonition-title">Note</p>
 <p>lakeFS currently lacks its own implementation for a LogStore, and the default Log store used does not control concurrency.</p>
 </div>
-<p>To address these limitations, consider following <a href="#use-lakefs-branches-and-merges-to-support-multi-writers">best practices for implementing multi-writer support</a>.</p>
+<p>To address these limitations, consider following <a href="#implementing-multi-writer-support-through-lakefs-branches-and-merges">best practices for implementing multi-writer support</a>.</p>
 <h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <h3 id="implementing-multi-writer-support-through-lakefs-branches-and-merges">Implementing Multi-Writer Support through lakeFS Branches and Merges<a class="headerlink" href="#implementing-multi-writer-support-through-lakefs-branches-and-merges" title="Permanent link">&para;</a></h3>
 <p>To achieve safe multi-writes to a Delta Lake table on lakeFS, we recommend following these best practices:</p>
@@ -4241,22 +4241,21 @@ you can work on Delta tables in isolation and easily explore them within the Uni
 <a href="../../howto/garbage-collection/gc/">lakeFS Garbage Collection</a> to hard-delete them from the storage.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>lakeFS enables you to recover from undesired vacuum runs by reverting the changes done by a vacuum run before running Garbage Collection.     </p>
+<p>lakeFS enables you to recover from undesired vacuum runs by reverting the changes done by a vacuum run before running Garbage Collection.</p>
 </div>
 <h3 id="when-running-lakefs-inside-your-vpc-on-aws">When running lakeFS inside your VPC (on AWS)<a class="headerlink" href="#when-running-lakefs-inside-your-vpc-on-aws" title="Permanent link">&para;</a></h3>
-<p>When lakeFS runs inside your private network, your Databricks cluster needs to be able to access it. 
-This can be done by setting up a VPC peering between the two VPCs 
+<p>When lakeFS runs inside your private network, your Databricks cluster needs to be able to access it.
+This can be done by setting up a VPC peering between the two VPCs
 (the one where lakeFS runs and the one where Databricks runs). For this to work on Delta Lake tables, you would also have to disable multi-cluster writes with:</p>
 <div class="language-properties highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">spark.databricks.delta.multiClusterWrites.enabled</span><span class="w"> </span><span class="s">false</span>
 </span></code></pre></div>
 <h3 id="using-multi-cluster-writes-on-aws">Using multi cluster writes (on AWS)<a class="headerlink" href="#using-multi-cluster-writes-on-aws" title="Permanent link">&para;</a></h3>
-<p>When using multi-cluster writes, Databricks overrides Delta’s S3-commit action. </p>
-<p>The new action tries to contact lakeFS from servers on Databricks’ own AWS account, which of course won’t be able to access your private network. 
-So, if you must use multi-cluster writes, you’ll have to allow access from Databricks’ AWS account to lakeFS. 
+<p>When using multi-cluster writes, Databricks overrides Delta’s S3-commit action.</p>
+<p>The new action tries to contact lakeFS from servers on Databricks’ own AWS account, which of course won’t be able to access your private network.
+So, if you must use multi-cluster writes, you’ll have to allow access from Databricks’ AWS account to lakeFS.
 If you are trying to achieve that, please reach out on Slack and the community will try to assist.</p>
 <h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
-<p>See <a href="https://lakefs.io/blog/guarantee-consistency-in-your-delta-lake-tables-with-lakefs/">Guaranteeing Consistency in Your Delta Lake Tables With lakeFS</a> post on the lakeFS blog to learn how to 
-guarantee data quality in a Delta table by utilizing lakeFS branches.</p>
+<p>See <a href="https://lakefs.io/blog/guarantee-consistency-in-your-delta-lake-tables-with-lakefs/">Guaranteeing Consistency in Your Delta Lake Tables With lakeFS</a> post on the lakeFS blog to learn how to guarantee data quality in a Delta table by utilizing lakeFS branches.</p>
 
 
 

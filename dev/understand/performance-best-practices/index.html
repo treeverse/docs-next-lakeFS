@@ -4063,7 +4063,7 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>Use this guide to achieve the best performance with lakeFS.</p>
 <h2 id="avoid-concurrent-commitsmerges">Avoid concurrent commits/merges<a class="headerlink" href="#avoid-concurrent-commitsmerges" title="Permanent link">&para;</a></h2>
-<p>Just like in Git, branch history is composed by commits and is linear by nature. 
+<p>Just like in Git, branch history is composed by commits and is linear by nature.
 Concurrent commits/merges on the same branch result in a race. The first operation will finish successfully while the rest will retry.</p>
 <h2 id="perform-meaningful-commits">Perform meaningful commits<a class="headerlink" href="#perform-meaningful-commits" title="Permanent link">&para;</a></h2>
 <p>It's a good idea to perform commits that are meaningful in the senese that they represent a logical point in your data's lifecycle. While lakeFS supports arbirartily large commits, avoiding commits with a huge number of objects will result in a more comprehensible commit history.</p>
@@ -4090,7 +4090,7 @@ lakeFS offers multiple ways to do that:</p>
 </ul>
 <p>Accessing the object store directly is a faster way to interact with your data.</p>
 <h2 id="zero-copy">Zero-copy<a class="headerlink" href="#zero-copy" title="Permanent link">&para;</a></h2>
-<p>lakeFS provides a zero-copy mechanism to data. Instead of copying the data, we can check out to a new branch. 
+<p>lakeFS provides a zero-copy mechanism to data. Instead of copying the data, we can check out to a new branch.
 Creating a new branch will take constant time as the new branch points to the same data as its parent.
 It will also lower the storage cost.</p>
 
