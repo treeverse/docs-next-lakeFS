@@ -4152,16 +4152,11 @@
 
 <h1 id="welcome-to-the-lake">Welcome to the Lake!<a class="headerlink" href="#welcome-to-the-lake" title="Permanent link">&para;</a></h1>
 <p><img src="./assets/img/waving-axolotl-transparent.gif" width="90"/></p>
-<h2>lakeFS brings software engineering best practices and applies them to data</h2>
-
+<p><strong>lakeFS brings software engineering best practices and applies them to data.</strong> </p>
 <p>lakeFS provides version control over the data lake, and uses Git-like semantics to create and access those versions. If you know git, you'll be right at home with lakeFS.</p>
 <p>With lakeFS, you can apply concepts to your data lake such as <strong>branching</strong> to create an isolated version of the data, <strong>committing</strong> to create a reproducible point in time, and <strong>merging</strong> in order to incorporate your changes in one atomic action.</p>
-<details class="note" open="open">
-<summary>📽️ lakeFS in under 2 minutes</summary>
-<p><div class="video-wrapper">
-    <iframe width="1280" height="720" src="https://www.youtube.com/embed/GTxsyeoLccw" frameborder="0" allowfullscreen></iframe>
-</div></p>
-</details>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/GTxsyeoLccw"></iframe>
+
 <h2 id="how-do-i-get-started">How Do I Get Started?<a class="headerlink" href="#how-do-i-get-started" title="Permanent link">&para;</a></h2>
 <p><strong><a href="quickstart/">The hands-on quickstart</a> guides you through some core features of lakeFS</strong>. </p>
 <p>These include <a href="quickstart/branch/">branching</a>, <a href="quickstart/commit-and-merge/">merging</a>, and <a href="quickstart/rollback/">rolling back changes</a> to data. </p>
@@ -4187,14 +4182,11 @@ It integrates seamlessly with popular data frameworks such as <a href="integrati
 <p class="admonition-title">Info</p>
 <p>For more details and a full list see <a href="integrations/">the integrations pages</a>.</p>
 </div>
-<p>With lakeFS, you can use any of the tools and libraries you are used to work with to read and write data directly from a repository.</p>
-<div class="admonition example">
-<p class="admonition-title">Example: lakeFS with Pandas</p>
+<p>With lakeFS, you can use any of the tools and libraries you are used to work with to read and write data directly from a repository, e.g.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">&gt;&gt;&gt;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;lakefs://example-repository/main-branch/path/to.csv&#39;</span><span class="p">)</span>
 </span></code></pre></div>
-</div>
 <p>Using this method, lakeFS acts as a metadata layer: it figures out which objects need to be fetched from the underlying storage for that version of the data and then lets the client read or write these files directly from the storage using <a href="security/presigned-url/">pre-signed URLs</a>. This allows lakeFS to be both very efficient but also highly secure:</p>
 <p class="center">
     <img src="./assets/img/lakeFSArchitecture.png"/>
@@ -4203,8 +4195,6 @@ It integrates seamlessly with popular data frameworks such as <a href="integrati
 <p>Additionally, lakeFS maintains compatibility with the S3 API to minimize adoption
 friction. You can use it as a drop-in replacement for S3 from the perspective of
 any tool interacting with a data lake.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
 <p>For example, take the common operation of reading unstructured data from the object store using <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">Boto3</a> (Python):</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">boto3</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">&gt;&gt;&gt;</span> 
@@ -4212,7 +4202,6 @@ any tool interacting with a data lake.</p>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="s1">&#39;example-repository&#39;</span><span class="p">,</span> <span class="s1">&#39;main-branch/path/image.png&#39;</span><span class="p">)</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">image_data</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">()[</span><span class="s1">&#39;Body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </span></code></pre></div>
-</div>
 <p>You can use the same methods and syntax you are already using to read and write data when using a lakeFS repository. 
 This simplifies the adoption of lakeFS - minimal changes are needed to get started, making further changes an incremental process.</p>
 <h2 id="lakefs-is-git-for-data">lakeFS is Git for Data<a class="headerlink" href="#lakefs-is-git-for-data" title="Permanent link">&para;</a></h2>
@@ -4226,18 +4215,14 @@ This simplifies the adoption of lakeFS - minimal changes are needed to get start
 </ul>
 <p>lakeFS provides these exact benefits, that data practitioners are missing today, and enables them a clear intuitive Git-like interface to easily manage data like they manage code. 
 Through its versioning engine, lakeFS enables the following built-in operations familiar from Git:</p>
-<div class="grid cards">
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 4.75a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0M2.5 19.25a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0m0-14.5a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0M5.75 6.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 6.5m0 14.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 21m12.5-14.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 18.25 6.5"/><path d="M5.75 16.75A.75.75 0 0 1 5 16V8a.75.75 0 0 1 1.5 0v8a.75.75 0 0 1-.75.75"/><path d="M17.5 8.75v-1H19v1a3.75 3.75 0 0 1-3.75 3.75h-7a1.75 1.75 0 0 0-1.75 1.75H5A3.25 3.25 0 0 1 8.25 11h7a2.25 2.25 0 0 0 2.25-2.25"/></svg></span> <strong>Branch</strong> <br/>a consistent copy of a repository, isolated from other branches and their changes. Initial creation of a branch is a metadata operation that does not duplicate objects.</li>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.944 11h4.306a.75.75 0 0 1 0 1.5h-4.306a5.001 5.001 0 0 1-9.888 0H2.75a.75.75 0 0 1 0-1.5h4.306a5.001 5.001 0 0 1 9.888 0m-1.444.75a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0"/></svg></span> <strong>Commit</strong> <br/>an immutable checkpoint containing a complete snapshot of a repository.</li>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13.25a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0m-12.5 6a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0m0-14.5a3.25 3.25 0 1 1 6.5 0 3.25 3.25 0 0 1-6.5 0M5.75 6.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 6.5m0 14.5a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 5.75 21m12.5-6a1.75 1.75 0 1 0-.001-3.501A1.75 1.75 0 0 0 18.25 15"/><path d="M6.5 7.25c0 2.9 2.35 5.25 5.25 5.25h4.5V14h-4.5A6.75 6.75 0 0 1 5 7.25Z"/><path d="M5.75 16.75A.75.75 0 0 1 5 16V8a.75.75 0 0 1 1.5 0v8a.75.75 0 0 1-.75.75"/></svg></span> <strong>Merge</strong> <br/>performed between two branches &mdash; merges atomically update one branch with the changes from another.</li>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.53 2.22a.75.75 0 0 0-1.06 0L2.22 8.47a.75.75 0 0 0 0 1.06l6.25 6.25a.75.75 0 0 0 1.06-1.06L4.56 9.75H16c.797 0 2.008.245 3 .959.952.686 1.75 1.835 1.75 3.791s-.798 3.105-1.75 3.791c-.992.714-2.203.959-3 .959h-3a.75.75 0 0 0 0 1.5h3c1.037 0 2.575-.305 3.876-1.241 1.339-.964 2.374-2.565 2.374-5.009s-1.035-4.045-2.374-5.009C18.575 8.555 17.036 8.25 16 8.25H4.56l4.97-4.97a.75.75 0 0 0 0-1.06"/></svg></span> <strong>Revert</strong> <br/>returns a repo to the exact state of a previous commit.</li>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> <strong>Tag</strong> <br/>a pointer to a single immutable commit with a readable, meaningful name.</li>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 6a3.99 3.99 0 0 1-3 3.86V17a5 5 0 0 1-5 5 5 5 0 0 1-5-5v-5l5 5H7a3 3 0 0 0 3 3 3 3 0 0 0 3-3V9.86c-1.77-.46-3-2.06-3-3.89C10 3.76 11.8 2 14 2c2.22 0 4 1.79 4 4m-4 2a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2"/></svg></span> <strong>Hooks</strong> <br/>run validations and actions when actions occur (<code>pre-merge</code>, <code>post-create-branch</code>, etc).</li>
+<li><strong>branch:</strong> a consistent copy of a repository, isolated from other branches and their changes. Initial creation of a branch is a metadata operation that does not duplicate objects.</li>
+<li><strong>commit:</strong> an immutable checkpoint containing a complete snapshot of a repository.</li>
+<li><strong>merge:</strong> performed between two branches &mdash; merges atomically update one branch with the changes from another.</li>
+<li><strong>revert:</strong> returns a repo to the exact state of a previous commit.</li>
+<li><strong>tag:</strong> a pointer to a single immutable commit with a readable, meaningful name.</li>
 </ul>
-</div>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
 <p>See the <a href="understand/model/">object model</a> for an in-depth
 definition of these, and the <a href="reference/cli/">CLI reference</a> for the
 full list of commands.</p>
@@ -4249,7 +4234,7 @@ full list of commands.</p>
 <p>Being able to look at data as it was at a given point is particularly useful in at least two scenarios: </p>
 <ol>
 <li>
-<p><strong>Reproducibility of ML experiments</strong></p>
+<p>Reproducibility of ML experiments</p>
 <p>ML experimentation is iterative, requiring the ability to reproduce specific results. With lakeFS, you can version all aspects of an ML experiment, including the data. This enables:</p>
 <p><strong>Data Lineage</strong>: Track the transformation of data from raw datasets to the final version used in experiments, ensuring transparency and traceability.</p>
 <p><strong>Zero-Copy Branching</strong>: Minimize storage use by creating lightweight branches of your data, allowing for easy experimentation across different versions.</p>
@@ -4257,7 +4242,7 @@ full list of commands.</p>
 <p>lakeFS enhances your ML workflow by ensuring that all versions of data are easily accessible, traceable, and reproducible.</p>
 </li>
 <li>
-<p><strong>Troubleshooting production problems</strong></p>
+<p>Troubleshooting production problems</p>
 <p>In some cases, a user might report inconsistencies, question the accuracy, or simply report data or inference results as incorrect. </p>
 <p>Since data continuously changes, it is challenging to understand its state at the time of the error.</p>
 <p>With lakeFS you can create a branch from a commit to debug an issue in isolation.</p>
@@ -4385,7 +4370,7 @@ This allows for instant recovery: simply identify a good historical commit and r
 
 <h4>Cookie consent</h4>
 <p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to
-    make our documentation better.      </p>
+    make our documentation better.</p>
 <input class="md-toggle" type="checkbox" id="__settings" >
 <div class="md-consent__settings">
   <ul class="task-list">
@@ -4436,7 +4421,7 @@ This allows for instant recovery: simply identify a good historical commit and r
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["content.footnote.tooltips", "content.code.copy", "content.tabs.link", "content.tooltips", "search.suggest", "search.share"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.footnote.tooltips", "content.code.copy", "content.tabs.link", "content.tooltips", "search.suggest", "search.share"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
     
     
       <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
