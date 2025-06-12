@@ -4310,7 +4310,7 @@
 <p>With <a href="../../enterprise/">lakeFS Enterprise</a>, you can leverage <a href="../../howto/multiple-storage-backends/">multiple storage backend support</a>
 to manage data across multiple storage locations, including on-prem, hybrid, and multi-cloud environments.</p>
 <h3 id="metadata-storage">Metadata Storage<a class="headerlink" href="#metadata-storage" title="Permanent link">&para;</a></h3>
-<p>In additional a Key Value storage is used for storing metadata, with supported databases including PostgreSQL, DynamoDB, and CosmosDB Instructions of how to deploy such database on AWS can be found <a href="../../howto/deploy/aws/#grant-dynamodb-permissions-to-lakefs">here</a>.</p>
+<p>In additional a Key Value storage is used for storing metadata, with supported databases including PostgreSQL, DynamoDB, and CosmosDB Instructions of how to deploy such database on AWS can be found <a href="../../howto/deploy/aws/#grant-lakefs-permissions-to-dynamodb">here</a>.</p>
 <p>Additional information on the data format can be found in <a href="../how/versioning-internals/">Versioning internals</a> and <a href="../how/kv/">Internal database structure</a></p>
 <h3 id="load-balancing">Load Balancing<a class="headerlink" href="#load-balancing" title="Permanent link">&para;</a></h3>
 <p>Accessing lakeFS is done using HTTP.
@@ -4328,7 +4328,7 @@ to lakeFS server(s) would do.</p>
 <h3 id="storage-adapter">Storage Adapter<a class="headerlink" href="#storage-adapter" title="Permanent link">&para;</a></h3>
 <p>The Storage Adapter is an abstraction layer for communicating with any underlying object store.
 Its implementations allow compatibility with many types of underlying storage such as S3, GCS, Azure Blob Storage, or non-production usages such as the local storage adapter.</p>
-<p>See the <a href="../../project/#roadmap">roadmap</a> for information on the future plans for storage compatibility.</p>
+<p>See the <a href="../../project/">roadmap</a> for information on the future plans for storage compatibility.</p>
 <h3 id="graveler">Graveler<a class="headerlink" href="#graveler" title="Permanent link">&para;</a></h3>
 <p>The Graveler handles lakeFS versioning by translating lakeFS addresses to the actual stored objects.
 To learn about the data model used to store lakeFS metadata, see the <a href="../how/versioning-internals/">versioning internals page</a>.</p>
@@ -4515,7 +4515,7 @@ Once the client knows the exact data location from the lakeFS metadata, it direc
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.footnote.tooltips", "content.code.copy", "content.tabs.link", "content.tooltips", "search.suggest", "search.share"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.footnote.tooltips", "content.code.copy", "content.tabs.link", "content.tooltips", "search.suggest", "search.share"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
