@@ -167,11 +167,11 @@
                         return
                     }
                     const versions = await response.json();
-                    for (let [key, value] of Object.entries(versions)) {
+                    for (let versionObj of versions) {
                         const el = document.createElement("option");
-                        el.value = key;
-                        el.textContent = value;
-                        if (key === selectedVersion) {
+                        el.value = versionObj.version;
+                        el.textContent = versionObj.title;
+                        if (versionObj.version === selectedVersion) {
                             el.selected = true;
                         }
                         selectVersionElmFirst.after(el);
