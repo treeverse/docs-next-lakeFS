@@ -158,7 +158,7 @@
                 window.addEventListener("load",  async () => {
                     const pathFirstLevel = location.pathname.split('/')[1];
                     const selectedVersion = pathFirstLevel.startsWith('v') && pathFirstLevel || '';
-                    const selectVersionElmFirst = document.getElementById('selectversion');
+                    const selectVersionElmFirst = document.getElementById('selectversion').firstElementChild;
                     const response = await fetch('/versions.json');
                     if (!response.ok) {
                         return
