@@ -196,6 +196,7 @@
                         return
                     }
                     const versions = await response.json();
+                    versions.reverse();
                     for (let versionObj of versions) {
                         const el = document.createElement("option");
                         el.value = versionObj.version;
