@@ -1,1 +1,0 @@
-../../../archive/assets/js/swagger-ui-lakefs.js

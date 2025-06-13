@@ -1,1 +1,0 @@
-../../archive/tdd-semver.md
