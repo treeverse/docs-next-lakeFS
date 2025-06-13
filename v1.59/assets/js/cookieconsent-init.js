@@ -1,1 +1,1 @@
-./archive/js/cookieconsent-init.js
+../../../archive/js/cookieconsent-init.js
