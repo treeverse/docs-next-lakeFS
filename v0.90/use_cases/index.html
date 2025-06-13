@@ -168,14 +168,14 @@
                     }
                     const versions = await response.json();
                     for (let versionObj of versions) {
-        const el = document.createElement("option");
-        el.value = versionObj.version;
-        el.textContent = versionObj.title;
-        if (versionObj.version === selectedVersion) {
-            el.selected = true;
-        }
-        selectVersionElmFirst.after(el);
-    }
+                        const el = document.createElement("option");
+                        el.value = versionObj.version;
+                        el.textContent = versionObj.title;
+                        if (versionObj.version === selectedVersion) {
+                            el.selected = true;
+                        }
+                        selectVersionElmFirst.after(el);
+                    }
                 });
             </script>
 
