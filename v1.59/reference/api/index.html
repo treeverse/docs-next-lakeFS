@@ -52,7 +52,7 @@
     
       <link rel="stylesheet" href="../../assets/css/overrides.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("/lakefs/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -3903,12 +3903,16 @@
 
   <h1>lakeFS API</h1>
 
-<div id="swagger-ui"></div>
-
-<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.9.1/swagger-ui.min.css" integrity="sha512-wjyFPe3jl9Y/d+vaEDd04b2+wzgLdgKPVoy9m1FYNpJSMHM328G50WPU57xayVkZwxWi45vA+4QN+9erPZIeig==" crossorigin="anonymous" referrerpolicy="no-referrer" /></p>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.9.1/swagger-ui-bundle.min.js" integrity="sha512-ZltHb61aGRLllftCEx5iAhQBNmqa12g2MB9lpmoRl17c4kV5cBvVJ3LiK6nYx98hzHmrV7bE80FPP+IIi08Odw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.9.1/swagger-ui-standalone-preset.min.js" integrity="sha512-qwGi7EG31HcylzamsmacHLZJrfUGRuuHEaCMcOojuNpMu+paR554VjaCZ9LdUVTrmF8xC03YVqTzuKx0SDdruA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="../../assets/js/swagger-ui-lakefs.js"></script>
+<p><link type="text/css" rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css"></p>
+<div id="swagger-ui-1">
+</div>
+<script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js" charset="UTF-8"></script>
+<script>
+    SwaggerUIBundle({
+      url: 'swagger.yml',
+      dom_id: '#swagger-ui-1',
+    })
+</script>
 
 
 
