@@ -4403,7 +4403,7 @@ in multiple locations.</p>
 </ol>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>To configure your lakeFS server to connect to multiple storage backends, define them under the <code>blockstores</code> section in your server configurations.
-The <code>blockstores.stores</code> field is an array of storage backends, each with its own configuration.  </p>
+The <code>blockstores.stores</code> field is an array of storage backends, each with its own configuration.</p>
 <p>For a complete list of available options, refer to the <a href="../../reference/configuration/#blockstores">server configuration reference</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -4508,7 +4508,7 @@ to ensure a smooth transition.</p>
 <li>Set <code>backward_compatible: true</code> for the existing storage backend to ensure:</li>
 <li>Existing repositories continue to use the original storage backend.</li>
 <li>Newly created repositories default to this backend unless explicitly assigned a different one, to ensure a non-breaking upgrade process.</li>
-<li><strong>This setting is mandatory</strong> — lakeFS will not function if it is unset.  </li>
+<li><strong>This setting is mandatory</strong> — lakeFS will not function if it is unset.</li>
 <li><strong>Do not remove this setting</strong> as long as you need to support repositories created before the upgrade.
     If removed, lakeFS will fail to start because it will treat existing repositories as disconnected from any configured storage.</li>
 </ul>

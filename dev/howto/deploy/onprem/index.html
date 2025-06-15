@@ -4157,10 +4157,8 @@ This section assumes that you already have a PostgreSQL &gt;= 11.0 database acce
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="linux" name="__tabbed_1" type="radio" /><input id="docker" name="__tabbed_1" type="radio" /><input id="kubernetes" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="linux">Linux</label><label for="docker">Docker</label><label for="kubernetes">Kubernetes</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Connect to your host using SSH:</p>
-<ol>
-<li>Create a <code>config.yaml</code> on your VM, with the following parameters:</li>
-</ol>
+<p>Connect to your host using SSH:
+1. Create a <code>config.yaml</code> on your VM, with the following parameters:
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">database</span><span class="p">:</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span>
@@ -4181,21 +4179,17 @@ This section assumes that you already have a PostgreSQL &gt;= 11.0 database acce
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="nt">credentials</span><span class="p">:</span>
 </span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="nt">access_key_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;minio_access_key&gt;</span>
 </span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="nt">secret_access_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;minio_secret_key&gt;</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Notice that the lakeFS Blockstore type is set to <code>s3</code> - This configuration works with S3-compatible storage engines such as <a href="https://min.io/" target="blank">MinIO</a>.</p>
 </div>
 <ol>
-<li>
-<p>[Download the binary][downloads] to the server.</p>
-</li>
-<li>
-<p>Run the <code>lakefs</code> binary:</p>
-</li>
-</ol>
+<li><a href="https://github.com/treeverse/lakeFS/releases">Download the binary</a> to the server.</li>
+<li>Run the <code>lakefs</code> binary:
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>lakefs<span class="w"> </span>--config<span class="w"> </span>config.yaml<span class="w"> </span>run
-</span></code></pre></div>
+</span></code></pre></div></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It's preferable to run the binary as a service using systemd or your operating system's facilities.</p>
@@ -4274,7 +4268,7 @@ By default, lakeFS operates on port 8000 and exposes a <code>/_health</code> end
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The NGINX Ingress Controller by default limits the client body size to 1 MiB.</p>
-<p>Some clients use bigger chunks to upload objects - for example, multipart upload to lakeFS using the [S3-compatible Gateway][s3-gateway] or 
+<p>Some clients use bigger chunks to upload objects - for example, multipart upload to lakeFS using the [S3-compatible Gateway][s3-gateway] or
 a simple PUT request using the [OpenAPI Server][openapi].</p>
 <p>Checkout the Nginx <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#custom-max-body-size">documentation</a> for increasing the limit, or an example of Nginx configuration with <a href="https://docs.min.io/docs/setup-nginx-proxy-with-minio.html">MinIO</a>.</p>
 </div>
@@ -4325,28 +4319,22 @@ Enabling is done by <code>blockstore.local.import_enabled</code> and <code>block
 <p>When you first open the lakeFS UI, you will be asked to create an initial admin user.</p>
 <ol>
 <li>Open <code>http://&lt;lakefs-host&gt;/</code> in your browser. If you haven't set up a load balancer, this will likely be <code>http://&lt;instance ip address&gt;:8000/</code></li>
-<li>On first use, you'll be redirected to the setup page:</li>
-</ol>
-<p><img src="../../../assets/img/setup.png" alt="Create user"></p>
-<ol>
-<li>Follow the steps to create an initial administrator user. Save the credentials you’ve received somewhere safe, you won’t be able to see them again!</li>
-</ol>
-<p><img src="../../../assets/img/setup_done.png" alt="Setup Done"></p>
-<ol>
+<li>On first use, you'll be redirected to the setup page:
+   <img src="../../../assets/img/setup.png" alt="Create user"></li>
+<li>Follow the steps to create an initial administrator user. Save the credentials you’ve received somewhere safe, you won’t be able to see them again!
+   <img src="../../../assets/img/setup_done.png" alt="Setup Done"></li>
 <li>Follow the link and go to the login screen. Use the credentials from the previous step to log in.</li>
 </ol>
 <h2 id="create-your-first-repository">Create your first repository<a class="headerlink" href="#create-your-first-repository" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Use the credentials from the previous step to log in</li>
-<li>Click <em>Create Repository</em> and choose <em>Blank Repository</em>.</li>
-</ol>
-<p><img src="../../../assets/img/create-repo-no-sn.png" alt="Create Repo"/></p>
-<ol>
+<li>Click <em>Create Repository</em> and choose <em>Blank Repository</em>.
+   <img src="../../../assets/img/create-repo-no-sn.png" alt="Create Repo"/></li>
 <li>Under Storage Namespace, enter a path to your desired location on the object store. This is where data written to this repository will be stored.</li>
 <li>Click <em>Create Repository</em></li>
-<li>You should now have a configured repository, ready to use!</li>
+<li>You should now have a configured repository, ready to use!
+   <img src="../../../assets/img/repo-created.png" alt="Repo Created" style="border: 1px solid #DDDDDD;"/></li>
 </ol>
-<p><img src="../../../assets/img/repo-created.png" alt="Repo Created" style="border: 1px solid #DDDDDD;"/></p>
 <div class="admonition success">
 <p class="admonition-title">Congratulations</p>
 <p>Your environment is now ready 🤩</p>

@@ -4110,13 +4110,13 @@ This includes <a href="../../../security/access-control-lists/">ACL migration</a
 Running <code>lakefs migrate up</code> on the latest lakeFS version will perform all the necessary migrations up to that point.</p>
 <h3 id="lakefs-0800-or-greater-kv-migration">lakeFS 0.80.0 or greater (KV Migration)<a class="headerlink" href="#lakefs-0800-or-greater-kv-migration" title="Permanent link">&para;</a></h3>
 <p>Starting with version 0.80.2, lakeFS has transitioned from using a PostgreSQL based database implementation to a Key-Value datastore interface supporting
-multiple database implementations. More information can be found <a href="https://github.com/treeverse/lakeFS/blob/master/design/accepted/metadata_kv/index.md">here</a>.<br />
+multiple database implementations. More information can be found <a href="https://github.com/treeverse/lakeFS/blob/master/design/accepted/metadata_kv/index.md">here</a>.
 Users upgrading from a previous version of lakeFS must pass through the KV migration version (0.80.2) before upgrading to newer versions of lakeFS.</p>
 <div class="admonition warning">
 <p class="admonition-title">Important</p>
 <p>Pre Migrate Requirements:</p>
 <ul>
-<li><strong>Users using OS environment variables for database configuration must define the <code>connection_string</code> explicitly or as environment variable before proceeding with the migration.</strong>  </li>
+<li><strong>Users using OS environment variables for database configuration must define the <code>connection_string</code> explicitly or as environment variable before proceeding with the migration.</strong></li>
 <li><strong>Database storage free capacity of at least twice the amount of the currently used capacity</strong></li>
 <li>It is strongly recommended to perform these additional steps:</li>
 <li>Commit all uncommitted data on branches</li>
@@ -4125,43 +4125,43 @@ Users upgrading from a previous version of lakeFS must pass through the KV migra
 </ul>
 </div>
 <h4 id="migration-steps">Migration Steps<a class="headerlink" href="#migration-steps" title="Permanent link">&para;</a></h4>
-<p>For each lakeFS instance currently running with the database
-1. Modify the <code>database</code> section under lakeFS configuration yaml:
-   1. Add <code>type</code> field with <code>"postgres"</code> as value
-   2. Copy the current configuration parameters to a new section called <code>postgres</code></p>
+<p>For each lakeFS instance currently running with the database</p>
+<ol>
+<li>
+<p>Modify the <code>database</code> section under lakeFS configuration yaml:</p>
+<ol>
+<li>Add <code>type</code> field with <code>"postgres"</code> as value</li>
+<li>Copy the current configuration parameters to a new section called <code>postgres</code>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">database</span><span class="p">:</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w"> </span><span class="nt">connection_string</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres://localhost:5432/postgres?sslmode=disable&quot;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w"> </span><span class="nt">max_open_connections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">connection_string</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres://localhost:5432/postgres?sslmode=disable&quot;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">max_open_connections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w"> </span><span class="nt">postgres</span><span class="p">:</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">   </span><span class="nt">connection_string</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres://localhost:5432/postgres?sslmode=disable&quot;</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">   </span><span class="nt">max_open_connections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-</span></code></pre></div>
-<ol>
-<li>Stop all lakeFS instances</li>
-<li>Using the <code>lakefs</code> binary for the new version (0.80.2), run the following:</li>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">postgres</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">connection_string</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres://localhost:5432/postgres?sslmode=disable&quot;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">max_open_connections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</span></code></pre></div></li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>lakefs<span class="w"> </span>migrate<span class="w"> </span>up
-</span></code></pre></div>
-<ol>
-<li>lakeFS will run the migration process, which in the end should display the following message with no errors:</li>
-</ol>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>time=&quot;2022-08-10T14:46:25Z&quot; level=info msg=&quot;KV Migration took 717.629563ms&quot; func=&quot;pkg/logging.(*logrusEntryWrapper).Infof&quot; file=&quot;build/pkg/logging/logger.go:246&quot; TempDir=/tmp/kv_migrate_2913402680
-</span></code></pre></div>
-<ol>
-<li>It is now possible to remove the old database configuration. The updated configuration should look as such:</li>
-</ol>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nn">---</span>
+</li>
+<li>
+<p>Stop all lakeFS instances</p>
+</li>
+<li>Using the <code>lakefs</code> binary for the new version (0.80.2), run the following:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>lakefs<span class="w"> </span>migrate<span class="w"> </span>up
+</span></code></pre></div></li>
+<li>lakeFS will run the migration process, which in the end should display the following message with no errors:
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>time=&quot;2022-08-10T14:46:25Z&quot; level=info msg=&quot;KV Migration took 717.629563ms&quot; func=&quot;pkg/logging.(*logrusEntryWrapper).Infof&quot; file=&quot;build/pkg/logging/logger.go:246&quot; TempDir=/tmp/kv_migrate_2913402680
+</span></code></pre></div></li>
+<li>It is now possible to remove the old database configuration. The updated configuration should look as such:
+   <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nn">---</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">database</span><span class="p">:</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w"> </span><span class="nt">postgres</span><span class="p">:</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">   </span><span class="nt">connection_string</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgres://localhost:5432/postgres?sslmode=disable&quot;</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">   </span><span class="nt">max_open_connections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-</span></code></pre></div>
-<ol>
+</span></code></pre></div></li>
 <li>Deploy (or run) the new version of lakeFS.</li>
 </ol>
 <h3 id="lakefs-0300-or-greater">lakeFS 0.30.0 or greater<a class="headerlink" href="#lakefs-0300-or-greater" title="Permanent link">&para;</a></h3>
@@ -4196,8 +4196,8 @@ To do so, add the following to your configuration (relevant <strong>only</strong
 <h2 id="data-migration-for-version-v0500">Data Migration for Version v0.50.0<a class="headerlink" href="#data-migration-for-version-v0500" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If you are using a version before 0.50.0, 
-you must first perform the <a href="https://docs.lakefs.io/v0.50/reference/upgrade.html#data-migration-for-version-v0500">previous upgrade to that version</a>. </p>
+<p>If you are using a version before 0.50.0,
+you must first perform the <a href="https://docs.lakefs.io/v0.50/reference/upgrade.html#data-migration-for-version-v0500">previous upgrade to that version</a>.</p>
 </div>
 
 

@@ -4218,7 +4218,7 @@ the same prefix might send the wrong indication.</p>
 A failing round will stop the export of all the files of the next rounds.</p>
 <p>By default, lakeFS will use the <code>SparkFilter</code> and have 2 rounds for each export.
 The first round will export any non-Spark <code>_SUCCESS</code> files. Second round will export all Spark's <code>_SUCCESS</code> files.
-You may override the default behavior by passing a custom <code>filter</code> to the Exporter.  </p>
+You may override the default behavior by passing a custom <code>filter</code> to the Exporter.</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>First configure the <code>Exporter</code> instance:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="scala_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="scala_3">Scala</label></div>
@@ -4272,21 +4272,19 @@ you can alternatively export just the difference between <code>main</code> branc
 </div>
 <h2 id="exporting-data-with-docker">Exporting Data with Docker<a class="headerlink" href="#exporting-data-with-docker" title="Permanent link">&para;</a></h2>
 <p>This option is recommended if you don't have Spark at your tool-set.
-It doesn't support distribution across machines, therefore may have a lower performance. 
+It doesn't support distribution across machines, therefore may have a lower performance.
 Using this method, you can export data from lakeFS to S3 using the export options (in a similar way to the Spark export):</p>
 <ol>
 <li>Export all objects from a branch <code>example-branch</code> on <code>example-repo</code> repository to S3 location <code>s3://destination-bucket/prefix/</code>:
     <div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>....<span class="w"> </span>example-repo<span class="w"> </span>s3://destination-bucket/prefix/<span class="w"> </span>--branch<span class="o">=</span><span class="s2">&quot;example-branch&quot;</span>
 </span></code></pre></div></li>
-<li>
-<p>Export all objects from a commit <code>c805e49bafb841a0875f49cd555b397340bbd9b8</code> on <code>example-repo</code> repository to S3 location <code>s3://destination-bucket/prefix/</code>:</p>
-<p><div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>....<span class="w"> </span>example-repo<span class="w"> </span>s3://destination-bucket/prefix/<span class="w"> </span>--commit_id<span class="o">=</span>c805e49bafb841a0875f49cd555b397340bbd9b8
-</span></code></pre></div>
-1. Export only the diff between branch <code>example-branch</code> and commit <code>c805e49bafb841a0875f49cd555b397340bbd9b8</code>
-   on <code>example-repo</code> repository to S3 location <code>s3://destination-bucket/prefix/</code>:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>....<span class="w"> </span>example-repo<span class="w"> </span>s3://destination-bucket/prefix/<span class="w"> </span>--branch<span class="o">=</span><span class="s2">&quot;example-branch&quot;</span><span class="w"> </span>--prev_commit_id<span class="o">=</span>c805e49bafb841a0875f49cd555b397340bbd9b8
-</span></code></pre></div>
-</li>
+<li>Export all objects from a commit <code>c805e49bafb841a0875f49cd555b397340bbd9b8</code> on <code>example-repo</code> repository to S3 location <code>s3://destination-bucket/prefix/</code>:
+    <div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>....<span class="w"> </span>example-repo<span class="w"> </span>s3://destination-bucket/prefix/<span class="w"> </span>--commit_id<span class="o">=</span>c805e49bafb841a0875f49cd555b397340bbd9b8
+</span></code></pre></div></li>
+<li>Export only the diff between branch <code>example-branch</code> and commit <code>c805e49bafb841a0875f49cd555b397340bbd9b8</code>
+   on <code>example-repo</code> repository to S3 location <code>s3://destination-bucket/prefix/</code>:
+    <div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>....<span class="w"> </span>example-repo<span class="w"> </span>s3://destination-bucket/prefix/<span class="w"> </span>--branch<span class="o">=</span><span class="s2">&quot;example-branch&quot;</span><span class="w"> </span>--prev_commit_id<span class="o">=</span>c805e49bafb841a0875f49cd555b397340bbd9b8
+</span></code></pre></div></li>
 </ol>
 <p>You will need to add the relevant environment variables.
 The complete <code>docker run</code> command would look like:</p>
